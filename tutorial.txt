@@ -1,0 +1,35 @@
+1. navigate to where you'd like to store the repo
+
+2. In GitBash or whatever commandline you'd like to use, type:
+	$ git clone https://[username]@github.com/makkoli98/2340Project.git
+	Replace [username] with your github username.
+	Do not type the "$ ". This just indicates that what follows is a command.
+	
+3. cd into the new repo.
+	$ cd 2340Project/
+
+Trying to make an edit.
+
+4. make a new file in the repo
+	$ touch testfile.txt
+
+5. add the new file to tell git to start tracking changes to the file
+	$ git add testfile.txt
+	
+6. set up your user
+	$ git config --global user.email "[email]"
+	$ git config --global user.name "[name]"
+	replace [name] and [email] with your name and email
+	
+7. commit your changes
+	$ git commit -m "[description of changes]"
+	
+8. Push your changes
+	$ git push origin master
+	
+9. There should be a popup asking you to log into github. Enter your credentials.
+
+10. Check online that your file has been added.
+
+11. in order to update your local files after a change to the shared repo, do
+	$ git pull
