@@ -1,0 +1,1 @@
+As a player, I want to be able to enter my name so that I can identify my character
