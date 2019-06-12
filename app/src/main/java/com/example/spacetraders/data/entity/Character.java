@@ -7,10 +7,28 @@ public class Character {
     private int credits;
     private Spaceship ship;
 
+    /**
+     * No-arg constructor for the Character class
+     *
+     * Name: Bob
+     * Skill Points: 16
+     * Game Difficulty: Beginner
+     * Credits: 1000
+     * Spaceship: Gnat
+     */
     public Character() {
-        this("Bob", 16, GameDifficulty.BEGINNER, 1000, Spaceship.GNAT);
+        this("Bob", 16, GameDifficulty.BEGINNER, 1000, new Spaceship());
     }
 
+    /**
+     * Constructor for the Character class
+     *
+     * @param nam Name of the character
+     * @param sp Skill points remaining for the character to allocate
+     * @param diff Difficulty setting of the character
+     * @param creds Currency available to the character
+     * @param shp The character's current ship
+     */
     public Character(String nam, int sp, GameDifficulty diff, int creds, Spaceship shp) {
         name = nam;
         skillPoints = sp;
@@ -27,9 +45,7 @@ public class Character {
         name = nam;
     }
 
-    public int getSkillPoints() {
-        return skillPoints;
-    }
+    public int getSkillPoints() { return skillPoints; }
 
     public void setSkillPoints(int sp) {
         skillPoints = sp;
@@ -39,9 +55,7 @@ public class Character {
         return difficulty;
     }
 
-    public void setDifficulty(GameDifficulty diff) {
-        difficulty = diff;
-    }
+    public void setDifficulty(GameDifficulty diff) { difficulty = diff; }
 
     public int getCredits() {
         return credits;
