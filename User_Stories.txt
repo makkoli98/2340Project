@@ -1,16 +1,19 @@
 1. As a player, I want to enter my name so that I can identify my character
 
-2. As a trader, I want to allocate skill points so that I can specalize in certain areas of trading
+2. As a player, I want to allocate skill points so that I can specalize in certain areas of trading
 
-3. As a trader, I want configure the game difficulty so that I can feel challenged but not frustrated by the problems the game presents to me
+3. As a player, I want configure the game difficulty so that I can feel challenged but not frustrated by the problems the game presents to me
 
-4. As a trader, I want to sell items so that I have a source of income to fuel my in-game lifestyle
+4. As a player, I want to sell items so that I have a source of income to fuel my in-game lifestyle
 
-5. As a trader, I want to buy items so that I can restock supplies and trading material
+5. As a player, I want to buy items so that I can restock supplies and trading material
 
-6. As a trader, I want to travel between regions so that I can explore the unique resource distribution of different regions and search for resources which my current region lacks
+6. As a player, I want to travel between regions so that I can explore the unique resource distribution of different regions and search for resources which my current region lacks
 
-7. As a trader, I want to trade items so that I can continue to develop my resources even when I or the other party is low on currency
+7. As a player, I want to trade items so that I can continue to develop my resources even when I or the other party is low on currency
 
 8. As a player, I want perstance between play sessions so that I can continue playing with my old traders.
 
+9. As a player, I want to buy and sell ships so that I can trade more efficiently.
+
+10. As a player, I want to be able to upgrade my ship to survive space trade.
