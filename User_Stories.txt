@@ -16,4 +16,4 @@
 
 9. As a player, I want to buy and sell ships so that I can trade more efficiently.
 
-10. As a player, I want to be able to upgrade my ship to survive space trade.
+10. As a player, I want to be able to upgrade my ship so that I can survive space trade.
