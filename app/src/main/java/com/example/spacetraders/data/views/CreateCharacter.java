@@ -43,10 +43,10 @@ public class CreateCharacter extends AppCompatActivity {
 
         //List<GameDifficulty> difficulties = GameDifficulty.values()
 
-        ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, GameDifficulty.values());
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        difficulty.setAdapter(adapter);
-        //difficulty.setSelection(GameDifficulty.BEGINNER.ordinal());
+        //ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, GameDifficulty.values());
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        difficulty.setAdapter(new ArrayAdapter<GameDifficulty>(this, android.R.layout.simple_spinner_item, GameDifficulty.values()));
+        difficulty.setSelection(0);
     }
 
     /**
