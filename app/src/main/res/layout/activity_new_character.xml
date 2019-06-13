@@ -242,7 +242,7 @@
         app:layout_constraintTop_toBottomOf="@+id/traderIncButton" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/doneButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="300dp"
@@ -256,5 +256,62 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficultySpinner" />
+
+    <TextView
+        android:id="@+id/diffText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginEnd="343dp"
+        android:layout_marginRight="343dp"
+        android:text="Difficulty:"
+        app:layout_constraintBottom_toTopOf="@+id/difficultySpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/pilotPts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="41dp"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/fighterText"
+        app:layout_constraintStart_toEndOf="@+id/pilotText"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <TextView
+        android:id="@+id/fighterPts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="41dp"
+        android:layout_marginBottom="42dp"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/traderPts"
+        app:layout_constraintStart_toEndOf="@+id/fighterText"
+        app:layout_constraintTop_toBottomOf="@+id/pilotPts" />
+
+    <TextView
+        android:id="@+id/traderPts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="42dp"
+        android:layout_marginBottom="42dp"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/engineerText"
+        app:layout_constraintStart_toEndOf="@+id/traderText"
+        app:layout_constraintTop_toBottomOf="@+id/fighterText" />
+
+    <TextView
+        android:id="@+id/engrPts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="103dp"
+        android:layout_marginBottom="79dp"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@+id/difficultySpinner"
+        app:layout_constraintStart_toEndOf="@+id/engineerText"
+        app:layout_constraintTop_toBottomOf="@+id/fighterPts" />
 
 </android.support.constraint.ConstraintLayout>
