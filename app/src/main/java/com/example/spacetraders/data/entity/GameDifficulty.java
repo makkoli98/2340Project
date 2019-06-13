@@ -6,5 +6,5 @@ package com.example.spacetraders.data.entity;
  * some useful methods
  */
 public enum GameDifficulty {
-    BEGINNER
+    BEGINNER, EASY, NORMAL, HARD, IMPOSSIBLE
 }
