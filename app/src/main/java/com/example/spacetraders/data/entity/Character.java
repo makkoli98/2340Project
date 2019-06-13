@@ -3,6 +3,10 @@ package com.example.spacetraders.data.entity;
 public class Character {
     private String name;
     private int skillPoints;
+    private int pilotPts;
+    private int traderPts;
+    private int fighterPts;
+    private int engineerPts;
     private GameDifficulty difficulty;
     private int credits;
     private Spaceship ship;
@@ -17,7 +21,7 @@ public class Character {
      * Spaceship: Gnat
      */
     public Character() {
-        this("Bob", 16, GameDifficulty.BEGINNER, 1000, new Spaceship());
+        this("Bob", 16, GameDifficulty.BEGINNER, 1000, new Spaceship(), 0, 0, 0, 0);
     }
 
     /**
@@ -29,12 +33,17 @@ public class Character {
      * @param creds Currency available to the character
      * @param shp The character's current ship
      */
-    public Character(String nam, int sp, GameDifficulty diff, int creds, Spaceship shp) {
+    public Character(String nam, int sp, GameDifficulty diff, int creds, Spaceship shp, int pilot,
+                     int trader, int fighter, int engineer) {
         name = nam;
         skillPoints = sp;
         difficulty = diff;
         credits = creds;
         ship = shp;
+        pilotPts = pilot;
+        traderPts = trader;
+        fighterPts = fighter;
+        engineerPts = engineer;
     }
 
     public String getName() {
@@ -51,9 +60,23 @@ public class Character {
         skillPoints = sp;
     }
 
-    public GameDifficulty getDifficulty() {
-        return difficulty;
-    }
+    public int getPilotPts() { return pilotPts; }
+
+    public void setPilotPts(int pilot) { pilotPts = pilot; }
+
+    public int getTraderPts() { return traderPts; }
+
+    public void setTraderPts(int trader) { traderPts = trader; }
+
+    public int getFighterPts() { return fighterPts; }
+
+    public void setFighterPts(int fighter) { fighterPts = fighter; }
+
+    public int getEngineerPts() { return engineerPts; }
+
+    public void setEngineerPts(int engineer) { engineerPts = engineer; }
+
+    public GameDifficulty getDifficulty() { return difficulty; }
 
     public void setDifficulty(GameDifficulty diff) { difficulty = diff; }
 
