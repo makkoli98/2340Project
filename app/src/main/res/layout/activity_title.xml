@@ -20,24 +20,31 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/title_SpaceTrader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TITLEEE"
-            android:textColor="#FFFFFF" />
+            android:gravity="center_horizontal"
+            android:text="Space Trader"
+            android:textColor="#F0ECF7"
+            android:textSize="90dp"
+            app:fontFamily="@font/neuropolitical" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_newGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="100dp"
-            android:text="Button" />
+            android:text="NEW GAME"
+            android:textSize="25dp" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_continueGame"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_gravity="center_horizontal"
+            android:text="CONTINUE"
+            android:textSize="25dp" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

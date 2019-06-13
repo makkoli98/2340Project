@@ -23,7 +23,7 @@ public class TitleActivity extends AppCompatActivity {
             getSupportActionBar().setHomeButtonEnabled(false);
         }
 
-        Button button1 = findViewById(R.id.button);
+        Button button1 = findViewById(R.id.button_newGame);
 
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
