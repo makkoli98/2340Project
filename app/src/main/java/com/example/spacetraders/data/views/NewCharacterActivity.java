@@ -52,6 +52,8 @@ public class NewCharacterActivity extends AppCompatActivity {
         int fighterLevel = Integer.parseInt(fighter.getText().toString());
         int traderLevel = Integer.parseInt(trader.getText().toString());
         int engineerLevel = Integer.parseInt(engineer.getText().toString());
-
+        GameDifficulty characterDifficulty = (GameDifficulty) difficulty.getSelectedItem();
+        character = new Character(name, 0, characterDifficulty, 1000, null, pilotLevel, fighterLevel, traderLevel, engineerLevel);
+        finish();
     }
 }
