@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Button;
 
 import com.example.spacetraders.R;
 import com.example.spacetraders.data.entity.Character;
@@ -38,6 +39,77 @@ public class NewCharacterActivity extends AppCompatActivity {
         ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, GameDifficulty.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficulty.setAdapter(adapter);
+
+        Button lowerPilot = findViewById(R.id.pilotDecButton);
+        lowerPilot.setOnClickListener((view) -> {
+                TextView pilotPoints = findViewById(R.id.pilotPts);
+                int points = Integer.parseInt(pilotPoints.getText().toString());
+                if (points > 0) {
+                    points--;
+                }
+                pilotPoints.setText(Integer.toString(points));
+        });
+        Button raisePilot = findViewById(R.id.pilotIncButton);
+        raisePilot.setOnClickListener((view) -> {
+            TextView pilotPoints = findViewById(R.id.pilotPts);
+            int points = Integer.parseInt(pilotPoints.getText().toString());
+            points++;
+            pilotPoints.setText(Integer.toString(points));
+        });
+
+        Button lowerFighter = findViewById(R.id.fighterDecButton);
+        lowerFighter.setOnClickListener((view) -> {
+            TextView fighterPoints = findViewById(R.id.fighterPts);
+            int points = Integer.parseInt(fighterPoints.getText().toString());
+            if (points > 0) {
+                points--;
+            }
+            fighterPoints.setText(Integer.toString(points));
+        });
+
+        Button raiseFighter = findViewById(R.id.fighterIncButton);
+        raiseFighter.setOnClickListener((view) -> {
+            TextView fighterPoints = findViewById(R.id.fighterPts);
+            int points = Integer.parseInt(fighterPoints.getText().toString());
+            points++;
+            fighterPoints.setText(Integer.toString(points));
+        });
+
+        Button lowerTrader = findViewById(R.id.traderDecButton);
+        lowerTrader.setOnClickListener((view) -> {
+            TextView traderPoints = findViewById(R.id.traderPts);
+            int points = Integer.parseInt(traderPoints.getText().toString());
+            if (points > 0) {
+                points--;
+            }
+            traderPoints.setText(Integer.toString(points));
+        });
+
+        Button raiseTrader = findViewById(R.id.traderIncButton);
+        raiseTrader.setOnClickListener((view) -> {
+            TextView traderPoints = findViewById(R.id.traderPts);
+            int points = Integer.parseInt(traderPoints.getText().toString());
+            points++;
+            traderPoints.setText(Integer.toString(points));
+        });
+
+        Button lowerEngineer = findViewById(R.id.engDecButton);
+        lowerEngineer.setOnClickListener((view) -> {
+            TextView engineerPoints = findViewById(R.id.engrPts);
+            int points = Integer.parseInt(engineerPoints.getText().toString());
+            if (points > 0) {
+                points--;
+            }
+            engineerPoints.setText(Integer.toString(points));
+        });
+
+        Button raiseEngineer  = findViewById(R.id.engIncButton);
+        raiseEngineer.setOnClickListener((view) -> {
+            TextView engineerPoints = findViewById(R.id.engrPts);
+            int points = Integer.parseInt(engineerPoints.getText().toString());
+            points++;
+            engineerPoints.setText(Integer.toString(points));
+        });
 
 
     }
