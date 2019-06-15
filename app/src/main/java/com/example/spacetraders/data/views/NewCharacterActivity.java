@@ -1,5 +1,6 @@
 package com.example.spacetraders.data.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Button;
+
+import android.widget.Toast;
+
 
 import com.example.spacetraders.R;
 import com.example.spacetraders.data.entity.Character;
@@ -36,9 +40,44 @@ public class NewCharacterActivity extends AppCompatActivity {
         trader = findViewById(R.id.traderPts);
         engineer = findViewById(R.id.engrPts);
 
+
         ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, GameDifficulty.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficulty.setAdapter(adapter);
+
+        Button done = findViewById(R.id.doneButton);
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = characterName.getEditText().getText().toString();
+                int pilotLevel = Integer.parseInt(pilot.getText().toString());
+                int fighterLevel = Integer.parseInt(fighter.getText().toString());
+                int traderLevel = Integer.parseInt(trader.getText().toString());
+                int engineerLevel = Integer.parseInt(engineer.getText().toString());
+                String difficulty_level = difficulty.getSelectedItem().toString();
+
+                int totalSkillPoints = 0;
+                totalSkillPoints = pilotLevel + engineerLevel + traderLevel + fighterLevel;
+                if (totalSkillPoints != 16) {
+                    Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+
+                    Intent intent = new Intent(NewCharacterActivity.this , ViewPlayerInfo.class);
+                    intent.putExtra("name", name);
+                    //intent.putExtra("key", 5);//name key
+                    intent.putExtra("pilotLevel", pilotLevel);//key for the pilot
+                    intent.putExtra("fighterLevel", fighterLevel);//key for fighter
+                    intent.putExtra("traderLevel", traderLevel);//key for trader
+                    intent.putExtra("engineerLevel", engineerLevel);//key for engineer
+                    intent.putExtra("difficultyLevel", difficulty_level);//key for difficulty
+
+                    startActivity(intent);
+                }
+
+            }
+        });
+
 
         Button lowerPilot = findViewById(R.id.pilotDecButton);
         lowerPilot.setOnClickListener((view) -> {
@@ -110,6 +149,7 @@ public class NewCharacterActivity extends AppCompatActivity {
             points++;
             engineerPoints.setText(Integer.toString(points));
         });
+
 
 
     }
