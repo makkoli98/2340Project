@@ -61,6 +61,7 @@ public class ViewPlayerInfo extends AppCompatActivity {
         int fighter_level = getIntent().getIntExtra("fighterLevel", 0);
         int engineer_level = getIntent().getIntExtra("engineerLevel", 0);
         String difficulty = getIntent().getStringExtra("difficultyLevel");
+        String shipName = "Gnat";
 
 
         display_name.setText(name);
@@ -69,6 +70,7 @@ public class ViewPlayerInfo extends AppCompatActivity {
         display_fighter.setText("" + fighter_level);
         display_engineer.setText(""+ engineer_level);
         display_difficulty.setText("" + difficulty);
+        display_ship.setText(shipName);
 
 
 
