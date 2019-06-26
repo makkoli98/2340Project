@@ -11,17 +11,19 @@ import java.io.IOException;
 
 /**
  * The Save Database class is used to save the progress of any characters.
- * It should be instantiated twice, once at the app's launch and once at the app's closure.
- * At launch, either the createNewSave or selectSave method should be called. Do not call both.
+ * It should be instantiated when accessing a save's data or creating a new save.
  *
- * Each save is tracked with a numeric id, starting from 0 and increasing as more saves are made.
- * This ID mst be saved in order to save the data to the correct save file once the app closes.
+ * When creating a new save, the id must be saved in order to later save to the right saveFile.
  */
 public class SaveDatabase {
     private int numSaves;
     private Gson gson;
     private File path;
 
+    /**
+     *
+     * @param applicationContext use getApplicationContext()
+     */
     public SaveDatabase(Context applicationContext) {
         path = applicationContext.getFilesDir();
 
