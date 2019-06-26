@@ -11,6 +11,7 @@ public class SolarSystem {
     private int resources;
     private PoliticalSystem politicalSystem;
     private Planet[] planets;
+    private int numPlanets;
     private int[] coords;
     private String[] possibleNames = {"Acamar", "Adahn", "Aldea", "Andevian", "Antedi", "Balosnee",
             "Baratas", "Brax", "Bretel", "Calondia", "Campor", "Capelle", "Carzon", "Castor",
@@ -62,6 +63,10 @@ public class SolarSystem {
     public Planet[] getPlanets() { return planets; }
 
     public void setPlanets(Planet[] planets) { this.planets = planets; }
+
+    public int getNumPlanets() { return numPlanets; }
+
+    public void setNumPlanets(int numPlanets) { this.numPlanets = numPlanets; }
 
     public int[] getCoords() { return coords; }
 
@@ -191,43 +196,27 @@ public class SolarSystem {
 
     /**
      * Generates a list of planets populating the solar system
+     * Each planet is given the name "Planet1", "Planet2"...
+     * Except for Planet1, which is given the same name as the solar system
+     * and is set as the home planet of the system
+     *
      * @param numPlanetLimit maximum number of planets a solar system can have
      * @return a list of the created planets
      */
     public Planet[] generatePlanets(int numPlanetLimit) {
         Random rand = new Random();
-
-        ArrayList<Integer> xCoords = new ArrayList<>();
-        ArrayList<Integer> yCoords = new ArrayList<>();
-        xCoords.add(coords[0]);
-        yCoords.add(coords[1]);
-        int planetCounter = 1;
         int numPlanets = rand.nextInt(numPlanetLimit) + 1;
-        int randX;
-        int randY;
-        boolean distSafe = true;
-        while (planetCounter < numPlanets) {
-            randX = rand.nextInt(10) - 5;
-            randY = rand.nextInt(10) - 5;
-            int planetX = coords[0] + randX;
-            int planetY = coords[1] + randY;
-            for (int i = 0; i < xCoords.size(); i++) {
-                if (xCoords.get(i) == planetX && yCoords.get(i) == planetY) {
-                    distSafe = false;
-                }
+        Planet[] newPlanets = new Planet[numPlanets];
+
+        for (int i = 0; i < numPlanets; i++) {
+            if (i == 0) {
+                newPlanets[i] = new Planet(name);
+                newPlanets[i].setHome(true);
             }
-            if (distSafe) {
-                xCoords.add(randX);
-                yCoords.add(randY);
-                planetCounter++;
-                distSafe = true;
-            }
+            newPlanets[i] = new Planet("Planet" + Integer.valueOf(i + 1));
         }
 
-        Planet[] newPlanets = new Planet[numPlanets];
-        for (int i = 0; i < numPlanets; i++) {
-            planets[i] = new Planet(xCoords.get(i), yCoords.get(i));
-        }
+        this.numPlanets = numPlanets;
         return newPlanets;
     }
 }

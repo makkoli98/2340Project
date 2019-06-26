@@ -5,29 +5,31 @@ package com.example.spacetraders.data.entity;
  */
 
 public class Planet {
-    private int[] coords;
+    private String name;
+
+    private boolean isHome;
+
+    public String getName() { return name; }
+
+    public void setName(String name) { this.name = name; }
+
+    public boolean isHome() { return isHome; }
+
+    public void setHome(boolean isHome) { this.isHome = isHome; }
 
     /**
-     * Alternate constructor for Planet that chains to the normal constructor
-     * @param coords coordinates in the form of [xCoord, yCoord]
+     * No-arg constructor for Planet class. Defaults name to "Planet"
      */
-    public Planet(int[] coords) {
-        this(coords[0], coords[1]);
+    public Planet() {
+        this("Planet");
     }
 
     /**
-     * Constructor for Planet class. Takes in x and y coordinates and combines into a list.
-     * @param xCoord x-coordinate of Planet
-     * @param yCoord y-coordinate of Planet
+     * Constructor for Planet class. Assigns given name to planet name.
+     * @param name name of the planet
      */
-    public Planet(int xCoord, int yCoord) {
-        int[] combined = new int[2];
-        combined[0] = xCoord;
-        combined[1] = yCoord;
-        coords = combined;
+    public Planet(String name) {
+        this.name = name;
+        isHome = false;
     }
-
-    public int[] getCoords() { return coords; }
-
-    public void setCoords(int[] coords) { this.coords = coords; }
 }

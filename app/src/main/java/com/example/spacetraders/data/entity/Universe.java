@@ -23,7 +23,7 @@ public class Universe {
      * @param gameDifficulty difficulty of current game
      */
     public Universe(GameDifficulty gameDifficulty) {
-        this(5, 5, 10, gameDifficulty);
+        this(10, 5, 10, gameDifficulty);
     }
 
     /**
@@ -50,23 +50,16 @@ public class Universe {
         int sysCounter = 1;
         int randX;
         int randY;
-        boolean distSafe = true;
         while (sysCounter < numSystems) {
             randX = rand.nextInt(gridSize[0]);
             randY = rand.nextInt(gridSize[1]);
-            for (int i = 0; i < xCoords.size(); i++) {
-                if (Math.abs(xCoords.get(i) - randX) <= proximityParam
-                        && Math.abs(yCoords.get(i) - randY) <= proximityParam) {
-                    distSafe = false;
-                }
-            }
-            if (distSafe) {
+            if (!(xCoords.contains(randX) && yCoords.contains(randY))) {
                 xCoords.add(randX);
                 yCoords.add(randY);
                 sysCounter++;
-                distSafe = true;
             }
         }
+
 
         for (int i = 0; i < numSystems; i++) {
             int[] sysCoords = {xCoords.get(i), yCoords.get(i)};
