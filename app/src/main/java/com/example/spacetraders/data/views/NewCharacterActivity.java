@@ -19,6 +19,8 @@ import com.example.spacetraders.R;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.entity.GameDifficulty;
 import com.example.spacetraders.data.entity.SaveDatabase;
+import com.example.spacetraders.data.entity.Skill;
+import com.example.spacetraders.data.entity.Spaceship;
 
 public class NewCharacterActivity extends AppCompatActivity {
     private Spinner difficulty;
@@ -57,7 +59,7 @@ public class NewCharacterActivity extends AppCompatActivity {
                 int fighterLevel = Integer.parseInt(fighter.getText().toString());
                 int traderLevel = Integer.parseInt(trader.getText().toString());
                 int engineerLevel = Integer.parseInt(engineer.getText().toString());
-                String difficulty_level = difficulty.getSelectedItem().toString();
+                //String difficulty_level = difficulty.getSelectedItem().toString();
 
                 GameDifficulty characterDifficulty = (GameDifficulty) difficulty.getSelectedItem();
 
@@ -106,6 +108,16 @@ public class NewCharacterActivity extends AppCompatActivity {
                     intent.putExtra("engineerLevel", engineerLevel);//key for engineer
                     intent.putExtra("difficultyLevel", difficulty_level);//key for difficulty
 */
+                    Character character = new Character(name, characterDifficulty, 1000, new Spaceship(), pilotLevel, traderLevel, fighterLevel, engineerLevel);
+                    System.out.println("Character name: "+character.getName());
+                    System.out.println("Difficulty : "+character.getDifficulty());
+                    System.out.println("Character currency: "+character.getCredits());
+                    System.out.println("Character Ship: "+character.getShip());
+                    System.out.println("Character pilot level: "+character.getSkill(Skill.PILOT));
+                    System.out.println("Character trader level: "+character.getSkill(Skill.TRADER));
+                    System.out.println("Character fighter level: "+character.getSkill(Skill.FIGHTER));
+                    System.out.println("Character engineer level: "+character.getSkill(Skill.ENGINEER));
+
                     startActivity(new Intent(NewCharacterActivity.this, MainGameActivity.class));
                 }
 
@@ -188,10 +200,12 @@ public class NewCharacterActivity extends AppCompatActivity {
 
     }
 
+
     /**
      * Button handler which creates new character
      * @param view the button pressed
      */
+    /*
     public void onAddPressed(View view) {
         String name = characterName.getEditText().getText().toString();
         int pilotLevel = Integer.parseInt(pilot.getText().toString());
@@ -201,5 +215,5 @@ public class NewCharacterActivity extends AppCompatActivity {
         GameDifficulty characterDifficulty = (GameDifficulty) difficulty.getSelectedItem();
         character = new Character(name, 0, characterDifficulty, 1000, null, pilotLevel, fighterLevel, traderLevel, engineerLevel);
         finish();
-    }
+    }*/
 }
