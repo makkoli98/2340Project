@@ -45,9 +45,7 @@ public class Universe {
 
         ArrayList<Integer> xCoords = new ArrayList<>();
         ArrayList<Integer> yCoords = new ArrayList<>();
-        xCoords.add(0);
-        yCoords.add(0);
-        int sysCounter = 1;
+        int sysCounter = 0;
         int randX;
         int randY;
         while (sysCounter < numSystems) {
