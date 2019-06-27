@@ -88,7 +88,7 @@ public class SolarSystem {
 
         switch (gameDifficulty) {
             case BEGINNER:
-                for (int i = 0; i < 9; i++) {
+                for (int i = 0; i < 8; i++) {
                     techWeighting[i] = .05 + ((11.0/720) * i);
                 }
                 for (int i = 0; i < 13; i++) {
@@ -102,7 +102,7 @@ public class SolarSystem {
                 }
                 break;
             case EASY:
-                for (int i = 0; i < 9; i++) {
+                for (int i = 0; i < 8; i++) {
                     techWeighting[i] = (.05 + (11.0/720*i) + (1.0/9)) / 2.0;
                 }
                 for (int i = 0; i < 13; i++) {
@@ -116,7 +116,7 @@ public class SolarSystem {
                 }
                 break;
             case NORMAL:
-                for (int i = 0; i < 9; i++) {
+                for (int i = 0; i < 8; i++) {
                     techWeighting[i] = 1.0/9;
                 }
                 for (int i = 0; i < 13; i++) {
@@ -130,7 +130,7 @@ public class SolarSystem {
                 }
                 break;
             case HARD:
-                for (int i = 0; i < 9; i++) {
+                for (int i = 0; i < 8; i++) {
                     techWeighting[i] = ((31.0/181) - (11.0/720*i) + (1.0/9))/2.0;
                 }
                 for (int i = 0; i < 13; i++) {
@@ -144,7 +144,7 @@ public class SolarSystem {
                 }
                 break;
             case IMPOSSIBLE:
-                for (int i = 0; i < 9; i++) {
+                for (int i = 0; i < 8; i++) {
                     techWeighting[i] = (31.0/181) - (11.0/720*i);
                 }
                 for (int i = 0; i < 13; i++) {
@@ -158,7 +158,7 @@ public class SolarSystem {
                 }
                 break;
             default:
-                for (int i = 0; i < 9; i++) {
+                for (int i = 0; i < 8; i++) {
                     techWeighting[i] = 1.0/9;
                 }
                 for (int i = 0; i < 13; i++) {
