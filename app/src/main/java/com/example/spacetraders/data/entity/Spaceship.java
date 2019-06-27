@@ -24,4 +24,9 @@ public class Spaceship {
     public Spaceship(String nam) {
         name = nam;
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
