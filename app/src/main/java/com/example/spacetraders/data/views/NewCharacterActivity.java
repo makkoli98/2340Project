@@ -68,6 +68,7 @@ public class NewCharacterActivity extends AppCompatActivity {
                     return;
                 } else {
 
+                    /*
                     for(File f : getApplicationContext().getFilesDir().listFiles()) {
                         System.out.println(f.getAbsolutePath());
                         if(f.isDirectory()) {
@@ -94,7 +95,7 @@ public class NewCharacterActivity extends AppCompatActivity {
                     int id = saveDatabase.createNewSave();
                     saveDatabase.saveCharacter(character, id);
 
-                    
+
 
                     Intent intent = new Intent(NewCharacterActivity.this , ViewPlayerInfo.class);
                     intent.putExtra("name", name);
@@ -104,8 +105,8 @@ public class NewCharacterActivity extends AppCompatActivity {
                     intent.putExtra("traderLevel", traderLevel);//key for trader
                     intent.putExtra("engineerLevel", engineerLevel);//key for engineer
                     intent.putExtra("difficultyLevel", difficulty_level);//key for difficulty
-
-                    startActivity(intent);
+*/
+                    startActivity(new Intent(NewCharacterActivity.this, MainGameActivity.class));
                 }
 
             }
