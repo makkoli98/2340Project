@@ -1,6 +1,384 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/button_confirm"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="25dp"
+        android:text="Confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="174dp"
+        android:layout_marginLeft="174dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal"
+        android:text="[currency]"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner_buysell"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/label_water"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="75dp"
+        android:text="Water"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/spinner_buysell" />
+
+    <TextView
+        android:id="@+id/label_amountWater"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:text="[wateramount]"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_water" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_water"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_amountWater">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="amount" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/label_fur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="75dp"
+        android:text="Fur"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/input_water" />
+
+    <TextView
+        android:id="@+id/label_amountFur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:text="[furamount]"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_fur" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_fur"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_amountFur">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="amount" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/label_food"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="75dp"
+        android:text="Food"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/input_fur" />
+
+    <TextView
+        android:id="@+id/label_amountFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:text="[foodamount]"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_food" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_food"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_amountFood">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="amount" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/label_ore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="75dp"
+        android:text="Ore"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/input_food" />
+
+    <TextView
+        android:id="@+id/label_amountOre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:text="[oreamount]"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_ore" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_ore"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_amountOre">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="amount" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/label_games"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="75dp"
+        android:text="Games"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/input_ore" />
+
+    <TextView
+        android:id="@+id/label_amountGames"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:text="[gamesamount]"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_games" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_games"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/label_amountGames">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="amount" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/label_amountFirearms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:text="[firearmsamount]"
+        app:layout_constraintStart_toStartOf="@id/label_amountWater"
+        app:layout_constraintTop_toTopOf="@id/label_amountWater" />
+
+    <TextView
+        android:id="@+id/label_firearms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:text="Firearms"
+        app:layout_constraintStart_toStartOf="@id/label_water"
+        app:layout_constraintTop_toTopOf="@id/label_water" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_firearms"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="200dp"
+        app:layout_constraintStart_toStartOf="@id/input_water"
+        app:layout_constraintTop_toTopOf="@id/input_water">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="amount" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/label_medicine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:text="Medicine"
+        app:layout_constraintStart_toStartOf="@id/label_fur"
+        app:layout_constraintTop_toTopOf="@id/label_fur" />
+
+    <TextView
+        android:id="@+id/label_amountMedicine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:text="[medicineamount]"
+        app:layout_constraintStart_toStartOf="@id/label_amountFur"
+        app:layout_constraintTop_toTopOf="@id/label_amountFur" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_medicine"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="200dp"
+        app:layout_constraintStart_toStartOf="@id/input_fur"
+        app:layout_constraintTop_toTopOf="@id/input_fur">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="amount" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/label_machines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:text="Machines"
+        app:layout_constraintStart_toStartOf="@id/label_food"
+        app:layout_constraintTop_toTopOf="@id/label_food" />
+
+    <TextView
+        android:id="@+id/label_amountMachines"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:text="[machinesamount]"
+        app:layout_constraintStart_toStartOf="@id/label_amountFood"
+        app:layout_constraintTop_toTopOf="@id/label_amountFood" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_machines"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="200dp"
+        app:layout_constraintStart_toStartOf="@id/input_food"
+        app:layout_constraintTop_toTopOf="@id/input_food">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="amount" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/label_narcotics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:text="Narcotics"
+        app:layout_constraintStart_toStartOf="@id/label_ore"
+        app:layout_constraintTop_toTopOf="@id/label_ore" />
+
+    <TextView
+        android:id="@+id/label_amountNarcotics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:text="[narcoticsamount]"
+        app:layout_constraintStart_toStartOf="@id/label_amountOre"
+        app:layout_constraintTop_toTopOf="@id/label_amountOre" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_narcotics"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="200dp"
+        app:layout_constraintStart_toStartOf="@id/input_ore"
+        app:layout_constraintTop_toTopOf="@id/input_ore">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="amount" />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/label_robots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:text="Robots"
+        app:layout_constraintStart_toStartOf="@id/label_games"
+        app:layout_constraintTop_toTopOf="@id/label_games" />
+
+    <TextView
+        android:id="@+id/label_amountRobots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:text="[robotsamount]"
+        app:layout_constraintStart_toStartOf="@id/label_amountGames"
+        app:layout_constraintTop_toTopOf="@id/label_amountGames" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_robots"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="200dp"
+        app:layout_constraintStart_toStartOf="@id/input_games"
+        app:layout_constraintTop_toTopOf="@id/input_games">
+
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="amount" />
+    </android.support.design.widget.TextInputLayout>
 
 </android.support.constraint.ConstraintLayout>
