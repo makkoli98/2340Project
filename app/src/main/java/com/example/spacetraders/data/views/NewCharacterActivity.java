@@ -12,10 +12,13 @@ import android.widget.Button;
 
 import android.widget.Toast;
 
+import java.io.File;
+
 
 import com.example.spacetraders.R;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.entity.GameDifficulty;
+import com.example.spacetraders.data.entity.SaveDatabase;
 
 public class NewCharacterActivity extends AppCompatActivity {
     private Spinner difficulty;
@@ -56,12 +59,43 @@ public class NewCharacterActivity extends AppCompatActivity {
                 int engineerLevel = Integer.parseInt(engineer.getText().toString());
                 String difficulty_level = difficulty.getSelectedItem().toString();
 
+                GameDifficulty characterDifficulty = (GameDifficulty) difficulty.getSelectedItem();
+
                 int totalSkillPoints = 0;
                 totalSkillPoints = pilotLevel + engineerLevel + traderLevel + fighterLevel;
                 if (totalSkillPoints != 16) {
                     Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_LONG).show();
                     return;
                 } else {
+
+                    /*
+                    for(File f : getApplicationContext().getFilesDir().listFiles()) {
+                        System.out.println(f.getAbsolutePath());
+                        if(f.isDirectory()) {
+                            for(File fi : f.listFiles()) {
+                                System.out.println("Inner file: "+fi.getAbsolutePath());
+                                if(fi.isDirectory()) {
+                                    for(File fii : fi.listFiles()) {
+                                        System.out.println("Inner Inner file: "+fii.getAbsolutePath());
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    character = new Character(name, 0, characterDifficulty, 1000, null, pilotLevel, fighterLevel, traderLevel, engineerLevel);
+                    SaveDatabase saveDatabase = new SaveDatabase(getApplicationContext());
+                    int numSaves = saveDatabase.getNumSaves();
+                    if(numSaves > 0) {
+                        Character oldChar = saveDatabase.getCharacter(numSaves - 1);
+                        System.out.println("Previous character name: "+oldChar.getName());
+                    } else {
+                        System.out.println("No Previous save exists");
+                    }
+                    int id = saveDatabase.createNewSave();
+                    saveDatabase.saveCharacter(character, id);
+
+
 
                     Intent intent = new Intent(NewCharacterActivity.this , ViewPlayerInfo.class);
                     intent.putExtra("name", name);
@@ -71,8 +105,8 @@ public class NewCharacterActivity extends AppCompatActivity {
                     intent.putExtra("traderLevel", traderLevel);//key for trader
                     intent.putExtra("engineerLevel", engineerLevel);//key for engineer
                     intent.putExtra("difficultyLevel", difficulty_level);//key for difficulty
-
-                    startActivity(intent);
+*/
+                    startActivity(new Intent(NewCharacterActivity.this, MainGameActivity.class));
                 }
 
             }

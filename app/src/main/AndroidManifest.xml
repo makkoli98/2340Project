@@ -26,6 +26,12 @@
         <activity
             android:name=".data.views.NewCharacterActivity"
             android:parentActivityName=".data.views.TitleActivity" />
+        <activity
+            android:name=".data.views.MainGameActivity"
+            android:parentActivityName=".data.views.TitleActivity" />
+        <activity
+            android:name=".data.views.MarketActivity"
+            android:parentActivityName=".data.views.MainGameActivity" />
     </application>
 
 </manifest>
