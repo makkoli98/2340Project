@@ -1,5 +1,5 @@
 package com.example.spacetraders.data.entity;
 
-public enum Resources {
+public enum ResourceLevel {
     NOSPECIALRESOURCES, MINERALRICH, MINERALPOOR, DESERT, LOTSOFWATER, RICHSOIL, POORSOIL, RICHFAUNA, LIFELESS, WEIRDMUSHROOMS, LOTSOFHERBS, ARTISTIC, WARLIKE;
 }

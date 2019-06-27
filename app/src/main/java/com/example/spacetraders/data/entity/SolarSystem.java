@@ -8,7 +8,7 @@ import java.util.Random;
 public class SolarSystem {
     private String name;
     private TechLevel techLevel;
-    private Resources resources;
+    private ResourceLevel resourceLevel;
     private PoliticalSystem politicalSystem;
     private Planet[] planets;
     private int numPlanets;
@@ -44,12 +44,12 @@ public class SolarSystem {
         this.techLevel = techLevel;
     }
 
-    public Resources getResources() {
-        return resources;
+    public ResourceLevel getResources() {
+        return resourceLevel;
     }
 
-    public void setResources(Resources resources) {
-        this.resources = resources;
+    public void setResources(ResourceLevel resourceLevel) {
+        this.resourceLevel = resourceLevel;
     }
 
     public PoliticalSystem getPoliticalSystem() {
@@ -206,12 +206,12 @@ public class SolarSystem {
         if(techWeights.length != TechLevel.values().length) {
             System.err.println("Tech Weights do not match Tech Levels");
         }
-        if(resourceWeights.length != Resources.values().length) {
+        if(resourceWeights.length != ResourceLevel.values().length) {
             System.err.println("Resource Weights do not match Resources");
         }
 
         techLevel = TechLevel.values()[getSelection(techWeights)];
-        resources = Resources.values()[getSelection(resourceWeights)];
+        resourceLevel = ResourceLevel.values()[getSelection(resourceWeights)];
 
         Random rand2 = new Random();
         politicalSystem = PoliticalSystem.values()[rand2.nextInt(PoliticalSystem.values().length)];
