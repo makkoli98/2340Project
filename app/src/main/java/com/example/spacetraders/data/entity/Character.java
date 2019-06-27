@@ -24,10 +24,11 @@ public class Character {
      * Credits: 1000
      * Spaceship: Gnat
      */
+    /*
     public Character() {
         this("Bob", 16, GameDifficulty.BEGINNER, 1000, new Spaceship(), 0, 0, 0, 0);
     }
-*/
+    */
     /**
      * Constructor for the Character class
      *
