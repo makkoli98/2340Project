@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class SolarSystem {
     private String name;
-    private int techLevel;
+    private TechLevel techLevel;
     private int resources;
     private PoliticalSystem politicalSystem;
     private Planet[] planets;
@@ -38,11 +38,9 @@ public class SolarSystem {
         this.name = name;
     }
 
-    public int getTechLevel() {
-        return techLevel;
-    }
+    public TechLevel getTechLevel() { return techLevel; }
 
-    public void setTechLevel(int techLevel) {
+    public void setTechLevel(TechLevel techLevel) {
         this.techLevel = techLevel;
     }
 
@@ -85,7 +83,7 @@ public class SolarSystem {
             }
         }
 
-        double[] techWeighting = new double[9];
+        double[] techWeighting = new double[8];
         double[] resourceWeighting = new double[13];
 
         switch (gameDifficulty) {
@@ -174,8 +172,9 @@ public class SolarSystem {
                 }
                 break;
         }
-        techLevel = getRandom(techWeighting);
+        techLevel = TechLevel.values()[getRandom(techWeighting)];
         resources = getRandom(resourceWeighting);
+
 
         Random rand2 = new Random();
         politicalSystem = PoliticalSystem.values()[rand2.nextInt(PoliticalSystem.values().length)];
