@@ -2,15 +2,19 @@ package com.example.spacetraders.data.entity;
 
 public class Character {
     private String name;
+    /*
     private int skillPoints;
     private int pilotPts;
     private int traderPts;
     private int fighterPts;
     private int engineerPts;
+    */
+    private int[] skills;
     private GameDifficulty difficulty;
     private int credits;
     private Spaceship ship;
 
+    /*
     /**
      * No-arg constructor for the Character class
      *
@@ -23,7 +27,7 @@ public class Character {
     public Character() {
         this("Bob", 16, GameDifficulty.BEGINNER, 1000, new Spaceship(), 0, 0, 0, 0);
     }
-
+*/
     /**
      * Constructor for the Character class
      *
@@ -33,17 +37,25 @@ public class Character {
      * @param creds Currency available to the character
      * @param shp The character's current ship
      */
-    public Character(String nam, int sp, GameDifficulty diff, int creds, Spaceship shp, int pilot,
+    public Character(String nam, GameDifficulty diff, int creds, Spaceship shp, int pilot,
                      int trader, int fighter, int engineer) {
         name = nam;
-        skillPoints = sp;
+        //skillPoints = sp;
         difficulty = diff;
         credits = creds;
         ship = shp;
+        /*
         pilotPts = pilot;
         traderPts = trader;
         fighterPts = fighter;
         engineerPts = engineer;
+        */
+        skills = new int[Skill.values().length];
+        skills[Skill.PILOT.ordinal()] = pilot;
+        skills[Skill.TRADER.ordinal()] = trader;
+        skills[Skill.FIGHTER.ordinal()] = fighter;
+        skills[Skill.ENGINEER.ordinal()] = engineer;
+        skills[Skill.UNALLOCATED.ordinal()] = 0;
     }
 
     public String getName() {
@@ -54,6 +66,7 @@ public class Character {
         name = nam;
     }
 
+    /*
     public int getSkillPoints() { return skillPoints; }
 
     public void setSkillPoints(int sp) {
@@ -75,6 +88,15 @@ public class Character {
     public int getEngineerPts() { return engineerPts; }
 
     public void setEngineerPts(int engineer) { engineerPts = engineer; }
+    */
+
+    public int getSkill(Skill skill) {
+        return skills[skill.ordinal()];
+    }
+
+    public void setSkill(Skill skill, int value) {
+        skills[skill.ordinal()] = value;
+    }
 
     public GameDifficulty getDifficulty() { return difficulty; }
 
