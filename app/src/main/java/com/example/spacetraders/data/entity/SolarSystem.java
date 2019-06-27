@@ -8,7 +8,7 @@ import java.util.Random;
 public class SolarSystem {
     private String name;
     private TechLevel techLevel;
-    private int resources;
+    private Resources resources;
     private PoliticalSystem politicalSystem;
     private Planet[] planets;
     private int numPlanets;
@@ -44,11 +44,11 @@ public class SolarSystem {
         this.techLevel = techLevel;
     }
 
-    public int getResources() {
+    public Resources getResources() {
         return resources;
     }
 
-    public void setResources(int resources) {
+    public void setResources(Resources resources) {
         this.resources = resources;
     }
 
@@ -83,6 +83,7 @@ public class SolarSystem {
             }
         }
 
+        /*
         double[] techWeighting = new double[8];
         double[] resourceWeighting = new double[13];
 
@@ -103,7 +104,7 @@ public class SolarSystem {
                 break;
             case EASY:
                 for (int i = 0; i < 8; i++) {
-                    techWeighting[i] = (.05 + (11.0/720*i) + (1.0/9)) / 2.0;
+                    techWeighting[i] = (.05 + (11.0/720*i) + (1.0/8)) / 2.0;
                 }
                 for (int i = 0; i < 13; i++) {
                     if (i == 0) {
@@ -117,7 +118,7 @@ public class SolarSystem {
                 break;
             case NORMAL:
                 for (int i = 0; i < 8; i++) {
-                    techWeighting[i] = 1.0/9;
+                    techWeighting[i] = 1.0/8;
                 }
                 for (int i = 0; i < 13; i++) {
                     if (i == 0) {
@@ -131,7 +132,7 @@ public class SolarSystem {
                 break;
             case HARD:
                 for (int i = 0; i < 8; i++) {
-                    techWeighting[i] = ((31.0/181) - (11.0/720*i) + (1.0/9))/2.0;
+                    techWeighting[i] = ((31.0/181) - (11.0/720*i) + (1.0/8))/2.0;
                 }
                 for (int i = 0; i < 13; i++) {
                     if (i == 0) {
@@ -159,7 +160,7 @@ public class SolarSystem {
                 break;
             default:
                 for (int i = 0; i < 8; i++) {
-                    techWeighting[i] = 1.0/9;
+                    techWeighting[i] = 1.0/8;
                 }
                 for (int i = 0; i < 13; i++) {
                     if (i == 0) {
@@ -172,9 +173,45 @@ public class SolarSystem {
                 }
                 break;
         }
+
         techLevel = TechLevel.values()[getRandom(techWeighting)];
         resources = getRandom(resourceWeighting);
 
+        */
+        int[] techWeights = null;
+        int[] resourceWeights = null;
+        switch(gameDifficulty) {
+            case BEGINNER:
+                techWeights = new int[]{0, 1, 2, 3, 4, 5, 6, 7};
+                resourceWeights = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+                break;
+            case EASY:
+                techWeights = new int[]{0, 1, 2, 3, 4, 5, 6, 7};
+                resourceWeights = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+                break;
+            case NORMAL:
+                techWeights = new int[]{0, 1, 2, 3, 4, 5, 6, 7};
+                resourceWeights = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+                break;
+            case HARD:
+                techWeights = new int[]{0, 1, 2, 3, 4, 5, 6, 7};
+                resourceWeights = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+                break;
+            case IMPOSSIBLE:
+                techWeights = new int[]{0, 1, 2, 3, 4, 5, 6, 7};
+                resourceWeights = new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+                break;
+        }
+
+        if(techWeights.length != TechLevel.values().length) {
+            System.err.println("Tech Weights do not match Tech Levels");
+        }
+        if(resourceWeights.length != Resources.values().length) {
+            System.err.println("Resource Weights do not match Resources");
+        }
+
+        techLevel = TechLevel.values()[getSelection(techWeights)];
+        resources = Resources.values()[getSelection(resourceWeights)];
 
         Random rand2 = new Random();
         politicalSystem = PoliticalSystem.values()[rand2.nextInt(PoliticalSystem.values().length)];
@@ -191,6 +228,18 @@ public class SolarSystem {
             }
         }
         return rand.nextInt(weights.length);
+    }
+
+    private int getSelection(int[] weights) {
+        int total = 0;
+        for(int val: weights) total += val;
+        int r = new Random().nextInt(total);
+        int selection = 0;
+        for(int i = 0; i < weights.length; i++) {
+            selection += weights[i];
+            if(r <= selection) return i;
+        }
+        return weights.length - 1;
     }
 
     /**
