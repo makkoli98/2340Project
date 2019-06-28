@@ -16,11 +16,14 @@ import java.io.File;
 
 
 import com.example.spacetraders.R;
+import com.example.spacetraders.data.Interactor;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.entity.GameDifficulty;
 import com.example.spacetraders.data.entity.SaveDatabase;
 import com.example.spacetraders.data.entity.Skill;
+import com.example.spacetraders.data.entity.SolarSystem;
 import com.example.spacetraders.data.entity.Spaceship;
+import com.example.spacetraders.data.entity.Universe;
 
 public class NewCharacterActivity extends AppCompatActivity {
     private Spinner difficulty;
@@ -117,6 +120,22 @@ public class NewCharacterActivity extends AppCompatActivity {
                     System.out.println("Character trader level: "+character.getSkill(Skill.TRADER));
                     System.out.println("Character fighter level: "+character.getSkill(Skill.FIGHTER));
                     System.out.println("Character engineer level: "+character.getSkill(Skill.ENGINEER));
+
+                    Universe universe = new Universe(character.getDifficulty());
+                    int i = 1;
+                    for(SolarSystem s : universe.getSystems()) {
+                        String solName = s.getName();
+                        System.out.println("Solar system "+i+": "+solName);
+                        System.out.println(name+"'s coordinates: ("+s.getCoords()[0]+", "+s.getCoords()[1]+")");
+                        System.out.println(name+"'s resource: "+ s.getResources());
+                        System.out.println(name+"'s tech level: "+s.getTechLevel());
+                        i++;
+                    }
+
+                    Interactor.getInteractor().setCharacter(character);
+                    Interactor.getInteractor().setUniverse(universe);
+
+
 
                     startActivity(new Intent(NewCharacterActivity.this, MainGameActivity.class));
                 }

@@ -118,4 +118,5 @@ public class Character {
     public void setShip(Spaceship shp) {
         ship = shp;
     }
+
 }

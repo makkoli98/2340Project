@@ -48,15 +48,6 @@ public class MainGameActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        Universe universe = new Universe(GameDifficulty.BEGINNER);
-        int i = 1;
-        for(SolarSystem s : universe.getSystems()) {
-            String name = s.getName();
-            System.out.println("Solar system "+i+": "+name);
-            System.out.println(name+"'s coordinates: ("+s.getCoords()[0]+", "+s.getCoords()[1]+")");
-            System.out.println(name+"'s resource: "+ s.getResources());
-            System.out.println(name+"'s tech level: "+s.getTechLevel());
-            i++;
-        }
+
     }
 }
