@@ -70,6 +70,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:inputType="number"
             android:hint="amount" />
 
     </android.support.design.widget.TextInputLayout>
@@ -108,6 +109,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="amount" />
     </android.support.design.widget.TextInputLayout>
 
@@ -143,6 +145,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="amount" />
     </android.support.design.widget.TextInputLayout>
 
@@ -178,6 +181,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="amount" />
     </android.support.design.widget.TextInputLayout>
 
@@ -213,6 +217,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="amount" />
     </android.support.design.widget.TextInputLayout>
 
@@ -246,6 +251,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="amount" />
     </android.support.design.widget.TextInputLayout>
 
@@ -279,6 +285,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="amount" />
     </android.support.design.widget.TextInputLayout>
 
@@ -312,6 +319,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="amount" />
     </android.support.design.widget.TextInputLayout>
 
@@ -345,6 +353,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="amount" />
     </android.support.design.widget.TextInputLayout>
 
@@ -378,6 +387,7 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="amount" />
     </android.support.design.widget.TextInputLayout>
 
