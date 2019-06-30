@@ -14,30 +14,36 @@ import android.widget.Toast;
 
 import com.example.spacetraders.R;
 import com.example.spacetraders.data.Interactor;
+import com.example.spacetraders.data.entity.Resources;
+import com.example.spacetraders.data.entity.Character;
 
 public class MarketActivity extends AppCompatActivity {
-    private TextInputLayout inputWater, inputFur, inputFood, inputOre, inputGames, inputFirearms,
-            inputMedicine, inputMachines, inputNarcotics, inputRobots;
+    private TextInputLayout[] inputs;
     private TextView waterPrice, furPrice, foodPrice, orePrice, gamesPrice, firearmsPrice, medicinePrice,
             machinesPrice, narcoticsPrice, robotsPrice;
     private Button confirm;
     private Spinner BuySell;
+    private Character character;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_marketplace);
 
-        inputWater = findViewById(R.id.input_water);
-        inputFur = findViewById(R.id.input_fur);
-        inputFood = findViewById(R.id.input_food);
-        inputOre = findViewById(R.id.input_ore);
-        inputGames = findViewById(R.id.input_games);
-        inputFirearms = findViewById(R.id.input_firearms);
-        inputMedicine = findViewById(R.id.input_medicine);
-        inputMachines = findViewById(R.id.input_machines);
-        inputNarcotics = findViewById(R.id.input_narcotics);
-        inputRobots = findViewById(R.id.input_robots);
+        character = Interactor.getInteractor().getCharacter();
+
+        inputs = new TextInputLayout[Resources.values().length];
+
+        inputs[Resources.WATER.ordinal()] = findViewById(R.id.input_water);
+        inputs[Resources.FURS.ordinal()] = findViewById(R.id.input_fur);
+        inputs[Resources.FOOD.ordinal()] = findViewById(R.id.input_food);
+        inputs[Resources.ORE.ordinal()] = findViewById(R.id.input_ore);
+        inputs[Resources.GAMES.ordinal()] = findViewById(R.id.input_games);
+        inputs[Resources.FIREARMS.ordinal()] = findViewById(R.id.input_firearms);
+        inputs[Resources.MEDICINE.ordinal()] = findViewById(R.id.input_medicine);
+        inputs[Resources.MACHINES.ordinal()] = findViewById(R.id.input_machines);
+        inputs[Resources.NARCOTICS.ordinal()] = findViewById(R.id.input_narcotics);
+        inputs[Resources.ROBOTS.ordinal()] = findViewById(R.id.input_robots);
         confirm = findViewById(R.id.button_confirm);
         BuySell = findViewById(R.id.spinner_buysell);
 
@@ -46,33 +52,11 @@ public class MarketActivity extends AppCompatActivity {
         BuySell.setAdapter(adapter);
 
         confirm.setOnClickListener((view) -> {
-            /*
-            int waterAmount = (inputWater.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputWater.getEditText().getText().toString()));
-            int furAmount = (inputFur.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputFur.getEditText().getText().toString()));
-            int foodAmount = (inputFood.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputFood.getEditText().getText().toString()));
-            int oreAmount = (inputOre.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputOre.getEditText().getText().toString()));
-            int gamesAmount = (inputGames.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputGames.getEditText().getText().toString()));
-            int firearmsAmount = (inputFirearms.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputFirearms.getEditText().getText().toString()));
-            int medicineAmount = (inputMedicine.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputMedicine.getEditText().getText().toString()));
-            int machinesAmount = (inputMachines.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputMachines.getEditText().getText().toString()));
-            int narcoticsAmount = (inputNarcotics.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputNarcotics.getEditText().getText().toString()));
-            int robotsAmount = (inputRobots.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputRobots.getEditText().getText().toString()));
-            */
-            int waterAmount = getAmount(inputWater);
-            int furAmount = getAmount(inputFur);
-            int foodAmount = getAmount(inputFood);
-            int oreAmount = getAmount(inputOre);
-            int gamesAmount = getAmount(inputGames);
-            int firearmsAmount = getAmount(inputFirearms);
-            int medicineAmount = getAmount(inputMedicine);
-            int machinesAmount = getAmount(inputMachines);
-            int narcoticsAmount = getAmount(inputNarcotics);
-            int robotsAmount = getAmount(inputRobots);
+            for(TextInputLayout r : inputs) {
+                System.out.println(getAmount(r));
+            }
 
             String choice = (String) BuySell.getSelectedItem();
-            System.out.printf("%d, %d, %d, %d, %d, %d, %d, %d, %d, %d\n", waterAmount, furAmount,
-                    foodAmount, oreAmount, gamesAmount, firearmsAmount, medicineAmount, machinesAmount, narcoticsAmount, robotsAmount);
-
             if (choice.equals("BUY")) {
                 //check if purchase is valid
                 System.out.println("Buying");
@@ -81,8 +65,10 @@ public class MarketActivity extends AppCompatActivity {
                 System.out.println("Buying");
 
                 //sum the total amount of user's input for resources
-                int sumUserAmount = waterAmount + furAmount + foodAmount + oreAmount + gamesAmount +
-                        firearmsAmount + medicineAmount + machinesAmount + narcoticsAmount + robotsAmount;
+                int sumUserAmount = 0;
+                for(TextInputLayout r : inputs) {
+                    sumUserAmount += getAmount(r);
+                }
 
                 //player's credits
                 int playerCurrency =  Interactor.getInteractor().getCharacter().getCredits();
@@ -110,6 +96,11 @@ public class MarketActivity extends AppCompatActivity {
         } else {
             return Integer.parseInt(inputText.getEditText().getText().toString());
         }
+    }
+
+    @Override
+    protected void onPause() {
+        Interactor.getInteractor().setCharacter(character);
     }
 
 }
