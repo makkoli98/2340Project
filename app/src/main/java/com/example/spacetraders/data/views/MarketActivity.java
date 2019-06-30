@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.spacetraders.R;
 import com.example.spacetraders.data.Interactor;
@@ -63,8 +64,25 @@ public class MarketActivity extends AppCompatActivity {
             if (choice.equals("BUY")) {
                 //check if purchase is valid
                 System.out.println("Buying");
+
+                //sum the total amount of user's input for resources
+                int sumUserAmount = waterAmount + furAmount + foodAmount + oreAmount + gamesAmount +
+                        firearmsAmount + medicineAmount + machinesAmount + narcoticsAmount + robotsAmount;
+
+                //player's credits
+                int playerCurrency =  Interactor.getInteractor().getCharacter().getCredits();
+
+                if (sumUserAmount > playerCurrency) {
+                    Toast.makeText(getApplicationContext(), "Insufficient funds for purchase", Toast.LENGTH_LONG).show();
+                    return;
+                } else {
+                    //update player's credit
+                    playerCurrency -= sumUserAmount;
+                }
+
+
             } else if (choice.equals("SELL")) {
-                //check if purchase is valiid
+                //check if purchase is valid
                 System.out.println("Selling");
             }
         });
