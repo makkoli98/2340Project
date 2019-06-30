@@ -46,6 +46,7 @@ public class MarketActivity extends AppCompatActivity {
         BuySell.setAdapter(adapter);
 
         confirm.setOnClickListener((view) -> {
+            /*
             int waterAmount = (inputWater.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputWater.getEditText().getText().toString()));
             int furAmount = (inputFur.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputFur.getEditText().getText().toString()));
             int foodAmount = (inputFood.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputFood.getEditText().getText().toString()));
@@ -56,6 +57,17 @@ public class MarketActivity extends AppCompatActivity {
             int machinesAmount = (inputMachines.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputMachines.getEditText().getText().toString()));
             int narcoticsAmount = (inputNarcotics.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputNarcotics.getEditText().getText().toString()));
             int robotsAmount = (inputRobots.getEditText().getText().toString().equals("")) ? (0) : (Integer.parseInt(inputRobots.getEditText().getText().toString()));
+            */
+            int waterAmount = getAmount(inputWater);
+            int furAmount = getAmount(inputFur);
+            int foodAmount = getAmount(inputFood);
+            int oreAmount = getAmount(inputOre);
+            int gamesAmount = getAmount(inputGames);
+            int firearmsAmount = getAmount(inputFirearms);
+            int medicineAmount = getAmount(inputMedicine);
+            int machinesAmount = getAmount(inputMachines);
+            int narcoticsAmount = getAmount(inputNarcotics);
+            int robotsAmount = getAmount(inputRobots);
 
             String choice = (String) BuySell.getSelectedItem();
             System.out.printf("%d, %d, %d, %d, %d, %d, %d, %d, %d, %d\n", waterAmount, furAmount,
@@ -91,4 +103,13 @@ public class MarketActivity extends AppCompatActivity {
 
         System.out.println("In market: " + Interactor.getInteractor().getCharacter().getName());
     }
+
+    private int getAmount(TextInputLayout inputText) {
+        if(inputText.getEditText().getText().toString().equals("")) {
+            return 0;
+        } else {
+            return Integer.parseInt(inputtText.getEditText().getText().toString());
+        }
+    }
+
 }
