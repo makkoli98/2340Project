@@ -108,7 +108,7 @@ public class MarketActivity extends AppCompatActivity {
         if(inputText.getEditText().getText().toString().equals("")) {
             return 0;
         } else {
-            return Integer.parseInt(inputtText.getEditText().getText().toString());
+            return Integer.parseInt(inputText.getEditText().getText().toString());
         }
     }
 
