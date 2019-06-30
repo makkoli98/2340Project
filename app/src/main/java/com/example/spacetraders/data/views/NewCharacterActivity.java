@@ -111,7 +111,7 @@ public class NewCharacterActivity extends AppCompatActivity {
                     intent.putExtra("engineerLevel", engineerLevel);//key for engineer
                     intent.putExtra("difficultyLevel", difficulty_level);//key for difficulty
 */
-                    Character character = new Character(name, characterDifficulty, 1000, new Spaceship(), pilotLevel, traderLevel, fighterLevel, engineerLevel);
+                    Character character = new Character(name, characterDifficulty, 1000, Spaceship.GNAT, pilotLevel, traderLevel, fighterLevel, engineerLevel);
                     System.out.println("Character name: "+character.getName());
                     System.out.println("Difficulty : "+character.getDifficulty());
                     System.out.println("Character currency: "+character.getCredits());

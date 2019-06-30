@@ -17,6 +17,8 @@ import com.example.spacetraders.data.Interactor;
 import com.example.spacetraders.data.entity.Resources;
 import com.example.spacetraders.data.entity.Character;
 
+import java.util.Arrays;
+
 public class MarketActivity extends AppCompatActivity {
     private TextInputLayout[] inputs;
     private TextView waterPrice, furPrice, foodPrice, orePrice, gamesPrice, firearmsPrice, medicinePrice,
@@ -52,27 +54,24 @@ public class MarketActivity extends AppCompatActivity {
         BuySell.setAdapter(adapter);
 
         confirm.setOnClickListener((view) -> {
-            for(TextInputLayout r : inputs) {
-                System.out.println(getAmount(r));
+            int[] productQuantities = new int[Resources.values().length];
+            for (int i = 0; i < productQuantities.length; i++) {
+                productQuantities[i] = getAmount(inputs[i]);
             }
-
+            int sumUserAmount = Arrays.stream(productQuantities).sum();
             String choice = (String) BuySell.getSelectedItem();
+
             if (choice.equals("BUY")) {
-                //check if purchase is valid
-                System.out.println("Buying");
-
-                //check if purchase is valid
-                System.out.println("Buying");
-
-                //sum the total amount of user's input for resources
-                int sumUserAmount = 0;
-                for(TextInputLayout r : inputs) {
-                    sumUserAmount += getAmount(r);
+                // check if purchase is valid
+                if (Interactor.getInteractor().getCharacter().getShip().getCargoSize() -
+                        Arrays.stream(Interactor.getInteractor().getCharacter().getShip().getCurrentResources()).sum() < sumUserAmount) {
+                    Toast.makeText(getApplicationContext(), "Insufficient cargo space for purchase", Toast.LENGTH_LONG).show();
+                } else {
+                    Interactor.getInteractor().getCharacter().getShip().setResource(productQuantities, true);
+                    System.out.println(Arrays.toString(Interactor.getInteractor().getCharacter().getShip().getCurrentResources()));
                 }
-
                 //player's credits
                 int playerCurrency =  Interactor.getInteractor().getCharacter().getCredits();
-
                 if (sumUserAmount > playerCurrency) {
                     Toast.makeText(getApplicationContext(), "Insufficient funds for purchase", Toast.LENGTH_LONG).show();
                     return;
@@ -83,7 +82,21 @@ public class MarketActivity extends AppCompatActivity {
 
             } else if (choice.equals("SELL")) {
                 //check if purchase is valid
-                System.out.println("Selling");
+                //check if each cargo slot is valid
+                Boolean cargoValid = true;
+                for (int i = 0; i < productQuantities.length; i++) {
+                    if (productQuantities[i] > Interactor.getInteractor().getCharacter().getShip().getCurrentResources()[i]) {
+                        // if any resource amount is invalid, entire purchase is invalid
+                        cargoValid = false;
+                        break;
+                    }
+                }
+                if (cargoValid) {
+                    Interactor.getInteractor().getCharacter().getShip().setResource(productQuantities, false);
+                    System.out.println(Arrays.toString(Interactor.getInteractor().getCharacter().getShip().getCurrentResources()));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Invalid product amount", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
