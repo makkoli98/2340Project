@@ -30,7 +30,6 @@ public class Market {
             //(basePrice) + (IPL * (TechLevel - MTLP)) + (Var)
             resourcePrices[i] = basePrice + (IPL * (techLevel.ordinal() - MTLP)) + Var;
 
-            /*
             int cap = 50;
             int techNum = techLevel.ordinal();
             if (i == 0 && techNum >= 0) {
@@ -54,7 +53,6 @@ public class Market {
             } else if (i == 9 && techNum >= 6) {
                 resourceAmount[i] = rand.nextInt(cap);
             }
-            */
         }
     }
 }

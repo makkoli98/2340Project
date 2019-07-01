@@ -6,9 +6,7 @@ package com.example.spacetraders.data.entity;
 
 public class Planet {
     private String name;
-
     private boolean isHome;
-
     private Market market;
 
     public String getName() { return name; }
