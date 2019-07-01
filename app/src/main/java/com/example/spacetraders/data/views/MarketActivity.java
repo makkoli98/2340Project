@@ -39,7 +39,7 @@ public class MarketActivity extends AppCompatActivity {
         inputs = new TextInputLayout[Resources.values().length];
 
         currencyDisplay = findViewById(R.id.label_currency);
-        currencyDisplay.setText(character.getCredits());
+        currencyDisplay.setText(new Integer(character.getCredits()).toString());
 
         inputs[Resources.WATER.ordinal()] = findViewById(R.id.input_water);
         inputs[Resources.FURS.ordinal()] = findViewById(R.id.input_fur);
