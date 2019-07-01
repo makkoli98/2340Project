@@ -262,6 +262,7 @@ public class SolarSystem {
                 newPlanets[i].setHome(true);
             }
             newPlanets[i] = new Planet("Planet" + Integer.valueOf(i + 1));
+            // newPlanets[i].setMarket(new Market(techLevel));
         }
 
         this.numPlanets = numPlanets;

@@ -9,6 +9,8 @@ public class Planet {
 
     private boolean isHome;
 
+    private Market market;
+
     public String getName() { return name; }
 
     public void setName(String name) { this.name = name; }
@@ -16,6 +18,10 @@ public class Planet {
     public boolean isHome() { return isHome; }
 
     public void setHome(boolean isHome) { this.isHome = isHome; }
+
+    public Market getMarket() { return market; }
+
+    public void setMarket(Market market) { this.market = market; }
 
     /**
      * No-arg constructor for Planet class. Defaults name to "Planet"
