@@ -21,6 +21,7 @@ import com.example.spacetraders.data.entity.Spaceship;
 import java.util.Arrays;
 
 public class MarketActivity extends AppCompatActivity {
+    private TextView currencyDisplay;
     private TextInputLayout[] inputs;
     private TextView waterPrice, furPrice, foodPrice, orePrice, gamesPrice, firearmsPrice, medicinePrice,
             machinesPrice, narcoticsPrice, robotsPrice;
@@ -36,6 +37,9 @@ public class MarketActivity extends AppCompatActivity {
         character = Interactor.getInteractor().getCharacter();
 
         inputs = new TextInputLayout[Resources.values().length];
+
+        currencyDisplay = findViewById(R.id.label_currency);
+        currencyDisplay.setText(character.getCredits());
 
         inputs[Resources.WATER.ordinal()] = findViewById(R.id.input_water);
         inputs[Resources.FURS.ordinal()] = findViewById(R.id.input_fur);
@@ -71,6 +75,7 @@ public class MarketActivity extends AppCompatActivity {
                 } else {
                     character.getShip().setResource(productQuantities, true);
                     System.out.println(Arrays.toString(character.getShip().getCurrentResources()));
+                    currencyDisplay.setText(character.getCredits());
                 }
 
                 //player's credits
@@ -97,6 +102,7 @@ public class MarketActivity extends AppCompatActivity {
                 if (cargoValid) {
                     character.getShip().setResource(productQuantities, false);
                     System.out.println(Arrays.toString(character.getShip().getCurrentResources()));
+                    currencyDisplay.setText(character.getCredits());
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid product amount", Toast.LENGTH_LONG).show();
                 }
