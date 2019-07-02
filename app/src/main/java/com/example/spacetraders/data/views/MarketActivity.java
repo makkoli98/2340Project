@@ -108,13 +108,27 @@ public class MarketActivity extends AppCompatActivity {
             int playerCurrency =  character.getCredits();
             if (choice.equals("BUY")) {
                 // check if purchase is valid
-                if (character.getShip().getCargoSize() - Arrays.stream(character.getShip().getCurrentResources()).sum() >= sumUserAmount && cost <= playerCurrency) {
+                Boolean purchaseValid = true;
+                for (int i = 0; i < productQuantities.length; i++) {
+                    if (productQuantities[i] > resourceAmounts[i]) {
+                        purchaseValid = false;
+                    }
+                }
+                if (character.getShip().getCargoSize() - Arrays.stream(character.getShip().getCurrentResources()).sum() >= sumUserAmount && cost <= playerCurrency && purchaseValid) {
                     character.getShip().setResource(productQuantities, true);
                     System.out.println(Arrays.toString(character.getShip().getCurrentResources()));
                     character.setCredits(character.getCredits() - cost);
                     currencyDisplay.setText(Integer.toString(character.getCredits()));
+                    int[] newAmounts = new int[resourceAmounts.length];
+                    for (int i = 0; i < amounts.length; i++) {
+                        newAmounts[i] = resourceAmounts[i];
+                        int currentAmount = Integer.parseInt(amounts[i].getText().toString());
+                        int correctAmount = currentAmount - productQuantities[i];
+                        amounts[i].setText(Integer.toString(correctAmount));
+                    }
+                    character.getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(newAmounts);
                 } else {
-                    Toast.makeText(getApplicationContext(), "Insufficient cargo space or currency for purchase", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Insufficient cargo space or currency or amount for purchase", Toast.LENGTH_LONG).show();
                 }
 
             } else if (choice.equals("SELL")) {
@@ -125,7 +139,6 @@ public class MarketActivity extends AppCompatActivity {
                     if (productQuantities[i] > character.getShip().getCurrentResources()[i]) {
                         // if any resource amount is invalid, entire purchase is invalid
                         cargoValid = false;
-                        break;
                     }
                 }
                 if (cargoValid) {
@@ -133,6 +146,13 @@ public class MarketActivity extends AppCompatActivity {
                     System.out.println(Arrays.toString(character.getShip().getCurrentResources()));
                     character.setCredits(character.getCredits() + cost);
                     currencyDisplay.setText(Integer.toString(character.getCredits()));
+                    int[] newAmounts = new int[resourceAmounts.length];
+                    for (int i = 0; i < amounts.length; i++) {
+                        newAmounts[i] = resourceAmounts[i];
+                        int currentAmount = Integer.parseInt(amounts[i].getText().toString());
+                        int correctAmount = currentAmount + productQuantities[i];
+                        amounts[i].setText(Integer.toString(correctAmount));
+                    }
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid product amount", Toast.LENGTH_LONG).show();
                 }
