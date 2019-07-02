@@ -55,4 +55,78 @@ public class Market {
             }
         }
     }
+
+    public void changeResourceLevel(ResourceLevel resourceLevel) {
+        switch (resourceLevel) {
+            case LOTSOFWATER:
+                resourcePrices[Resources.WATER.ordinal()] *= 0.8;
+                break;
+            case RICHFAUNA:
+                resourcePrices[Resources.FURS.ordinal()] *= 0.8;
+                break;
+            case RICHSOIL:
+                resourcePrices[Resources.FOOD.ordinal()] *= 0.8;
+                break;
+            case MINERALRICH:
+                resourcePrices[Resources.ORE.ordinal()] *= 0.8;
+                break;
+            case ARTISTIC:
+                resourcePrices[Resources.GAMES.ordinal()] *= 0.8;
+                break;
+            case WARLIKE:
+                resourcePrices[Resources.FIREARMS.ordinal()] *= 0.8;
+                break;
+            case LOTSOFHERBS:
+                resourcePrices[Resources.MEDICINE.ordinal()] *= 0.8;
+                break;
+            case WEIRDMUSHROOMS:
+                resourcePrices[Resources.NARCOTICS.ordinal()] *= 0.8;
+                break;
+            case DESERT:
+                resourcePrices[Resources.WATER.ordinal()] *= 1.2;
+                break;
+            case LIFELESS:
+                resourcePrices[Resources.FURS.ordinal()] *= 1.2;
+                break;
+            case POORSOIL:
+                resourcePrices[Resources.FOOD.ordinal()] *= 1.2;
+                break;
+            case MINERALPOOR:
+                resourcePrices[Resources.ORE.ordinal()] *= 1.2;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void changeEvent(RadicalEvent IE) {
+        switch (IE) {
+            case DROUGHT:
+                resourcePrices[Resources.WATER.ordinal()] *= 2;
+                break;
+            case COLD:
+                resourcePrices[Resources.FURS.ordinal()] *= 2;
+                break;
+            case CROPFAIL:
+                resourcePrices[Resources.FOOD.ordinal()] *= 2;
+                break;
+            case WAR:
+                resourcePrices[Resources.ORE.ordinal()] *= 2;
+                resourcePrices[Resources.FIREARMS.ordinal()] *= 2;
+                break;
+            case BOREDOM:
+                resourcePrices[Resources.GAMES.ordinal()] *= 2;
+                resourcePrices[Resources.NARCOTICS.ordinal()] *= 2;
+                break;
+            case PLAGUE:
+                resourcePrices[Resources.MEDICINE.ordinal()] *= 2;
+                break;
+            case LACKOFWORKERS:
+                resourcePrices[Resources.MACHINES.ordinal()] *= 2;
+                resourcePrices[Resources.ROBOTS.ordinal()] *= 2;
+                break;
+            default:
+                break;
+        }
+    }
 }

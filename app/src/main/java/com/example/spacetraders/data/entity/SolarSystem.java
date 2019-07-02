@@ -167,7 +167,12 @@ public class SolarSystem {
                 newPlanets[i].setHome(true);
             }
             newPlanets[i] = new Planet("Planet" + Integer.valueOf(i + 1));
-            newPlanets[i].setMarket(new Market(techLevel));
+            Market market = new Market(techLevel);
+            market.changeResourceLevel(resourceLevel);
+            if (rand.nextBoolean()) {
+                market.changeEvent(RadicalEvent.values()[rand.nextInt(RadicalEvent.values().length)]);
+            }
+            newPlanets[i].setMarket(market);
         }
 
         this.numPlanets = numPlanets;
