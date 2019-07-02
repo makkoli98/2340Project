@@ -2,6 +2,11 @@ package com.example.spacetraders.data.entity;
 
 import java.util.Random;
 
+/**
+ * Market Class
+ *
+ * Handles resource prices and amounts
+ */
 public class Market {
     private int[] resourcePrices = new int[Resources.values().length];
     private int[] resourceAmount = new int[Resources.values().length];
@@ -14,6 +19,12 @@ public class Market {
 
     public void setResourceAmount(int[] resourceAmount) { this.resourceAmount = resourceAmount; }
 
+    /**
+     * Market class constructor. Uses the tech level of the system to generate market values
+     * The amount of each resource is randomized between 0 and the cap value.
+     *
+     * @param techLevel the tech level of the system
+     */
     public Market(TechLevel techLevel) {
         Random rand = new Random();
 
@@ -56,6 +67,13 @@ public class Market {
         }
     }
 
+    /**
+     * Adjusts market prices based on the resource level of the system.
+     * Negative resource levels multiply price by 0.8
+     * Positive resource levels multiply price by 1.2
+     *
+     * @param resourceLevel
+     */
     public void changeResourceLevel(ResourceLevel resourceLevel) {
         switch (resourceLevel) {
             case LOTSOFWATER:
@@ -99,6 +117,13 @@ public class Market {
         }
     }
 
+    /**
+     * Adjusts market prices based on a radical event
+     * As all of these are negative events,
+     * prices are doubled during these events
+     *
+     * @param IE Radically price increasing event
+     */
     public void changeEvent(RadicalEvent IE) {
         switch (IE) {
             case DROUGHT:
