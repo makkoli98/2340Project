@@ -6,6 +6,7 @@ import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -92,6 +93,24 @@ public class MarketActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, new String[] {"BUY", "SELL"});
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         BuySell.setAdapter(adapter);
+        BuySell.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item = (String) BuySell.getSelectedItem();
+                if (item.equals("BUY")) {
+                    for (Resources r: Resources.values()) {
+                        amounts[r.ordinal()].setText(Integer.toString(character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount()[r.ordinal()]));
+                    }
+                } else if (item.equals("SELL")) {
+                    for (Resources r: Resources.values()) {
+                        amounts[r.ordinal()].setText(Integer.toString(character.getShip().getCurrentResources()[r.ordinal()]));
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
 
         confirm.setOnClickListener((view) -> {
             int[] productQuantities = new int[Resources.values().length];
@@ -110,7 +129,7 @@ public class MarketActivity extends AppCompatActivity {
                 // check if purchase is valid
                 Boolean purchaseValid = true;
                 for (int i = 0; i < productQuantities.length; i++) {
-                    if (productQuantities[i] > resourceAmounts[i]) {
+                    if (productQuantities[i] > character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount()[i]) {
                         purchaseValid = false;
                     }
                 }
@@ -121,7 +140,7 @@ public class MarketActivity extends AppCompatActivity {
                     currencyDisplay.setText(Integer.toString(character.getCredits()));
                     int[] newAmounts = new int[resourceAmounts.length];
                     for (int i = 0; i < amounts.length; i++) {
-                        newAmounts[i] = resourceAmounts[i];
+                        newAmounts[i] = character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount()[i] - productQuantities[i];
                         int currentAmount = Integer.parseInt(amounts[i].getText().toString());
                         int correctAmount = currentAmount - productQuantities[i];
                         amounts[i].setText(Integer.toString(correctAmount));
@@ -148,11 +167,12 @@ public class MarketActivity extends AppCompatActivity {
                     currencyDisplay.setText(Integer.toString(character.getCredits()));
                     int[] newAmounts = new int[resourceAmounts.length];
                     for (int i = 0; i < amounts.length; i++) {
-                        newAmounts[i] = resourceAmounts[i];
+                        newAmounts[i] = character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount()[i] + productQuantities[i];
                         int currentAmount = Integer.parseInt(amounts[i].getText().toString());
-                        int correctAmount = currentAmount + productQuantities[i];
+                        int correctAmount = currentAmount - productQuantities[i];
                         amounts[i].setText(Integer.toString(correctAmount));
                     }
+                    character.getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(newAmounts);
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid product amount", Toast.LENGTH_LONG).show();
                 }
