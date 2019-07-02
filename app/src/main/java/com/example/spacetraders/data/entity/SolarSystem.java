@@ -83,101 +83,6 @@ public class SolarSystem {
             }
         }
 
-        /*
-        double[] techWeighting = new double[8];
-        double[] resourceWeighting = new double[13];
-
-        switch (gameDifficulty) {
-            case BEGINNER:
-                for (int i = 0; i < 8; i++) {
-                    techWeighting[i] = .05 + ((11.0/720) * i);
-                }
-                for (int i = 0; i < 13; i++) {
-                    if (i == 0) {
-                        resourceWeighting[i] = .15;
-                    } else if (i == 2 || i == 6 || i == 8) {
-                        resourceWeighting[i] = .05;
-                    } else {
-                        resourceWeighting[i] = 7.0/90;
-                    }
-                }
-                break;
-            case EASY:
-                for (int i = 0; i < 8; i++) {
-                    techWeighting[i] = (.05 + (11.0/720*i) + (1.0/8)) / 2.0;
-                }
-                for (int i = 0; i < 13; i++) {
-                    if (i == 0) {
-                        resourceWeighting[i] = .15;
-                    } else if (i == 2 || i == 6 || i == 8) {
-                        resourceWeighting[i] = 1.0/12;
-                    } else {
-                        resourceWeighting[i] = 6.0/90;
-                    }
-                }
-                break;
-            case NORMAL:
-                for (int i = 0; i < 8; i++) {
-                    techWeighting[i] = 1.0/8;
-                }
-                for (int i = 0; i < 13; i++) {
-                    if (i == 0) {
-                        resourceWeighting[i] = .15;
-                    } else if (i == 2 || i == 6 || i == 8) {
-                        resourceWeighting[i] = 7.0/60;
-                    } else {
-                        resourceWeighting[i] = 5.0/90;
-                    }
-                }
-                break;
-            case HARD:
-                for (int i = 0; i < 8; i++) {
-                    techWeighting[i] = ((31.0/181) - (11.0/720*i) + (1.0/8))/2.0;
-                }
-                for (int i = 0; i < 13; i++) {
-                    if (i == 0) {
-                        resourceWeighting[i] = .20;
-                    } else if (i == 2 || i == 6 || i == 8) {
-                        resourceWeighting[i] = 2.0/15;
-                    } else {
-                        resourceWeighting[i] = 4.0/90;
-                    }
-                }
-                break;
-            case IMPOSSIBLE:
-                for (int i = 0; i < 8; i++) {
-                    techWeighting[i] = (31.0/181) - (11.0/720*i);
-                }
-                for (int i = 0; i < 13; i++) {
-                    if (i == 0) {
-                        resourceWeighting[i] = .25;
-                    } else if (i == 2 || i == 6 || i == 8) {
-                        resourceWeighting[i] = .15;
-                    } else {
-                        resourceWeighting[i] = 3.0/90;
-                    }
-                }
-                break;
-            default:
-                for (int i = 0; i < 8; i++) {
-                    techWeighting[i] = 1.0/8;
-                }
-                for (int i = 0; i < 13; i++) {
-                    if (i == 0) {
-                        resourceWeighting[i] = .15;
-                    } else if (i == 2 || i == 6 || i == 8) {
-                        resourceWeighting[i] = 7.0/60;
-                    } else {
-                        resourceWeighting[i] = 5.0/90;
-                    }
-                }
-                break;
-        }
-
-        techLevel = TechLevel.values()[getRandom(techWeighting)];
-        resources = getRandom(resourceWeighting);
-
-        */
         int[] techWeights = null;
         int[] resourceWeights = null;
         switch(gameDifficulty) {
@@ -262,9 +167,16 @@ public class SolarSystem {
                 newPlanets[i].setHome(true);
             }
             newPlanets[i] = new Planet("Planet" + Integer.valueOf(i + 1));
+            Market market = new Market(techLevel);
+            market.changeResourceLevel(resourceLevel);
+            if (rand.nextBoolean()) {
+                market.changeEvent(RadicalEvent.values()[rand.nextInt(RadicalEvent.values().length)]);
+            }
+            newPlanets[i].setMarket(market);
         }
 
         this.numPlanets = numPlanets;
+        this.planets = newPlanets;
         return newPlanets;
     }
 }

@@ -6,8 +6,8 @@ package com.example.spacetraders.data.entity;
 
 public class Planet {
     private String name;
-
     private boolean isHome;
+    private Market market;
 
     public String getName() { return name; }
 
@@ -16,6 +16,10 @@ public class Planet {
     public boolean isHome() { return isHome; }
 
     public void setHome(boolean isHome) { this.isHome = isHome; }
+
+    public Market getMarket() { return market; }
+
+    public void setMarket(Market market) { this.market = market; }
 
     /**
      * No-arg constructor for Planet class. Defaults name to "Planet"

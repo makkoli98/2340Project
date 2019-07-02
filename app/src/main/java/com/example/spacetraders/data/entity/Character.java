@@ -13,6 +13,7 @@ public class Character {
     private GameDifficulty difficulty;
     private int credits;
     private Spaceship ship;
+    private SolarSystem currentSolarSystem;
 
     /*
     /**
@@ -119,4 +120,11 @@ public class Character {
         ship = shp;
     }
 
+    public SolarSystem getCurrentSolarSystem() {
+        return currentSolarSystem;
+    }
+
+    public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
+        this.currentSolarSystem = currentSolarSystem;
+    }
 }

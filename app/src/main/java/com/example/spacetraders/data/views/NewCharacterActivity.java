@@ -134,6 +134,7 @@ public class NewCharacterActivity extends AppCompatActivity {
 
                     Interactor.getInteractor().setCharacter(character);
                     Interactor.getInteractor().setUniverse(universe);
+                    Interactor.getInteractor().getCharacter().setCurrentSolarSystem(universe.getSystems()[0]);
 
 
 
