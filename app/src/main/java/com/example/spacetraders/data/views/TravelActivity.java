@@ -2,24 +2,58 @@ package com.example.spacetraders.data.views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.spacetraders.R;
 import com.example.spacetraders.data.Interactor;
 import com.example.spacetraders.data.entity.SolarSystem;
+import com.example.spacetraders.data.entity.Universe;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class TravelActivity extends AppCompatActivity {
 
+    Button[] travelButtons;
+
+    Universe universe;
     SolarSystem[] systems;
+    SolarSystem currentSystem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
-        systems = Interactor.getInteractor().getUniverse().getSystems();
+        universe = Interactor.getInteractor().getUniverse();
+        systems = universe.getSystems();
+        currentSystem = Interactor.getInteractor().getCharacter().getCurrentSolarSystem();
+        Arrays.sort(systems, new SystemComparator()); //sort in order of distance
 
+        travelButtons = new Button[systems.length - 1]; //ignore current System
+
+        LinearLayout linLayout = (LinearLayout) findViewById(R.id.linLayout);
+        for(int i = 0; i < travelButtons.length; i++) {
+            try {
+                Button button = new Button(this);
+                button.setId(View.generateViewId());
+                button.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                button.setText("\nSolar System: " + systems[i+1].getName() + "\nFuel Cost: " + systems[i+1].getDistance(currentSystem) + "\n"); //todo: add fuel effency formula
+                linLayout.addView(button);
+                travelButtons[i] = button;
+            } catch(Exception e) {
+                System.err.println(e);
+                System.err.println("error creating button in TravelActivity");
+            }
+        }
+    }
+    private class SystemComparator implements Comparator<SolarSystem> {
+        public int compare(SolarSystem a, SolarSystem b) {
+            return currentSystem.getDistance(a) - currentSystem.getDistance(b);
+        }
     }
 }
 
