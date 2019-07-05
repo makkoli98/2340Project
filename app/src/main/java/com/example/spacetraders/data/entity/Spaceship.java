@@ -1,83 +1,30 @@
 package com.example.spacetraders.data.entity;
 import java.util.HashMap;
 
-/**
- * Enum class for Spaceship that holds the different types of ships and their attributes such as
- * maximum cargo hold and maximum health
- */
-public enum Spaceship {
-    // Ship has name, cargo size, health, weapons amount, fuel efficiency, and base price
-    FLEA("Flea", 10, 10, 1, 5, 500.0),
-    GNAT("Gnat", 15, 20, 1, 14, 1000.0),
-    FIREFLY("Firefly", 20, 30, 1, 17, 750.0),
-    MOSQUITO("Mosquito", 15, 30, 2, 13, 1500.0),
-    BUMBLEBEE("Bumblebee", 20, 40, 2, 15, 2000.0),
-    BEETLE("Beetle", 50, 25, 0, 14, 3500.0),
-    HORNET("Hornet", 20, 45, 3, 16, 3000.0),
-    GRASSHOPPER("Grasshopper", 30, 40, 2, 15, 2500.0),
-    TERMITE("Termite", 60, 55, 1, 13, 4500.0),
-    WASP("Wasp", 35, 40, 3, 14, 6000.0);
 
-    private final String name;
-    private final int cargoSize;
-    private final int maximumHealth;
-    private final int maxWeaponsAmount;
-    private final int fuelEfficiency;
-    private final double basePrice;
+public class Spaceship {
     private int[] currentResources;
     private int currentHealth;
+    private ShipType type;
 
-    /**
-     * @param name name of the ship
-     * @param cargoSize maximum amount of cargo ship can hold
-     * @param maximumHealth maximum health that the ship can have
-     * @param maxWeaponsAmount max amount of weapons that can be added onto ship
-     * @param fuelEfficiency how far it can travel on a full tank
-     * @param basePrice price of the ship before economic model changes the price
-     * When creating a ship, it starts out with an empty cargo, so any cargo in the ship that was sold
-     * is lost upon purchase of a new ship
-     */
-    Spaceship(String name, int cargoSize, int maximumHealth, int maxWeaponsAmount, int fuelEfficiency, double basePrice) {
-        this.name = name;
-        this.cargoSize = cargoSize;
-        this.maximumHealth = maximumHealth;
-        this.maxWeaponsAmount = maxWeaponsAmount;
-        this.fuelEfficiency = fuelEfficiency;
-        this.basePrice = basePrice;
-        // indices are ordered based on ordinal from resources
+    public Spaceship(ShipType type) {
+        this.type = type;
         currentResources = new int[Resources.values().length];
-        currentHealth = maximumHealth;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getCargoSize() {
-        return cargoSize;
-    }
-
-    public int getMaximumHealth() {
-        return maximumHealth;
-    }
-
-    public int getMaxWeaponsAmount() {
-        return maxWeaponsAmount;
-    }
-
-    public int getFuelEfficiency() {
-        return fuelEfficiency;
-    }
-
-    public double getBasePrice() {
-        return basePrice;
+        currentHealth = type.getMaximumHealth();
     }
 
     public int[] getCurrentResources() {
         return currentResources;
     }
 
-    public void setCurrentResources(int[] currentResources) {
+    public void setCurrentResources(int[] currentResources) throws IllegalArgumentException {
+        int sum = 0;
+        for(int i : currentResources) {
+            sum += i;
+        }
+        if(sum > type.getCargoSize()) {
+            throw new IllegalArgumentException("Attempted to set Spaceship resources beyond cargo capacity");
+        }
         this.currentResources = currentResources;
     }
 
@@ -85,7 +32,13 @@ public enum Spaceship {
         return currentHealth;
     }
 
-    public void setCurrentHealth(int currentHealth) {
+    public void setCurrentHealth(int currentHealth) throws IllegalArgumentException {
+        if(currentHealth < 0) {
+            throw new IllegalArgumentException("Attempted to set Spaceship to negative health");
+        }
+        if(currentHealth > type.getMaximumHealth()) {
+            throw new IllegalArgumentException("Attempted to set Spaceship beyond maximum health");
+        }
         this.currentHealth = currentHealth;
     }
 
@@ -95,6 +48,10 @@ public enum Spaceship {
      * Changes the resource quantity in the spaceship cargo to the new amount
      */
     public void setResource(int[] newResourceAmounts, Boolean buying) {
+        for (int i = 0; i < currentResources.length; i++) {
+            currentResources[i] += ((buying) ? 1 : -1) * newResourceAmounts[i];
+        }
+        /*
         if (buying) {
             for (int i = 0; i < currentResources.length; i++) {
                 currentResources[i] += newResourceAmounts[i];
@@ -104,10 +61,40 @@ public enum Spaceship {
                 currentResources[i] -= newResourceAmounts[i];
             }
         }
+        */
     }
 
     @Override
     public String toString() {
-        return name;
+        return type.getName();
+    }
+
+    // ShipType methods
+    public ShipType getType() {
+        return type;
+    }
+
+    public String getName() {
+        return type.getName();
+    }
+
+    public int getCargoSize() {
+        return type.getCargoSize();
+    }
+
+    public int getMaximumHealth() {
+        return type.getMaximumHealth();
+    }
+
+    public int getMaxWeaponsAmount() {
+        return type.getMaxWeaponsAmount();
+    }
+
+    public int getFuelEfficiency() {
+        return type.getFuelEfficiency();
+    }
+
+    public int getBasePrice() {
+        return type.getBasePrice();
     }
 }

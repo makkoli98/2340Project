@@ -20,6 +20,7 @@ import com.example.spacetraders.data.Interactor;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.entity.GameDifficulty;
 import com.example.spacetraders.data.entity.SaveDatabase;
+import com.example.spacetraders.data.entity.ShipType;
 import com.example.spacetraders.data.entity.Skill;
 import com.example.spacetraders.data.entity.SolarSystem;
 import com.example.spacetraders.data.entity.Spaceship;
@@ -62,8 +63,6 @@ public class NewCharacterActivity extends AppCompatActivity {
                 int fighterLevel = Integer.parseInt(fighter.getText().toString());
                 int traderLevel = Integer.parseInt(trader.getText().toString());
                 int engineerLevel = Integer.parseInt(engineer.getText().toString());
-                //String difficulty_level = difficulty.getSelectedItem().toString();
-
                 GameDifficulty characterDifficulty = (GameDifficulty) difficulty.getSelectedItem();
 
                 int totalSkillPoints = 0;
@@ -71,76 +70,35 @@ public class NewCharacterActivity extends AppCompatActivity {
                 if (totalSkillPoints != 16) {
                     Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_LONG).show();
                     return;
-                } else {
+                }
+                Character character = new Character(name, characterDifficulty, 1000, ShipType.GNAT, pilotLevel, traderLevel, fighterLevel, engineerLevel);
+                Universe universe = new Universe(character.getDifficulty());
 
-                    /*
-                    for(File f : getApplicationContext().getFilesDir().listFiles()) {
-                        System.out.println(f.getAbsolutePath());
-                        if(f.isDirectory()) {
-                            for(File fi : f.listFiles()) {
-                                System.out.println("Inner file: "+fi.getAbsolutePath());
-                                if(fi.isDirectory()) {
-                                    for(File fii : fi.listFiles()) {
-                                        System.out.println("Inner Inner file: "+fii.getAbsolutePath());
-                                    }
-                                }
-                            }
-                        }
-                    }
+                Interactor.getInteractor().setCharacter(character);
+                Interactor.getInteractor().setUniverse(universe);
+                Interactor.getInteractor().getCharacter().setCurrentSolarSystem(universe.getSystems()[0]);
 
-                    character = new Character(name, 0, characterDifficulty, 1000, null, pilotLevel, fighterLevel, traderLevel, engineerLevel);
-                    SaveDatabase saveDatabase = new SaveDatabase(getApplicationContext());
-                    int numSaves = saveDatabase.getNumSaves();
-                    if(numSaves > 0) {
-                        Character oldChar = saveDatabase.getCharacter(numSaves - 1);
-                        System.out.println("Previous character name: "+oldChar.getName());
-                    } else {
-                        System.out.println("No Previous save exists");
-                    }
-                    int id = saveDatabase.createNewSave();
-                    saveDatabase.saveCharacter(character, id);
+                //Log Character and Universe Information
+                System.out.println("Character name: "+character.getName());
+                System.out.println("Difficulty : "+character.getDifficulty());
+                System.out.println("Character currency: "+character.getCredits());
+                System.out.println("Character Ship: "+character.getShip());
+                System.out.println("Character pilot level: "+character.getSkill(Skill.PILOT));
+                System.out.println("Character trader level: "+character.getSkill(Skill.TRADER));
+                System.out.println("Character fighter level: "+character.getSkill(Skill.FIGHTER));
+                System.out.println("Character engineer level: "+character.getSkill(Skill.ENGINEER));
 
-
-
-                    Intent intent = new Intent(NewCharacterActivity.this , ViewPlayerInfo.class);
-                    intent.putExtra("name", name);
-                    //intent.putExtra("key", 5);//name key
-                    intent.putExtra("pilotLevel", pilotLevel);//key for the pilot
-                    intent.putExtra("fighterLevel", fighterLevel);//key for fighter
-                    intent.putExtra("traderLevel", traderLevel);//key for trader
-                    intent.putExtra("engineerLevel", engineerLevel);//key for engineer
-                    intent.putExtra("difficultyLevel", difficulty_level);//key for difficulty
-*/
-                    Character character = new Character(name, characterDifficulty, 1000, Spaceship.GNAT, pilotLevel, traderLevel, fighterLevel, engineerLevel);
-                    System.out.println("Character name: "+character.getName());
-                    System.out.println("Difficulty : "+character.getDifficulty());
-                    System.out.println("Character currency: "+character.getCredits());
-                    System.out.println("Character Ship: "+character.getShip());
-                    System.out.println("Character pilot level: "+character.getSkill(Skill.PILOT));
-                    System.out.println("Character trader level: "+character.getSkill(Skill.TRADER));
-                    System.out.println("Character fighter level: "+character.getSkill(Skill.FIGHTER));
-                    System.out.println("Character engineer level: "+character.getSkill(Skill.ENGINEER));
-
-                    Universe universe = new Universe(character.getDifficulty());
-                    int i = 1;
-                    for(SolarSystem s : universe.getSystems()) {
-                        String solName = s.getName();
-                        System.out.println("Solar system "+i+": "+solName);
-                        System.out.println(name+"'s coordinates: ("+s.getCoords()[0]+", "+s.getCoords()[1]+")");
-                        System.out.println(name+"'s resource: "+ s.getResources());
-                        System.out.println(name+"'s tech level: "+s.getTechLevel());
-                        i++;
-                    }
-
-                    Interactor.getInteractor().setCharacter(character);
-                    Interactor.getInteractor().setUniverse(universe);
-                    Interactor.getInteractor().getCharacter().setCurrentSolarSystem(universe.getSystems()[0]);
-
-
-
-                    startActivity(new Intent(NewCharacterActivity.this, MainGameActivity.class));
+                int i = 1;
+                for(SolarSystem s : universe.getSystems()) {
+                    String solName = s.getName();
+                    System.out.println("Solar system "+i+": "+solName);
+                    System.out.println(name+"'s coordinates: ("+s.getCoords()[0]+", "+s.getCoords()[1]+")");
+                    System.out.println(name+"'s resource: "+ s.getResources());
+                    System.out.println(name+"'s tech level: "+s.getTechLevel());
+                    i++;
                 }
 
+                startActivity(new Intent(NewCharacterActivity.this, MainGameActivity.class));
             }
         });
 
@@ -216,24 +174,5 @@ public class NewCharacterActivity extends AppCompatActivity {
             engineerPoints.setText(Integer.toString(points));
         });
 
-
-
     }
-
-
-    /**
-     * Button handler which creates new character
-     * @param view the button pressed
-     */
-    /*
-    public void onAddPressed(View view) {
-        String name = characterName.getEditText().getText().toString();
-        int pilotLevel = Integer.parseInt(pilot.getText().toString());
-        int fighterLevel = Integer.parseInt(fighter.getText().toString());
-        int traderLevel = Integer.parseInt(trader.getText().toString());
-        int engineerLevel = Integer.parseInt(engineer.getText().toString());
-        GameDifficulty characterDifficulty = (GameDifficulty) difficulty.getSelectedItem();
-        character = new Character(name, 0, characterDifficulty, 1000, null, pilotLevel, fighterLevel, traderLevel, engineerLevel);
-        finish();
-    }*/
 }
