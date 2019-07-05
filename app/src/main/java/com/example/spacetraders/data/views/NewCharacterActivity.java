@@ -19,6 +19,7 @@ import com.example.spacetraders.R;
 import com.example.spacetraders.data.Interactor;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.entity.GameDifficulty;
+import com.example.spacetraders.data.entity.Resources;
 import com.example.spacetraders.data.entity.SaveDatabase;
 import com.example.spacetraders.data.entity.ShipType;
 import com.example.spacetraders.data.entity.Skill;
@@ -29,49 +30,63 @@ import com.example.spacetraders.data.entity.Universe;
 public class NewCharacterActivity extends AppCompatActivity {
     private Spinner difficulty;
     private TextInputLayout characterName;
-    private TextView pilot;
-    private TextView fighter;
-    private TextView trader;
-    private TextView engineer;
+    private TextView[] skillDisplays;
+    private Button[] skillButtons;
 
     private Character character;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_character);
 
+        character = new Character();
+
         characterName = findViewById(R.id.textInputLayout);
         difficulty = findViewById(R.id.difficultySpinner);
-        pilot = findViewById(R.id.pilotPts);
-        fighter = findViewById(R.id.fighterPts);
-        trader = findViewById(R.id.traderPts);
-        engineer = findViewById(R.id.engrPts);
 
+        skillDisplays = new TextView[Skill.values().length - 1];
+        skillButtons = new Button[2 * (Skill.values().length - 1)];
+
+        android.content.res.Resources resources = getResources();
+        for(Skill skill : Skill.values()) {
+            if(skill == Skill.UNALLOCATED) {
+                continue;
+            }
+            int id = resources.getIdentifier(skill.name() + "Pts", "id", getPackageName());
+            skillDisplays[skill.ordinal()] = (TextView) findViewById(id);
+
+            id = resources.getIdentifier(skill.name() + "IncButton", "id", getPackageName());
+            skillButtons[skill.ordinal() * 2] = (Button) findViewById(id);
+            skillButtons[skill.ordinal() * 2].setOnClickListener((view) -> {
+                setPoints(skillDisplays[skill.ordinal()], skill, true);
+            });
+
+            id = resources.getIdentifier(skill.name() + "DecButton", "id", getPackageName());
+            skillButtons[skill.ordinal() * 2 + 1] = (Button) findViewById(id);
+            skillButtons[skill.ordinal() * 2 + 1].setOnClickListener((view) -> {
+                setPoints(skillDisplays[skill.ordinal()], skill, false);
+            });
+        }
 
         ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, GameDifficulty.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficulty.setAdapter(adapter);
 
         Button done = findViewById(R.id.doneButton);
-        done.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String name = characterName.getEditText().getText().toString();
-                int pilotLevel = Integer.parseInt(pilot.getText().toString());
-                int fighterLevel = Integer.parseInt(fighter.getText().toString());
-                int traderLevel = Integer.parseInt(trader.getText().toString());
-                int engineerLevel = Integer.parseInt(engineer.getText().toString());
-                GameDifficulty characterDifficulty = (GameDifficulty) difficulty.getSelectedItem();
+        done.setOnClickListener((view) -> {
+                int totalSkills = 0;
+                for(int skill : character.getSkills()) {
+                    totalSkills += skill;
+                }
 
-                int totalSkillPoints = 0;
-                totalSkillPoints = pilotLevel + engineerLevel + traderLevel + fighterLevel;
-                if (totalSkillPoints != 16) {
+                if (totalSkills != 16) {
                     Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_LONG).show();
                     return;
                 }
-                Character character = new Character(name, characterDifficulty, 1000, ShipType.GNAT, pilotLevel, traderLevel, fighterLevel, engineerLevel);
+
+                character.setName(characterName.getEditText().getText().toString());
+                character.setDifficulty((GameDifficulty) difficulty.getSelectedItem());
                 Universe universe = new Universe(character.getDifficulty());
 
                 Interactor.getInteractor().setCharacter(character);
@@ -83,80 +98,14 @@ public class NewCharacterActivity extends AppCompatActivity {
                 System.out.println(universe);
 
                 startActivity(new Intent(NewCharacterActivity.this, MainGameActivity.class));
-            }
         });
+    }
 
-
-        Button lowerPilot = findViewById(R.id.pilotDecButton);
-        lowerPilot.setOnClickListener((view) -> {
-                TextView pilotPoints = findViewById(R.id.pilotPts);
-                int points = Integer.parseInt(pilotPoints.getText().toString());
-                if (points > 0) {
-                    points--;
-                }
-                pilotPoints.setText(Integer.toString(points));
-        });
-        Button raisePilot = findViewById(R.id.pilotIncButton);
-        raisePilot.setOnClickListener((view) -> {
-            TextView pilotPoints = findViewById(R.id.pilotPts);
-            int points = Integer.parseInt(pilotPoints.getText().toString());
-            points++;
-            pilotPoints.setText(Integer.toString(points));
-        });
-
-        Button lowerFighter = findViewById(R.id.fighterDecButton);
-        lowerFighter.setOnClickListener((view) -> {
-            TextView fighterPoints = findViewById(R.id.fighterPts);
-            int points = Integer.parseInt(fighterPoints.getText().toString());
-            if (points > 0) {
-                points--;
-            }
-            fighterPoints.setText(Integer.toString(points));
-        });
-
-        Button raiseFighter = findViewById(R.id.fighterIncButton);
-        raiseFighter.setOnClickListener((view) -> {
-            TextView fighterPoints = findViewById(R.id.fighterPts);
-            int points = Integer.parseInt(fighterPoints.getText().toString());
-            points++;
-            fighterPoints.setText(Integer.toString(points));
-        });
-
-        Button lowerTrader = findViewById(R.id.traderDecButton);
-        lowerTrader.setOnClickListener((view) -> {
-            TextView traderPoints = findViewById(R.id.traderPts);
-            int points = Integer.parseInt(traderPoints.getText().toString());
-            if (points > 0) {
-                points--;
-            }
-            traderPoints.setText(Integer.toString(points));
-        });
-
-        Button raiseTrader = findViewById(R.id.traderIncButton);
-        raiseTrader.setOnClickListener((view) -> {
-            TextView traderPoints = findViewById(R.id.traderPts);
-            int points = Integer.parseInt(traderPoints.getText().toString());
-            points++;
-            traderPoints.setText(Integer.toString(points));
-        });
-
-        Button lowerEngineer = findViewById(R.id.engDecButton);
-        lowerEngineer.setOnClickListener((view) -> {
-            TextView engineerPoints = findViewById(R.id.engrPts);
-            int points = Integer.parseInt(engineerPoints.getText().toString());
-            if (points > 0) {
-                points--;
-            }
-            engineerPoints.setText(Integer.toString(points));
-        });
-
-        Button raiseEngineer  = findViewById(R.id.engIncButton);
-        raiseEngineer.setOnClickListener((view) -> {
-            TextView engineerPoints = findViewById(R.id.engrPts);
-            int points = Integer.parseInt(engineerPoints.getText().toString());
-            points++;
-            engineerPoints.setText(Integer.toString(points));
-        });
-
+    private void setPoints(TextView pointCounter, Skill skill, boolean adding) {
+        if(!character.addSkill(skill, adding ? 1 : -1)) {
+            Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_LONG).show();
+            return;
+        }
+        pointCounter.setText(Integer.toString(character.getSkill(skill)));
     }
 }

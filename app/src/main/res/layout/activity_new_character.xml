@@ -114,7 +114,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <Button
-        android:id="@+id/pilotDecButton"
+        android:id="@+id/PILOTDecButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -124,13 +124,13 @@
         android:layout_marginRight="260dp"
         android:layout_marginBottom="12dp"
         android:text="-"
-        app:layout_constraintBottom_toTopOf="@+id/fighterDecButton"
+        app:layout_constraintBottom_toTopOf="@+id/FIGHTERDecButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <Button
-        android:id="@+id/pilotIncButton"
+        android:id="@+id/PILOTIncButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="260dp"
@@ -140,13 +140,13 @@
         android:layout_marginRight="60dp"
         android:layout_marginBottom="12dp"
         android:text="+"
-        app:layout_constraintBottom_toTopOf="@+id/fighterIncButton"
+        app:layout_constraintBottom_toTopOf="@+id/FIGHTERIncButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <Button
-        android:id="@+id/fighterDecButton"
+        android:id="@+id/FIGHTERDecButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -156,13 +156,13 @@
         android:layout_marginRight="260dp"
         android:layout_marginBottom="12dp"
         android:text="-"
-        app:layout_constraintBottom_toTopOf="@+id/traderDecButton"
+        app:layout_constraintBottom_toTopOf="@+id/TRADERDecButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pilotDecButton" />
+        app:layout_constraintTop_toBottomOf="@+id/PILOTDecButton" />
 
     <Button
-        android:id="@+id/fighterIncButton"
+        android:id="@+id/FIGHTERIncButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="260dp"
@@ -172,45 +172,41 @@
         android:layout_marginRight="60dp"
         android:layout_marginBottom="12dp"
         android:text="+"
-        app:layout_constraintBottom_toTopOf="@+id/traderIncButton"
+        app:layout_constraintBottom_toTopOf="@+id/TRADERIncButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pilotIncButton" />
+        app:layout_constraintTop_toBottomOf="@+id/PILOTIncButton" />
 
     <Button
-        android:id="@+id/traderDecButton"
+        android:id="@+id/TRADERDecButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="260dp"
-        android:layout_marginRight="260dp"
         android:layout_marginBottom="12dp"
         android:text="-"
-        app:layout_constraintBottom_toTopOf="@+id/engDecButton"
+        app:layout_constraintBottom_toTopOf="@id/ENGINEERDecButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fighterDecButton" />
+        app:layout_constraintTop_toBottomOf="@+id/FIGHTERDecButton" />
 
     <Button
-        android:id="@+id/traderIncButton"
+        android:id="@+id/TRADERIncButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="260dp"
-        android:layout_marginLeft="260dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
         android:layout_marginBottom="12dp"
         android:text="+"
-        app:layout_constraintBottom_toTopOf="@+id/engIncButton"
+        app:layout_constraintBottom_toTopOf="@id/ENGINEERIncButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fighterIncButton" />
+        app:layout_constraintTop_toBottomOf="@+id/FIGHTERIncButton" />
 
     <Button
-        android:id="@+id/engDecButton"
+        android:id="@+id/ENGINEERDecButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -223,10 +219,10 @@
         app:layout_constraintBottom_toTopOf="@+id/difficultySpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/traderDecButton" />
+        app:layout_constraintTop_toBottomOf="@+id/TRADERDecButton" />
 
     <Button
-        android:id="@+id/engIncButton"
+        android:id="@+id/ENGINEERIncButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="260dp"
@@ -239,7 +235,7 @@
         app:layout_constraintBottom_toTopOf="@+id/difficultySpinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/traderIncButton" />
+        app:layout_constraintTop_toBottomOf="@+id/TRADERIncButton" />
 
     <Button
         android:id="@+id/doneButton"
@@ -271,7 +267,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/pilotPts"
+        android:id="@+id/PILOTPts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
@@ -282,18 +278,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
     <TextView
-        android:id="@+id/fighterPts"
+        android:id="@+id/FIGHTERPts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="41dp"
         android:layout_marginBottom="42dp"
         android:text="0"
-        app:layout_constraintBottom_toTopOf="@+id/traderPts"
+        app:layout_constraintBottom_toTopOf="@+id/TRADERPts"
         app:layout_constraintStart_toEndOf="@+id/fighterText"
-        app:layout_constraintTop_toBottomOf="@+id/pilotPts" />
+        app:layout_constraintTop_toBottomOf="@+id/PILOTPts" />
 
     <TextView
-        android:id="@+id/traderPts"
+        android:id="@+id/TRADERPts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
@@ -304,7 +300,7 @@
         app:layout_constraintTop_toBottomOf="@+id/fighterText" />
 
     <TextView
-        android:id="@+id/engrPts"
+        android:id="@+id/ENGINEERPts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="103dp"
@@ -312,6 +308,7 @@
         android:text="0"
         app:layout_constraintBottom_toTopOf="@+id/difficultySpinner"
         app:layout_constraintStart_toEndOf="@+id/engineerText"
-        app:layout_constraintTop_toBottomOf="@+id/fighterPts" />
+        app:layout_constraintTop_toBottomOf="@id/TRADERPts"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
