@@ -40,7 +40,7 @@ public class MarketActivity extends AppCompatActivity {
         inputs = new TextInputLayout[Resources.values().length];
 
         currencyDisplay = findViewById(R.id.label_currency);
-        currencyDisplay.setText(new Integer(character.getCredits()).toString());
+        currencyDisplay.setText(new Integer(character.getCurrency()).toString());
 
         inputs[Resources.WATER.ordinal()] = findViewById(R.id.input_water);
         inputs[Resources.FURS.ordinal()] = findViewById(R.id.input_fur);
@@ -124,7 +124,7 @@ public class MarketActivity extends AppCompatActivity {
 
             String choice = (String) BuySell.getSelectedItem();
             //player's credits
-            int playerCurrency =  character.getCredits();
+            int playerCurrency =  character.getCurrency();
             if (choice.equals("BUY")) {
                 // check if purchase is valid
                 Boolean purchaseValid = true;
@@ -136,8 +136,8 @@ public class MarketActivity extends AppCompatActivity {
                 if (character.getShip().getCargoSize() - Arrays.stream(character.getShip().getCurrentResources()).sum() >= sumUserAmount && cost <= playerCurrency && purchaseValid) {
                     character.getShip().setResource(productQuantities, true);
                     System.out.println(Arrays.toString(character.getShip().getCurrentResources()));
-                    character.setCredits(character.getCredits() - cost);
-                    currencyDisplay.setText(Integer.toString(character.getCredits()));
+                    character.setCurrency(character.getCurrency() - cost);
+                    currencyDisplay.setText(Integer.toString(character.getCurrency()));
                     int[] newAmounts = new int[resourceAmounts.length];
                     for (int i = 0; i < amounts.length; i++) {
                         newAmounts[i] = character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount()[i] - productQuantities[i];
@@ -163,8 +163,8 @@ public class MarketActivity extends AppCompatActivity {
                 if (cargoValid) {
                     character.getShip().setResource(productQuantities, false);
                     System.out.println(Arrays.toString(character.getShip().getCurrentResources()));
-                    character.setCredits(character.getCredits() + cost);
-                    currencyDisplay.setText(Integer.toString(character.getCredits()));
+                    character.setCurrency(character.getCurrency() + cost);
+                    currencyDisplay.setText(Integer.toString(character.getCurrency()));
                     int[] newAmounts = new int[resourceAmounts.length];
                     for (int i = 0; i < amounts.length; i++) {
                         newAmounts[i] = character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount()[i] + productQuantities[i];

@@ -4,30 +4,29 @@ public class Character {
     private String name;
     private int[] skills;
     private GameDifficulty difficulty;
-    private int credits;
+    private int currency;
     private Spaceship ship;
     private SolarSystem currentSolarSystem;
 
+    public Character() {
+        this("NAME", GameDifficulty.BEGINNER, 1000, ShipType.GNAT);
+    }
 
     /**
      * Constructor for the Character class
      *
      * @param nam Name of the character
      * @param diff Difficulty setting of the character
-     * @param creds Currency available to the character
+     * @param currency the currency of the character
+     * @param shipType the shiptype of the character
      */
-    public Character(String nam, GameDifficulty diff, int creds, ShipType shipType, int pilot,
-                     int trader, int fighter, int engineer) {
+    public Character(String nam, GameDifficulty diff, int currency, ShipType shipType) {
         name = nam;
         difficulty = diff;
-        credits = creds;
+        this.currency = currency;
         ship = new Spaceship(shipType);
         skills = new int[Skill.values().length];
-        skills[Skill.PILOT.ordinal()] = pilot;
-        skills[Skill.TRADER.ordinal()] = trader;
-        skills[Skill.FIGHTER.ordinal()] = fighter;
-        skills[Skill.ENGINEER.ordinal()] = engineer;
-        skills[Skill.UNALLOCATED.ordinal()] = 0;
+        skills[Skill.UNALLOCATED.ordinal()] = 16;
     }
 
     public String getName() {
@@ -42,20 +41,39 @@ public class Character {
         return skills[skill.ordinal()];
     }
 
-    public void setSkill(Skill skill, int value) {
-        skills[skill.ordinal()] = value;
+    public int[] getSkills() {
+        return skills;
+    }
+
+    /**
+     *  If the skill is a valid value (eg, does not go over max skill), then adds the proper value
+     *  to the specified skill. If the skill is invalid, returns false.
+     *  This method should also be used to increase the number of UNALLOCATED skill points.
+     * @param skill the skill to add to
+     * @param value the value to add (can be negative to subtract skills)
+     * @return if skill was properly added
+     */
+    public boolean addSkill(Skill skill, int value) {
+        if(value > skills[Skill.UNALLOCATED.ordinal()] || skills[skill.ordinal()] + value < 0) {
+            return false;
+        }
+        skills[skill.ordinal()] += value;
+        if(skill != Skill.UNALLOCATED) {
+            skills[Skill.UNALLOCATED.ordinal()] -= value;
+        }
+        return true;
     }
 
     public GameDifficulty getDifficulty() { return difficulty; }
 
     public void setDifficulty(GameDifficulty diff) { difficulty = diff; }
 
-    public int getCredits() {
-        return credits;
+    public int getCurrency() {
+        return currency;
     }
 
-    public void setCredits(int creds) {
-        credits = creds;
+    public void setCurrency(int amount) {
+        currency = amount;
     }
 
     public Spaceship getShip() {
@@ -66,6 +84,10 @@ public class Character {
         ship = shp;
     }
 
+    public void setShipType(ShipType type) {
+        ship = new Spaceship(type);
+    }
+
     public SolarSystem getCurrentSolarSystem() {
         return currentSolarSystem;
     }
@@ -74,12 +96,11 @@ public class Character {
         this.currentSolarSystem = currentSolarSystem;
     }
 
-
     @Override
     public String toString() {
         return "Name: " + getName() + "\n"
                 + "Difficulty: " + getDifficulty() + "\n"
-                + "Currency: " + getCredits() + "\n"
+                + "Currency: " + getCurrency() + "\n"
                 + "Ship: " + getShip().getName() + "\n"
                 + "Pilot level: " + getSkill(Skill.PILOT) + "\n"
                 + "Trader level: " + getSkill(Skill.TRADER) + "\n"
