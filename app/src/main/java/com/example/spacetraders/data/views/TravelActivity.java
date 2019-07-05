@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.example.spacetraders.R;
 import com.example.spacetraders.data.Interactor;
+import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.entity.SolarSystem;
 import com.example.spacetraders.data.entity.Universe;
 
@@ -22,15 +24,21 @@ public class TravelActivity extends AppCompatActivity {
     Universe universe;
     SolarSystem[] systems;
     SolarSystem currentSystem;
+    TextView fuelLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel);
 
+        Character character = Interactor.getInteractor().getCharacter();
+
+        fuelLeft = findViewById(R.id.label_fuel);
+        fuelLeft.setText("Fuel left: "+((Character) character).getShip().getFuel());
+
         universe = Interactor.getInteractor().getUniverse();
         systems = universe.getSystems();
-        currentSystem = Interactor.getInteractor().getCharacter().getCurrentSolarSystem();
+        currentSystem = character.getCurrentSolarSystem();
         Arrays.sort(systems, new SystemComparator()); //sort in order of distance
 
         travelButtons = new Button[systems.length - 1]; //ignore current System

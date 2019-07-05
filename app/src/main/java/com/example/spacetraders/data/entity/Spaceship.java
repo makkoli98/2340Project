@@ -6,6 +6,7 @@ public class Spaceship {
     private int[] currentResources;
     private int currentHealth;
     private ShipType type;
+    private int fuel;
 
     public Spaceship(ShipType type) {
         this.type = type;
@@ -62,6 +63,24 @@ public class Spaceship {
             }
         }
         */
+    }
+
+    public int getFuel() {
+        return fuel;
+    }
+
+    /**
+     * Sets the fuel to a valid provided value. If the value is invalid, returns false and does not
+     * update the fuel value;
+     * @param val the fuel value
+     * @return if the value was valid
+     */
+    public boolean setFuel(int val) {
+        if(val < 0 || val > 100) {
+            return false;
+        }
+        fuel = val;
+        return true;
     }
 
     @Override
