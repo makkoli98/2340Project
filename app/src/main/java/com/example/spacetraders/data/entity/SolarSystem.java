@@ -70,6 +70,13 @@ public class SolarSystem {
 
     public void setCoords(int[] coords) { this.coords = coords; }
 
+    public int getDistance(SolarSystem system) {
+        int[] otherCoords = system.getCoords();
+        double x = otherCoords[0] - coords[0];
+        double y = otherCoords[1] - coords[1];
+        return Math.round(Math.round(Math.hypot(x, y)));
+    }
+
     public SolarSystem(GameDifficulty gameDifficulty) {
         Random rand = new Random();
         String possibleName = possibleNames[rand.nextInt(possibleNames.length)];
