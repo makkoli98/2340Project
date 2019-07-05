@@ -79,24 +79,8 @@ public class NewCharacterActivity extends AppCompatActivity {
                 Interactor.getInteractor().getCharacter().setCurrentSolarSystem(universe.getSystems()[0]);
 
                 //Log Character and Universe Information
-                System.out.println("Character name: "+character.getName());
-                System.out.println("Difficulty : "+character.getDifficulty());
-                System.out.println("Character currency: "+character.getCredits());
-                System.out.println("Character Ship: "+character.getShip());
-                System.out.println("Character pilot level: "+character.getSkill(Skill.PILOT));
-                System.out.println("Character trader level: "+character.getSkill(Skill.TRADER));
-                System.out.println("Character fighter level: "+character.getSkill(Skill.FIGHTER));
-                System.out.println("Character engineer level: "+character.getSkill(Skill.ENGINEER));
-
-                int i = 1;
-                for(SolarSystem s : universe.getSystems()) {
-                    String solName = s.getName();
-                    System.out.println("Solar system "+i+": "+solName);
-                    System.out.println(name+"'s coordinates: ("+s.getCoords()[0]+", "+s.getCoords()[1]+")");
-                    System.out.println(name+"'s resource: "+ s.getResources());
-                    System.out.println(name+"'s tech level: "+s.getTechLevel());
-                    i++;
-                }
+                System.out.println(character);
+                System.out.println(universe);
 
                 startActivity(new Intent(NewCharacterActivity.this, MainGameActivity.class));
             }

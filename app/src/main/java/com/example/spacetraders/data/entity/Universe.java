@@ -66,4 +66,20 @@ public class Universe {
         }
     }
 
+    @Override
+    public String toString() {
+        String str = "";
+        int num = 1;
+        for(SolarSystem system : systems) {
+            str += "Solar system " + num + ":\n"
+                    + "\tName: " + system.getName() + "\n"
+                    + "\tCoordinates: " + "(" + system.getCoords()[0]
+                    + ", " + system.getCoords()[1] + ")\n"
+                    + "\tResource: " + system.getResources() + "\n"
+                    + "\tTech level: " + system.getTechLevel() + "\n";
+            num++;
+        }
+        return str;
+    }
+
 }

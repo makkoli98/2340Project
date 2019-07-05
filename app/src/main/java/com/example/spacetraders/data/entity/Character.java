@@ -73,4 +73,18 @@ public class Character {
     public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
         this.currentSolarSystem = currentSolarSystem;
     }
+
+
+    @Override
+    public String toString() {
+        return "Name: " + getName() + "\n"
+                + "Difficulty: " + getDifficulty() + "\n"
+                + "Currency: " + getCredits() + "\n"
+                + "Ship: " + getShip().getName() + "\n"
+                + "Pilot level: " + getSkill(Skill.PILOT) + "\n"
+                + "Trader level: " + getSkill(Skill.TRADER) + "\n"
+                + "Fighter level: " + getSkill(Skill.FIGHTER) + "\n"
+                + "Engineer level: " + getSkill(Skill.ENGINEER) + "\n";
+    }
+
 }
