@@ -49,5 +49,12 @@ public class MainGameActivity extends AppCompatActivity {
         });
 
 
+        travel.setOnClickListener((View v) -> {
+                Intent intent = new Intent(MainGameActivity.this, TravelActivity.class);
+                startActivity(intent);
+        });
+
+
+
     }
 }
