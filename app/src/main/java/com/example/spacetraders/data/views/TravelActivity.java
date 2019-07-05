@@ -1,5 +1,6 @@
 package com.example.spacetraders.data.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -50,6 +51,9 @@ public class TravelActivity extends AppCompatActivity {
                 button.setId(View.generateViewId());
                 button.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 button.setText("\nSolar System: " + systems[i+1].getName() + "\nFuel Cost: " + systems[i+1].getDistance(currentSystem) + "\n"); //todo: add fuel effency formula
+                button.setOnClickListener((view) -> {
+                    startActivity(new Intent(TravelActivity.this, TravelDetailActivity.class));
+                });
                 linLayout.addView(button);
                 travelButtons[i] = button;
             } catch(Exception e) {

@@ -28,6 +28,12 @@
         <activity
             android:name=".data.views.MarketActivity"
             android:parentActivityName=".data.views.MainGameActivity" />
+        <activity
+            android:name=".data.views.TravelActivity"
+            android:parentActivityName=".data.views.MainGameActivity" />
+        <activity
+            android:name=".data.views.TravelDetailActivity"
+            android:parentActivityName=".data.views.TravelActivity" />
     </application>
 
 </manifest>
