@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.spacetraders.R;
 import com.example.spacetraders.data.Interactor;
@@ -25,6 +26,7 @@ public class TravelActivity extends AppCompatActivity {
     Universe universe;
     SolarSystem[] systems;
     SolarSystem currentSystem;
+    SolarSystem nextSystem;
     TextView fuelLeft;
 
     @Override
@@ -50,10 +52,22 @@ public class TravelActivity extends AppCompatActivity {
                 Button button = new Button(this);
                 button.setId(View.generateViewId());
                 button.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                button.setText("\nSolar System: " + systems[i+1].getName() + "\nFuel Cost: " + systems[i+1].getDistance(currentSystem) + "\n"); //todo: add fuel effency formula
+
+                //todo: add fuel efficiency formula
+                nextSystem = systems[i+1];
+                int fuelCost = nextSystem.getDistance(currentSystem);
+                button.setText("\nSolar System: " + nextSystem.getName() + "\nFuel Cost: " + fuelCost + "\n");
                 button.setOnClickListener((view) -> {
+                    if (character.getShip().getFuel() < fuelCost) {
+                        Toast.makeText(getApplicationContext(), "Not enough fuel", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+
+                    character.getShip().setFuel(character.getShip().getFuel() - fuelCost);
+                    character.setCurrentSolarSystem(nextSystem);
                     startActivity(new Intent(TravelActivity.this, TravelDetailActivity.class));
                 });
+
                 linLayout.addView(button);
                 travelButtons[i] = button;
             } catch(Exception e) {
@@ -61,6 +75,8 @@ public class TravelActivity extends AppCompatActivity {
                 System.err.println("error creating button in TravelActivity");
             }
         }
+
+
     }
     private class SystemComparator implements Comparator<SolarSystem> {
         public int compare(SolarSystem a, SolarSystem b) {

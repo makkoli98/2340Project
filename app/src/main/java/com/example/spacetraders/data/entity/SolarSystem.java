@@ -77,6 +77,9 @@ public class SolarSystem {
         return Math.round(Math.round(Math.hypot(x, y)));
     }
 
+    @Override
+    public String toString() { return name; }
+
     public SolarSystem(GameDifficulty gameDifficulty) {
         Random rand = new Random();
         String possibleName = possibleNames[rand.nextInt(possibleNames.length)];
