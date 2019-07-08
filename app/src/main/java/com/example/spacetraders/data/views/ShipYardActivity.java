@@ -16,13 +16,14 @@ public class ShipYardActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ship_yard);
 
         character1 = Interactor.getInteractor().getCharacter();
         viewCurrency = findViewById(R.id.playerCurrency);
 
         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ship_yard);
+
     }
 }
