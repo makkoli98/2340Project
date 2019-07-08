@@ -25,6 +25,7 @@ public enum ShipType {
     private final int fuelEfficiency;
     private final int basePrice;
 
+
     /**
      * @param name name of the ship
      * @param cargoSize maximum amount of cargo ship can hold

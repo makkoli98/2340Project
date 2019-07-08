@@ -61,7 +61,7 @@ public class RefuelActivity extends AppCompatActivity {
         //1 fuel =  1 credit
         refuelButton.setText("1 Fuel = 5c");
         refuelButton.setOnClickListener((View v) -> {
-           if(character.getShip().getFuel() == character.getShip().getFuelEfficiency()) {
+           if(character.getShip().getFuel() == character.getShip().maxFuel) {
                Toast.makeText(getApplicationContext(), "Tank Full", Toast.LENGTH_LONG).show();
                return;
            } else if (character.getCurrency() < 5) {

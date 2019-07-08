@@ -7,11 +7,13 @@ public class Spaceship {
     private int currentHealth;
     private ShipType type;
     private int fuel;
+    public static int maxFuel;
 
     public Spaceship(ShipType type) {
         this.type = type;
         currentResources = new int[Resources.values().length];
         currentHealth = type.getMaximumHealth();
+        maxFuel = 100;
     }
 
     public int[] getCurrentResources() {
