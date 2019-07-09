@@ -26,7 +26,6 @@ public class TravelActivity extends AppCompatActivity {
     Universe universe;
     SolarSystem[] systems;
     SolarSystem currentSystem;
-    SolarSystem nextSystem;
     TextView fuelLeft;
 
     @Override
@@ -54,7 +53,7 @@ public class TravelActivity extends AppCompatActivity {
                 button.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
                 //todo: add fuel efficiency formula
-                nextSystem = systems[i+1];
+                SolarSystem nextSystem = systems[i+1];
                 int fuelCost = nextSystem.getDistance(currentSystem);
                 button.setText("\nSolar System: " + nextSystem.getName() + "\nFuel Cost: " + fuelCost + "\n");
                 button.setOnClickListener((view) -> {
@@ -65,7 +64,8 @@ public class TravelActivity extends AppCompatActivity {
 
                     character.getShip().setFuel(character.getShip().getFuel() - fuelCost);
                     character.setCurrentSolarSystem(nextSystem);
-                    startActivity(new Intent(TravelActivity.this, TravelDetailActivity.class));
+                    startActivity(new Intent(TravelActivity.this, MainGameActivity.class));
+                    finish();
                 });
 
                 linLayout.addView(button);
