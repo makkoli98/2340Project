@@ -11,6 +11,15 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/solar_system_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nasalization"
+            android:text="System Name"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
         <Button
             android:id="@+id/button_solarSystem"
             android:layout_width="wrap_content"
@@ -52,6 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Shipyard" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
