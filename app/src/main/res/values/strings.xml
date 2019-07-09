@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">SpaceTraders</string>
 	<string name="title_activity_view_player_info">ViewPlayerInfo</string>
+    <string-array name="ship_names">
+        <item>FLEA</item>
+        <item>GNAT</item>
+        <item>FIREFLY</item>
+        <item>MOSQUITO</item>
+        <item>BUMBLEBEE</item>
+        <item>BEETLE</item>
+        <item>HORNET</item>
+        <item>GRASSHOPPER</item>
+        <item>TERMITE</item>
+        <item>WASP</item>
+    </string-array>
 </resources>
