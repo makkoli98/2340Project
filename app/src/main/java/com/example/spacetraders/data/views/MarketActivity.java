@@ -41,7 +41,7 @@ public class MarketActivity extends AppCompatActivity {
         inputs = new TextInputLayout[Resources.values().length];
 
         currencyDisplay = findViewById(R.id.label_currency);
-        currencyDisplay.setText(new Integer(character.getCredits()).toString());
+        currencyDisplay.setText(new Integer(character.getCurrency()).toString());
 
         inputs[Resources.WATER.ordinal()] = findViewById(R.id.input_water);
         inputs[Resources.FURS.ordinal()] = findViewById(R.id.input_fur);
@@ -127,7 +127,7 @@ public class MarketActivity extends AppCompatActivity {
 
             String choice = (String) BuySell.getSelectedItem();
             //player's credits
-            int playerCurrency =  viewModel.getCharacter().getCredits();
+            int playerCurrency =  viewModel.getCharacter().getCurrency();
             if (choice.equals("BUY")) {
                 // check if purchase is valid
                 Boolean purchaseValid = true;
@@ -142,7 +142,7 @@ public class MarketActivity extends AppCompatActivity {
                     System.out.println(Arrays.toString(character.getShip().getCurrentResources()));
                     viewModel.updateCurrency(cost, true);
                     //character.setCredits(character.getCredits() - cost);
-                    currencyDisplay.setText(Integer.toString(viewModel.getCharacter().getCredits()));
+                    currencyDisplay.setText(Integer.toString(viewModel.getCharacter().getCurrency()));
                     int[] newAmounts = new int[resourceAmounts.length];
                     for (int i = 0; i < amounts.length; i++) {
                         newAmounts[i] = viewModel.getResourceAmounts()[i] - productQuantities[i];
@@ -172,7 +172,7 @@ public class MarketActivity extends AppCompatActivity {
                     System.out.println(Arrays.toString(character.getShip().getCurrentResources()));
                     //character.setCredits(character.getCredits() + cost);
                     viewModel.updateCurrency(cost, false);
-                    currencyDisplay.setText(Integer.toString(viewModel.getCharacter().getCredits()));
+                    currencyDisplay.setText(Integer.toString(viewModel.getCharacter().getCurrency()));
                     int[] newAmounts = new int[resourceAmounts.length];
                     for (int i = 0; i < amounts.length; i++) {
                         newAmounts[i] = viewModel.getResourceAmounts()[i] + productQuantities[i];

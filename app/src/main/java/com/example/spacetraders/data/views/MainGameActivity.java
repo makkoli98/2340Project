@@ -49,5 +49,17 @@ public class MainGameActivity extends AppCompatActivity {
         });
 
 
+        travel.setOnClickListener((View v) -> {
+                Intent intent = new Intent(MainGameActivity.this, TravelActivity.class);
+                startActivity(intent);
+        });
+
+        shipyard.setOnClickListener((View v) -> {
+            Intent intent = new Intent(MainGameActivity.this, RefuelActivity.class);
+            startActivity(intent);
+        });
+
+
+
     }
 }

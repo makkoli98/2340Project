@@ -36,6 +36,10 @@ public class NewCharacterViewModel extends AndroidViewModel {
 
     public Character getCharacter() {return characterInteractor.getCharacter();}
 
+    public void setName(String name) {characterInteractor.setName(name);}
+
+    public void setDifficulty(GameDifficulty difficulty) {characterInteractor.setDifficulty(difficulty);}
+
     /**
      * Gets the Universe and stores it to the Universe Interactor
      * @param universe the Universe that was randomly generated at character creation

@@ -2,62 +2,31 @@ package com.example.spacetraders.data.entity;
 
 public class Character {
     private String name;
-    /*
-    private int skillPoints;
-    private int pilotPts;
-    private int traderPts;
-    private int fighterPts;
-    private int engineerPts;
-    */
     private int[] skills;
     private GameDifficulty difficulty;
-    private int credits;
+    private int currency;
     private Spaceship ship;
     private SolarSystem currentSolarSystem;
 
-    /*
-    /**
-     * No-arg constructor for the Character class
-     *
-     * Name: Bob
-     * Skill Points: 16
-     * Game Difficulty: Beginner
-     * Credits: 1000
-     * Spaceship: Gnat
-     */
-    /*
     public Character() {
-        this("Bob", 16, GameDifficulty.BEGINNER, 1000, new Spaceship(), 0, 0, 0, 0);
+        this("NAME", GameDifficulty.BEGINNER, 1000, ShipType.GNAT);
     }
-    */
+
     /**
      * Constructor for the Character class
      *
      * @param nam Name of the character
-     * @param sp Skill points remaining for the character to allocate
      * @param diff Difficulty setting of the character
-     * @param creds Currency available to the character
-     * @param shp The character's current ship
+     * @param currency the currency of the character
+     * @param shipType the shiptype of the character
      */
-    public Character(String nam, GameDifficulty diff, int creds, Spaceship shp, int pilot,
-                     int trader, int fighter, int engineer) {
+    public Character(String nam, GameDifficulty diff, int currency, ShipType shipType) {
         name = nam;
-        //skillPoints = sp;
         difficulty = diff;
-        credits = creds;
-        ship = shp;
-        /*
-        pilotPts = pilot;
-        traderPts = trader;
-        fighterPts = fighter;
-        engineerPts = engineer;
-        */
+        this.currency = currency;
+        ship = new Spaceship(shipType);
         skills = new int[Skill.values().length];
-        skills[Skill.PILOT.ordinal()] = pilot;
-        skills[Skill.TRADER.ordinal()] = trader;
-        skills[Skill.FIGHTER.ordinal()] = fighter;
-        skills[Skill.ENGINEER.ordinal()] = engineer;
-        skills[Skill.UNALLOCATED.ordinal()] = 0;
+        skills[Skill.UNALLOCATED.ordinal()] = 16;
     }
 
     public String getName() {
@@ -68,48 +37,43 @@ public class Character {
         name = nam;
     }
 
-    /*
-    public int getSkillPoints() { return skillPoints; }
-
-    public void setSkillPoints(int sp) {
-        skillPoints = sp;
-    }
-
-    public int getPilotPts() { return pilotPts; }
-
-    public void setPilotPts(int pilot) { pilotPts = pilot; }
-
-    public int getTraderPts() { return traderPts; }
-
-    public void setTraderPts(int trader) { traderPts = trader; }
-
-    public int getFighterPts() { return fighterPts; }
-
-    public void setFighterPts(int fighter) { fighterPts = fighter; }
-
-    public int getEngineerPts() { return engineerPts; }
-
-    public void setEngineerPts(int engineer) { engineerPts = engineer; }
-    */
-
     public int getSkill(Skill skill) {
         return skills[skill.ordinal()];
     }
 
-    public void setSkill(Skill skill, int value) {
-        skills[skill.ordinal()] = value;
+    public int[] getSkills() {
+        return skills;
+    }
+
+    /**
+     *  If the skill is a valid value (eg, does not go over max skill), then adds the proper value
+     *  to the specified skill. If the skill is invalid, returns false.
+     *  This method should also be used to increase the number of UNALLOCATED skill points.
+     * @param skill the skill to add to
+     * @param value the value to add (can be negative to subtract skills)
+     * @return if skill was properly added
+     */
+    public boolean addSkill(Skill skill, int value) {
+        if(value > skills[Skill.UNALLOCATED.ordinal()] || skills[skill.ordinal()] + value < 0) {
+            return false;
+        }
+        skills[skill.ordinal()] += value;
+        if(skill != Skill.UNALLOCATED) {
+            skills[Skill.UNALLOCATED.ordinal()] -= value;
+        }
+        return true;
     }
 
     public GameDifficulty getDifficulty() { return difficulty; }
 
     public void setDifficulty(GameDifficulty diff) { difficulty = diff; }
 
-    public int getCredits() {
-        return credits;
+    public int getCurrency() {
+        return currency;
     }
 
-    public void setCredits(int creds) {
-        credits = creds;
+    public void setCurrency(int amount) {
+        currency = amount;
     }
 
     public Spaceship getShip() {
@@ -120,6 +84,10 @@ public class Character {
         ship = shp;
     }
 
+    public void setShipType(ShipType type) {
+        ship = new Spaceship(type);
+    }
+
     public SolarSystem getCurrentSolarSystem() {
         return currentSolarSystem;
     }
@@ -127,4 +95,17 @@ public class Character {
     public void setCurrentSolarSystem(SolarSystem currentSolarSystem) {
         this.currentSolarSystem = currentSolarSystem;
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + getName() + "\n"
+                + "Difficulty: " + getDifficulty() + "\n"
+                + "Currency: " + getCurrency() + "\n"
+                + "Ship: " + getShip().getName() + "\n"
+                + "Pilot level: " + getSkill(Skill.PILOT) + "\n"
+                + "Trader level: " + getSkill(Skill.TRADER) + "\n"
+                + "Fighter level: " + getSkill(Skill.FIGHTER) + "\n"
+                + "Engineer level: " + getSkill(Skill.ENGINEER) + "\n";
+    }
+
 }

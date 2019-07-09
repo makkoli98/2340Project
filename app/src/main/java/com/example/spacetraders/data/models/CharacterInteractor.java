@@ -1,6 +1,7 @@
 package com.example.spacetraders.data.models;
 
 import com.example.spacetraders.data.entity.Character;
+import com.example.spacetraders.data.entity.GameDifficulty;
 
 public class CharacterInteractor {
     private Interactor interactor;
@@ -31,9 +32,13 @@ public class CharacterInteractor {
      */
     public void updateCurrency(int transactionCost, boolean Buying) {
         if (Buying) {
-            interactor.getCharacter().setCredits(interactor.getCharacter().getCredits() - transactionCost);
+            interactor.getCharacter().setCurrency(interactor.getCharacter().getCurrency() - transactionCost);
         } else {
-            interactor.getCharacter().setCredits(interactor.getCharacter().getCredits() + transactionCost);
+            interactor.getCharacter().setCurrency(interactor.getCharacter().getCurrency() + transactionCost);
         }
     }
+
+    public void setName(String name) {interactor.getCharacter().setName(name);}
+
+    public void setDifficulty(GameDifficulty difficulty) {interactor.getCharacter().setDifficulty(difficulty);}
 }
