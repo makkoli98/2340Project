@@ -64,6 +64,7 @@ public class TravelActivity extends AppCompatActivity {
 
                     character.getShip().setFuel(character.getShip().getFuel() - fuelCost);
                     character.setCurrentSolarSystem(nextSystem);
+                    Toast.makeText(getApplicationContext(), "Used " + fuelCost + " fuel", Toast.LENGTH_LONG).show();
                     startActivity(new Intent(TravelActivity.this, MainGameActivity.class));
                     finish();
                 });
