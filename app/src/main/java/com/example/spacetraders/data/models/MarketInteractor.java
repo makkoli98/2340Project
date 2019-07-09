@@ -11,11 +11,11 @@ public class MarketInteractor {
         this.interactor = interactor;
     }
 
-    public int[] getResourcePrices() {return interactor.getCharacter().getCurrentSolarSystem().getPlanets()[0].getMarket().getResourcePrices();}
+    public int[] getResourcePrices() {return interactor.getCharacter().getCurrentSolarSystem().getCurrentPlanet().getMarket().getResourcePrices();}
 
-    public int[] getResourceAmounts() {return interactor.getCharacter().getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount();}
+    public int[] getResourceAmounts() {return interactor.getCharacter().getCurrentSolarSystem().getCurrentPlanet().getMarket().getResourceAmount();}
 
-    public void setResourceAmounts(int[] resourceAmounts) {interactor.getCharacter().getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(resourceAmounts);}
+    public void setResourceAmounts(int[] resourceAmounts) {interactor.getCharacter().getCurrentSolarSystem().getCurrentPlanet().getMarket().setResourceAmount(resourceAmounts);}
 
-    public void setResourcePrices(int[] resourcePrices) {interactor.getCharacter().getCurrentSolarSystem().getPlanets()[0].getMarket().setResourcePrices(resourcePrices);}
+    public void setResourcePrices(int[] resourcePrices) {interactor.getCharacter().getCurrentSolarSystem().getCurrentPlanet().getMarket().setResourcePrices(resourcePrices);}
 }

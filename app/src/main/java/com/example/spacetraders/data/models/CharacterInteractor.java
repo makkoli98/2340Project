@@ -2,6 +2,10 @@ package com.example.spacetraders.data.models;
 
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.entity.GameDifficulty;
+import com.example.spacetraders.data.entity.Planet;
+import com.example.spacetraders.data.entity.PoliticalSystem;
+import com.example.spacetraders.data.entity.ResourceLevel;
+import com.example.spacetraders.data.entity.TechLevel;
 
 public class CharacterInteractor {
     private Interactor interactor;
@@ -41,4 +45,18 @@ public class CharacterInteractor {
     public void setName(String name) {interactor.getCharacter().setName(name);}
 
     public void setDifficulty(GameDifficulty difficulty) {interactor.getCharacter().setDifficulty(difficulty);}
+
+    public TechLevel getCurrentTechLevel() {return interactor.getCharacter().getCurrentSolarSystem().getTechLevel();}
+
+    public ResourceLevel getCurrentResourceLevel() {return interactor.getCharacter().getCurrentSolarSystem().getResources();}
+
+    public PoliticalSystem getCurrentPoliticalSystem() {return interactor.getCharacter().getCurrentSolarSystem().getPoliticalSystem();}
+
+    public String getCurrentSolarSystemName() {return interactor.getCharacter().getCurrentSolarSystem().getName();}
+
+    public int getNumPlanets() {return interactor.getCharacter().getCurrentSolarSystem().getNumPlanets();}
+
+    public Planet[] getPlanets() {return interactor.getCharacter().getCurrentSolarSystem().getPlanets();}
+
+    public Planet getCurrentPlanet() {return interactor.getCharacter().getCurrentSolarSystem().getCurrentPlanet();}
 }

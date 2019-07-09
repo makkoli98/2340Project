@@ -36,12 +36,12 @@ public class MainGameActivity extends AppCompatActivity {
         cargo = findViewById(R.id.button_cargo);
         shipyard = findViewById(R.id.button_shipyard);
 
-        /*
+
         solarSystem.setOnClickListener((View v) -> {
-                Intent intent = new Intent(MainGameActivity.this, NewCharacterActivity.class);
+                Intent intent = new Intent(MainGameActivity.this, SolarSystemActivity.class);
                 startActivity(intent);
         });
-        */
+
 
         market.setOnClickListener((View v) -> {
             Intent intent = new Intent(MainGameActivity.this, MarketActivity.class);
