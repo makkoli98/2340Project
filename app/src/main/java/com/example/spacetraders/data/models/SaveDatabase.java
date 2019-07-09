@@ -1,7 +1,9 @@
-package com.example.spacetraders.data.entity;
+package com.example.spacetraders.data.models;
 
 import android.content.Context;
 
+import com.example.spacetraders.data.entity.Character;
+import com.example.spacetraders.data.entity.Universe;
 import com.google.gson.Gson;
 
 import java.io.File;

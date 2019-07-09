@@ -1,5 +1,6 @@
 package com.example.spacetraders.data.views;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -12,18 +13,16 @@ import android.widget.Button;
 
 import android.widget.Toast;
 
-import java.io.File;
-
 
 import com.example.spacetraders.R;
-import com.example.spacetraders.data.Interactor;
+import com.example.spacetraders.data.models.Interactor;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.entity.GameDifficulty;
-import com.example.spacetraders.data.entity.SaveDatabase;
 import com.example.spacetraders.data.entity.Skill;
 import com.example.spacetraders.data.entity.SolarSystem;
 import com.example.spacetraders.data.entity.Spaceship;
 import com.example.spacetraders.data.entity.Universe;
+import com.example.spacetraders.data.viewmodels.NewCharacterViewModel;
 
 public class NewCharacterActivity extends AppCompatActivity {
     private Spinner difficulty;
@@ -32,6 +31,8 @@ public class NewCharacterActivity extends AppCompatActivity {
     private TextView fighter;
     private TextView trader;
     private TextView engineer;
+
+    private NewCharacterViewModel viewModel;
 
     private Character character;
 
@@ -52,6 +53,8 @@ public class NewCharacterActivity extends AppCompatActivity {
         ArrayAdapter<GameDifficulty> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, GameDifficulty.values());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficulty.setAdapter(adapter);
+
+        viewModel = ViewModelProviders.of(this).get(NewCharacterViewModel.class);
 
         Button done = findViewById(R.id.doneButton);
         done.setOnClickListener(new View.OnClickListener() {
@@ -132,9 +135,12 @@ public class NewCharacterActivity extends AppCompatActivity {
                         i++;
                     }
 
-                    Interactor.getInteractor().setCharacter(character);
-                    Interactor.getInteractor().setUniverse(universe);
-                    Interactor.getInteractor().getCharacter().setCurrentSolarSystem(universe.getSystems()[0]);
+
+                    viewModel.createUniverse(universe);
+                    viewModel.createCharacter(character);
+                    //Interactor.getInteractor().setCharacter(character);
+                    //Interactor.getInteractor().setUniverse(universe);
+                    //Interactor.getInteractor().getCharacter().setCurrentSolarSystem(universe.getSystems()[0]);
 
 
 

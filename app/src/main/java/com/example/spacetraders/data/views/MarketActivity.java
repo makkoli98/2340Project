@@ -1,10 +1,9 @@
 package com.example.spacetraders.data.views;
 
-import android.content.Intent;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,10 +13,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.spacetraders.R;
-import com.example.spacetraders.data.Interactor;
+import com.example.spacetraders.data.models.Interactor;
 import com.example.spacetraders.data.entity.Resources;
 import com.example.spacetraders.data.entity.Character;
-import com.example.spacetraders.data.entity.Spaceship;
+import com.example.spacetraders.data.viewmodels.MarketViewModel;
 
 import java.util.Arrays;
 
@@ -29,12 +28,14 @@ public class MarketActivity extends AppCompatActivity {
     private Button confirm;
     private Spinner BuySell;
     private Character character;
+    private MarketViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_marketplace);
 
+        viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
         character = Interactor.getInteractor().getCharacter();
 
         inputs = new TextInputLayout[Resources.values().length];
@@ -77,8 +78,8 @@ public class MarketActivity extends AppCompatActivity {
         prices[Resources.NARCOTICS.ordinal()] = findViewById(R.id.label_narcotics);
         prices[Resources.ROBOTS.ordinal()] = findViewById(R.id.label_robots);
 
-        int[] resourcePrices = character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourcePrices();
-        int[] resourceAmounts = character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount();
+        int[] resourcePrices = viewModel.getResourcePrices();
+        int[] resourceAmounts = viewModel.getResourceAmounts();
         for (Resources r: Resources.values()) {
             String s = r.toString() + "- " + resourcePrices[r.ordinal()] + "c";
             prices[r.ordinal()].setText(s);
@@ -99,11 +100,13 @@ public class MarketActivity extends AppCompatActivity {
                 String item = (String) BuySell.getSelectedItem();
                 if (item.equals("BUY")) {
                     for (Resources r: Resources.values()) {
-                        amounts[r.ordinal()].setText(Integer.toString(character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount()[r.ordinal()]));
+                        amounts[r.ordinal()].setText(Integer.toString(viewModel.getResourceAmounts()[r.ordinal()]));
+                        //amounts[r.ordinal()].setText(Integer.toString(viewModel.getResourceAmounts()[r.ordinal()]));
                     }
                 } else if (item.equals("SELL")) {
                     for (Resources r: Resources.values()) {
-                        amounts[r.ordinal()].setText(Integer.toString(character.getShip().getCurrentResources()[r.ordinal()]));
+                        amounts[r.ordinal()].setText(Integer.toString(viewModel.getCurrentResources()[r.ordinal()]));
+                        //amounts[r.ordinal()].setText(Integer.toString(character.getShip().getCurrentResources()[r.ordinal()]));
                     }
                 }
             }
@@ -124,28 +127,31 @@ public class MarketActivity extends AppCompatActivity {
 
             String choice = (String) BuySell.getSelectedItem();
             //player's credits
-            int playerCurrency =  character.getCredits();
+            int playerCurrency =  viewModel.getCharacter().getCredits();
             if (choice.equals("BUY")) {
                 // check if purchase is valid
                 Boolean purchaseValid = true;
                 for (int i = 0; i < productQuantities.length; i++) {
-                    if (productQuantities[i] > character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount()[i]) {
+                    if (productQuantities[i] > viewModel.getResourceAmounts()[i]) {
                         purchaseValid = false;
                     }
                 }
-                if (character.getShip().getCargoSize() - Arrays.stream(character.getShip().getCurrentResources()).sum() >= sumUserAmount && cost <= playerCurrency && purchaseValid) {
-                    character.getShip().setResource(productQuantities, true);
+                if (viewModel.getCargoSize() - Arrays.stream(viewModel.getCurrentResources()).sum() >= sumUserAmount && cost <= playerCurrency && purchaseValid) {
+                    viewModel.setResource(productQuantities, true);
+                    //character.getShip().setResource(productQuantities, true);
                     System.out.println(Arrays.toString(character.getShip().getCurrentResources()));
-                    character.setCredits(character.getCredits() - cost);
-                    currencyDisplay.setText(Integer.toString(character.getCredits()));
+                    viewModel.updateCurrency(cost, true);
+                    //character.setCredits(character.getCredits() - cost);
+                    currencyDisplay.setText(Integer.toString(viewModel.getCharacter().getCredits()));
                     int[] newAmounts = new int[resourceAmounts.length];
                     for (int i = 0; i < amounts.length; i++) {
-                        newAmounts[i] = character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount()[i] - productQuantities[i];
+                        newAmounts[i] = viewModel.getResourceAmounts()[i] - productQuantities[i];
                         int currentAmount = Integer.parseInt(amounts[i].getText().toString());
                         int correctAmount = currentAmount - productQuantities[i];
                         amounts[i].setText(Integer.toString(correctAmount));
                     }
-                    character.getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(newAmounts);
+                    viewModel.setResourceAmounts(newAmounts);
+                    //character.getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(newAmounts);
                 } else {
                     Toast.makeText(getApplicationContext(), "Insufficient cargo space or currency or amount for purchase", Toast.LENGTH_LONG).show();
                 }
@@ -155,24 +161,27 @@ public class MarketActivity extends AppCompatActivity {
                 //check if each cargo slot is valid
                 Boolean cargoValid = true;
                 for (int i = 0; i < productQuantities.length; i++) {
-                    if (productQuantities[i] > character.getShip().getCurrentResources()[i]) {
+                    if (productQuantities[i] > viewModel.getCurrentResources()[i]) {
                         // if any resource amount is invalid, entire purchase is invalid
                         cargoValid = false;
                     }
                 }
                 if (cargoValid) {
-                    character.getShip().setResource(productQuantities, false);
+                    viewModel.setResource(productQuantities, false);
+                    //character.getShip().setResource(productQuantities, false);
                     System.out.println(Arrays.toString(character.getShip().getCurrentResources()));
-                    character.setCredits(character.getCredits() + cost);
-                    currencyDisplay.setText(Integer.toString(character.getCredits()));
+                    //character.setCredits(character.getCredits() + cost);
+                    viewModel.updateCurrency(cost, false);
+                    currencyDisplay.setText(Integer.toString(viewModel.getCharacter().getCredits()));
                     int[] newAmounts = new int[resourceAmounts.length];
                     for (int i = 0; i < amounts.length; i++) {
-                        newAmounts[i] = character.getCurrentSolarSystem().getPlanets()[0].getMarket().getResourceAmount()[i] + productQuantities[i];
+                        newAmounts[i] = viewModel.getResourceAmounts()[i] + productQuantities[i];
                         int currentAmount = Integer.parseInt(amounts[i].getText().toString());
                         int correctAmount = currentAmount - productQuantities[i];
                         amounts[i].setText(Integer.toString(correctAmount));
                     }
-                    character.getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(newAmounts);
+                    viewModel.setResourceAmounts(newAmounts);
+                    //character.getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(newAmounts);
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid product amount", Toast.LENGTH_LONG).show();
                 }
