@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.spacetraders.R;
-import com.example.spacetraders.data.Interactor;
+import com.example.spacetraders.data.models.Interactor;
 import com.example.spacetraders.data.entity.Character;
 
 

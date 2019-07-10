@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.spacetraders.R;
-import com.example.spacetraders.data.Interactor;
+import com.example.spacetraders.data.models.Interactor;
 import com.example.spacetraders.data.entity.Character;
 
 public class ShipYardActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -43,6 +43,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
 
 
         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+
 
     }
 

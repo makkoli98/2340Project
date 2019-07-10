@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.spacetraders.R;
-import com.example.spacetraders.data.Interactor;
+import com.example.spacetraders.data.models.Interactor;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.entity.SolarSystem;
 import com.example.spacetraders.data.entity.Universe;
@@ -26,7 +26,6 @@ public class TravelActivity extends AppCompatActivity {
     Universe universe;
     SolarSystem[] systems;
     SolarSystem currentSystem;
-    SolarSystem nextSystem;
     TextView fuelLeft;
 
     @Override
@@ -54,7 +53,7 @@ public class TravelActivity extends AppCompatActivity {
                 button.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
                 //todo: add fuel efficiency formula
-                nextSystem = systems[i+1];
+                SolarSystem nextSystem = systems[i+1];
                 int fuelCost = nextSystem.getDistance(currentSystem);
                 button.setText("\nSolar System: " + nextSystem.getName() + "\nFuel Cost: " + fuelCost + "\n");
                 button.setOnClickListener((view) -> {
@@ -65,7 +64,9 @@ public class TravelActivity extends AppCompatActivity {
 
                     character.getShip().setFuel(character.getShip().getFuel() - fuelCost);
                     character.setCurrentSolarSystem(nextSystem);
-                    startActivity(new Intent(TravelActivity.this, TravelDetailActivity.class));
+                    Toast.makeText(getApplicationContext(), "Used " + fuelCost + " fuel", Toast.LENGTH_LONG).show();
+                    startActivity(new Intent(TravelActivity.this, MainGameActivity.class));
+                    finish();
                 });
 
                 linLayout.addView(button);

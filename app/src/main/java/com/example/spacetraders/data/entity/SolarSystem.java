@@ -12,6 +12,7 @@ public class SolarSystem {
     private PoliticalSystem politicalSystem;
     private Planet[] planets;
     private int numPlanets;
+    private Planet currentPlanet;
     private int[] coords;
     private String[] possibleNames = {"Acamar", "Adahn", "Aldea", "Andevian", "Antedi", "Balosnee",
             "Baratas", "Brax", "Bretel", "Calondia", "Campor", "Capelle", "Carzon", "Castor",
@@ -30,31 +31,23 @@ public class SolarSystem {
             "Xenon", "Xerxes", "Yew", "Yojimbo", "Zalkon", "Zuul"};
     private static List<String> SolarSystemNames = new ArrayList<>();
 
-    public String getName() {
-        return name;
-    }
+    public Planet getCurrentPlanet() {return currentPlanet;}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setCurrentPlanet(Planet planet) {currentPlanet = planet;}
+
+    public String getName() {return name;}
+
+    public void setName(String name) {this.name = name;}
 
     public TechLevel getTechLevel() { return techLevel; }
 
-    public void setTechLevel(TechLevel techLevel) {
-        this.techLevel = techLevel;
-    }
+    public void setTechLevel(TechLevel techLevel) {this.techLevel = techLevel;}
 
-    public ResourceLevel getResources() {
-        return resourceLevel;
-    }
+    public ResourceLevel getResources() {return resourceLevel;}
 
-    public void setResources(ResourceLevel resourceLevel) {
-        this.resourceLevel = resourceLevel;
-    }
+    public void setResources(ResourceLevel resourceLevel) {this.resourceLevel = resourceLevel;}
 
-    public PoliticalSystem getPoliticalSystem() {
-        return politicalSystem;
-    }
+    public PoliticalSystem getPoliticalSystem() {return politicalSystem;}
 
     public void setPoliticalSystem(PoliticalSystem poliSys) { this.politicalSystem = poliSys; }
 
@@ -187,6 +180,7 @@ public class SolarSystem {
 
         this.numPlanets = numPlanets;
         this.planets = newPlanets;
+        currentPlanet = newPlanets[0];
         return newPlanets;
     }
 }

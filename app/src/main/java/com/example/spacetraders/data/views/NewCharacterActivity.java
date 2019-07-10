@@ -1,5 +1,6 @@
 package com.example.spacetraders.data.views;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
@@ -12,26 +13,28 @@ import android.widget.Button;
 
 import android.widget.Toast;
 
-import java.io.File;
-
 
 import com.example.spacetraders.R;
-import com.example.spacetraders.data.Interactor;
+import com.example.spacetraders.data.models.Interactor;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.entity.GameDifficulty;
+
 import com.example.spacetraders.data.entity.Resources;
-import com.example.spacetraders.data.entity.SaveDatabase;
+import com.example.spacetraders.data.models.SaveDatabase;
 import com.example.spacetraders.data.entity.ShipType;
 import com.example.spacetraders.data.entity.Skill;
 import com.example.spacetraders.data.entity.SolarSystem;
 import com.example.spacetraders.data.entity.Spaceship;
 import com.example.spacetraders.data.entity.Universe;
+import com.example.spacetraders.data.viewmodels.NewCharacterViewModel;
 
 public class NewCharacterActivity extends AppCompatActivity {
     private Spinner difficulty;
     private TextInputLayout characterName;
     private TextView[] skillDisplays;
     private Button[] skillButtons;
+
+    private NewCharacterViewModel viewModel;
 
     private Character character;
 
@@ -73,6 +76,8 @@ public class NewCharacterActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         difficulty.setAdapter(adapter);
 
+        viewModel = ViewModelProviders.of(this).get(NewCharacterViewModel.class);
+
         Button done = findViewById(R.id.doneButton);
         done.setOnClickListener((view) -> {
                 int totalSkills = 0;
@@ -84,14 +89,11 @@ public class NewCharacterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_LONG).show();
                     return;
                 }
-
-                character.setName(characterName.getEditText().getText().toString());
-                character.setDifficulty((GameDifficulty) difficulty.getSelectedItem());
                 Universe universe = new Universe(character.getDifficulty());
-
-                Interactor.getInteractor().setCharacter(character);
-                Interactor.getInteractor().setUniverse(universe);
-                Interactor.getInteractor().getCharacter().setCurrentSolarSystem(universe.getSystems()[0]);
+                viewModel.createUniverse(universe);
+                viewModel.createCharacter(character);
+                viewModel.setDifficulty((GameDifficulty) difficulty.getSelectedItem());
+                viewModel.setName(characterName.getEditText().getText().toString());
 
                 //Log Character and Universe Information
                 System.out.println(character);

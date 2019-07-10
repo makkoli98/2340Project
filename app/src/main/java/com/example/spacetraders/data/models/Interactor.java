@@ -1,10 +1,7 @@
-package com.example.spacetraders.data;
+package com.example.spacetraders.data.models;
 
 import android.content.Context;
 
-import com.example.spacetraders.data.entity.GameDifficulty;
-import com.example.spacetraders.data.entity.SaveDatabase;
-import com.example.spacetraders.data.entity.Spaceship;
 import com.example.spacetraders.data.entity.Universe;
 import com.example.spacetraders.data.entity.Character;
 
