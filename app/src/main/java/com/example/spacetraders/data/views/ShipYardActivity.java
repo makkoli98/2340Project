@@ -19,7 +19,9 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
     private Character character1;
     private TextView viewCurrency;
     private Button previewButton;
+    private Button purchaseButton;
     private Spinner shipSpinner;
+
 
 
     @Override
@@ -30,7 +32,9 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
         character1 = Interactor.getInteractor().getCharacter();
         viewCurrency = findViewById(R.id.playerCurrency);
         previewButton = findViewById(R.id.previewButton);
+        purchaseButton = findViewById(R.id.purchaseButtn);
         shipSpinner = findViewById(R.id.shipSpinner);
+
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.ship_names, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
