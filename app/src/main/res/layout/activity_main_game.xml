@@ -18,7 +18,7 @@
             android:fontFamily="@font/nasalization"
             android:text="System Name"
             android:textAlignment="center"
-            android:textSize="24sp" />
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/button_solarSystem"
