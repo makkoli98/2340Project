@@ -59,6 +59,10 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
         shipType = parent.getItemAtPosition(position).toString();
         previewButton = findViewById(R.id.previewButton);
 
+        viewCurrency = findViewById(R.id.playerCurrency);
+
+        viewCurrency.setText("" );
+
         purchaseButton.setOnClickListener((View v) -> {
 
 
@@ -78,11 +82,11 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
             currentShipWorth += currShipResources[9] * Resources.ROBOTS.getBasePrice();
 
 
-
             if (shipType.equals("FLEA 500c")) {
                 if (character1.getCurrency() >= ShipType.FLEA.getBasePrice()) {
                     if (currentShipWorth - ShipType.FLEA.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.FLEA.getBasePrice());
+                        viewCurrency.setText("" + (currentShipWorth - ShipType.FLEA.getBasePrice()));
                         character1.setShip(new Spaceship(ShipType.FLEA.getName(), ShipType.FLEA.getCargoSize(),
                                 ShipType.FLEA.getMaximumHealth(), ShipType.FLEA.getMaxWeaponsAmount(),
                                 ShipType.FLEA.getFuelEfficiency(), ShipType.FLEA.getBasePrice()));
@@ -95,6 +99,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                 if (character1.getCurrency() >= ShipType.GNAT.getBasePrice()) {
                     if (currentShipWorth - ShipType.GNAT.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.GNAT.getBasePrice());
+                        viewCurrency.setText("" + (currentShipWorth - ShipType.GNAT.getBasePrice()));
                         character1.setShip(new Spaceship(ShipType.GNAT.getName(), ShipType.GNAT.getCargoSize(),
                                 ShipType.GNAT.getMaximumHealth(), ShipType.GNAT.getMaxWeaponsAmount(),
                                 ShipType.GNAT.getFuelEfficiency(), ShipType.GNAT.getBasePrice()));
@@ -107,6 +112,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                 if (character1.getCurrency() >= ShipType.FIREFLY.getBasePrice()) {
                     if (currentShipWorth - ShipType.FIREFLY.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.FIREFLY.getBasePrice());
+                        viewCurrency.setText("" + (currentShipWorth - ShipType.FIREFLY.getBasePrice()));
                         character1.setShip(new Spaceship(ShipType.FIREFLY.getName(), ShipType.FIREFLY.getCargoSize(),
                                 ShipType.FIREFLY.getMaximumHealth(), ShipType.FIREFLY.getMaxWeaponsAmount(),
                                 ShipType.FIREFLY.getFuelEfficiency(), ShipType.FIREFLY.getBasePrice()));
@@ -119,6 +125,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                 if (character1.getCurrency() >= ShipType.MOSQUITO.getBasePrice()) {
                     if (currentShipWorth - ShipType.MOSQUITO.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.MOSQUITO.getBasePrice());
+                        viewCurrency.setText("" + (currentShipWorth - ShipType.MOSQUITO.getBasePrice()));
                         character1.setShip(new Spaceship(ShipType.MOSQUITO.getName(), ShipType.MOSQUITO.getCargoSize(),
                                 ShipType.MOSQUITO.getMaximumHealth(), ShipType.MOSQUITO.getMaxWeaponsAmount(),
                                 ShipType.MOSQUITO.getFuelEfficiency(), ShipType.MOSQUITO.getBasePrice()));
@@ -131,6 +138,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                 if (character1.getCurrency() >= ShipType.BUMBLEBEE.getBasePrice()) {
                     if (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.BUMBLEBEE.getBasePrice());
+                        viewCurrency.setText("" + (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice()));
                         character1.setShip(new Spaceship(ShipType.BUMBLEBEE.getName(), ShipType.BUMBLEBEE.getCargoSize(),
                                 ShipType.BUMBLEBEE.getMaximumHealth(), ShipType.BUMBLEBEE.getMaxWeaponsAmount(),
                                 ShipType.BUMBLEBEE.getFuelEfficiency(), ShipType.BUMBLEBEE.getBasePrice()));
@@ -143,6 +151,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                 if (character1.getCurrency() >= ShipType.BEETLE.getBasePrice()) {
                     if (currentShipWorth - ShipType.BEETLE.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.BEETLE.getBasePrice());
+                        viewCurrency.setText("" + (currentShipWorth - ShipType.BEETLE.getBasePrice()));
                         character1.setShip(new Spaceship(ShipType.BEETLE.getName(), ShipType.BEETLE.getCargoSize(),
                                 ShipType.BEETLE.getMaximumHealth(), ShipType.BEETLE.getMaxWeaponsAmount(),
                                 ShipType.BEETLE.getFuelEfficiency(), ShipType.BEETLE.getBasePrice()));
@@ -155,6 +164,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                 if (character1.getCurrency() >= ShipType.HORNET.getBasePrice()) {
                     if (currentShipWorth - ShipType.HORNET.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.HORNET.getBasePrice());
+                        viewCurrency.setText("" + (currentShipWorth - ShipType.HORNET.getBasePrice()));
                         character1.setShip(new Spaceship(ShipType.HORNET.getName(), ShipType.HORNET.getCargoSize(),
                                 ShipType.HORNET.getMaximumHealth(), ShipType.HORNET.getMaxWeaponsAmount(),
                                 ShipType.HORNET.getFuelEfficiency(), ShipType.HORNET.getBasePrice()));
@@ -167,6 +177,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                 if (character1.getCurrency() >= ShipType.GRASSHOPPER.getBasePrice()) {
                     if (currentShipWorth - ShipType.GRASSHOPPER.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.GRASSHOPPER.getBasePrice());
+                        viewCurrency.setText("" + (currentShipWorth - ShipType.HORNET.getBasePrice()));
                         character1.setShip(new Spaceship(ShipType.GRASSHOPPER.getName(), ShipType.GRASSHOPPER.getCargoSize(),
                                 ShipType.GRASSHOPPER.getMaximumHealth(), ShipType.GRASSHOPPER.getMaxWeaponsAmount(),
                                 ShipType.GRASSHOPPER.getFuelEfficiency(), ShipType.GRASSHOPPER.getBasePrice()));
@@ -179,6 +190,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                 if (character1.getCurrency() >= ShipType.TERMITE.getBasePrice()) {
                     if (currentShipWorth - ShipType.TERMITE.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.TERMITE.getBasePrice());
+                        viewCurrency.setText("" + (currentShipWorth - ShipType.TERMITE.getBasePrice()));
                         character1.setShip(new Spaceship(ShipType.TERMITE.getName(), ShipType.TERMITE.getCargoSize(),
                                 ShipType.TERMITE.getMaximumHealth(), ShipType.TERMITE.getMaxWeaponsAmount(),
                                 ShipType.TERMITE.getFuelEfficiency(), ShipType.TERMITE.getBasePrice()));
@@ -191,6 +203,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                 if (character1.getCurrency() >= ShipType.WASP.getBasePrice()) {
                     if (currentShipWorth - ShipType.WASP.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.WASP.getBasePrice());
+                        viewCurrency.setText("" + (currentShipWorth - ShipType.WASP.getBasePrice()));
                         character1.setShip(new Spaceship(ShipType.WASP.getName(), ShipType.WASP.getCargoSize(),
                                 ShipType.WASP.getMaximumHealth(), ShipType.WASP.getMaxWeaponsAmount(),
                                 ShipType.WASP.getFuelEfficiency(), ShipType.WASP.getBasePrice()));
