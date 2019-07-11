@@ -24,6 +24,9 @@
             android:name=".data.views.NewCharacterActivity"
             android:parentActivityName=".data.views.TitleActivity" />
         <activity
+            android:name=".data.views.OldCharacterActivity"
+            android:parentActivityName=".data.views.TitleActivity" />
+        <activity
             android:name=".data.views.MainGameActivity"
             android:parentActivityName=".data.views.TitleActivity" />
         <activity

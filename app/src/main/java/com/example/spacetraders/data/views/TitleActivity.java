@@ -31,5 +31,14 @@ public class TitleActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button button2 = findViewById(R.id.button_continueGame);
+
+        button2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(TitleActivity.this, OldCharacterActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

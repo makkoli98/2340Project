@@ -41,13 +41,19 @@ public class Interactor {
         return character;
     }
 
-    public void setSave(int id) {
+    public void setSave(int id, SaveDatabase saveDatabase) {
         this.id = id;
+        character = saveDatabase.getCharacter(id);
+        universe = saveDatabase.getUniverse(id);
     }
 
-    public int createSave(Context applicationContext) {
+    public int createSave(Context applicationContext, Character character, Universe universe) {
         saveDatabase = new SaveDatabase(applicationContext);
-        id = saveDatabase.getNumSaves() - 1;
+        id = saveDatabase.createNewSave();
+        this.character = character;
+        this.universe = universe;
+        saveDatabase.saveCharacter(character, id);
+        saveDatabase.saveUniverse(universe, id);
         return id;
     }
 
