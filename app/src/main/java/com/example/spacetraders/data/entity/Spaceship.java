@@ -2,6 +2,8 @@ package com.example.spacetraders.data.entity;
 import java.util.HashMap;
 
 
+
+
 public class Spaceship {
     private int[] currentResources;
     private int currentHealth;
@@ -9,11 +11,30 @@ public class Spaceship {
     private int fuel;
     public static int maxFuel;
 
+    //Will change later:
+    private String name;
+    private int cargoSize;
+    private int maxHealth;
+    private int maxWeapons;
+    private int fuelEfficiency;
+    private int basePrice;
+    private Spaceship currShip;
+
     public Spaceship(ShipType type) {
         this.type = type;
         currentResources = new int[Resources.values().length];
         currentHealth = type.getMaximumHealth();
         maxFuel = 100;
+    }
+
+    public Spaceship(String shipName, int cargoSize, int maxHealth, int maxWeapons, int fuelEfficiency, int basePrice) {
+        name = shipName;
+        this.cargoSize = cargoSize;
+        this.maxHealth = maxHealth;
+        this.maxWeapons = maxWeapons;
+        this.fuelEfficiency = fuelEfficiency;
+        this.basePrice = basePrice;
+
     }
 
     public int[] getCurrentResources() {
@@ -97,6 +118,10 @@ public class Spaceship {
 
     public String getName() {
         return type.getName();
+    }
+
+    public void setShip (Spaceship ship) {
+        currShip = ship;
     }
 
     public int getCargoSize() {
