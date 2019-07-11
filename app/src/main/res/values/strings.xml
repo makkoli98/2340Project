@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SpaceTraders</string>
-	<string name="title_activity_view_player_info">ViewPlayerInfo</string>
+    <string name="title_activity_view_player_info">ViewPlayerInfo</string>
     <string-array name="ship_names">
         <item>FLEA</item>
         <item>GNAT</item>

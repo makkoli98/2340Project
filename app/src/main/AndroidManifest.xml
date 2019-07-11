@@ -23,6 +23,10 @@
             android:name=".data.views.NewCharacterActivity"
             android:parentActivityName=".data.views.TitleActivity" />
         <activity
+            android:name=".data.views.PreviewActivity"
+            android:parentActivityName=".data.views.ShipYardActivity"
+            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity
             android:name=".data.views.MainGameActivity"
             android:parentActivityName=".data.views.TitleActivity" />
         <activity

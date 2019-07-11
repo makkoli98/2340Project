@@ -1,5 +1,6 @@
 package com.example.spacetraders.data.views;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,9 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
     private Button previewButton;
     private Button purchaseButton;
     private Spinner shipSpinner;
+    public static String shipType;
+
+
 
 
 
@@ -44,13 +48,25 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
 
         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
 
+        previewButton.setOnClickListener((View v) -> {
+            Intent intent = new Intent(ShipYardActivity.this, PreviewActivity.class);
+            startActivity(intent);
+        });
+
 
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+        shipType = parent.getItemAtPosition(position).toString();
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.ship_names, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        Intent intent = new Intent(this, PreviewActivity.class);
+        intent.putExtra(shipType, adapter.getItem(position));
+        startActivityForResult(intent, 1);
+        //Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
     }
 
     @Override

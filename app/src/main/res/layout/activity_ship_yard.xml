@@ -86,7 +86,7 @@
         android:layout_width="116dp"
         android:layout_height="76dp"
         android:layout_marginTop="300dp"
-        android:text="Sonic Ray: 25c"
+        android:text="Sonic Ray: 250c"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -96,7 +96,7 @@
         android:layout_height="73dp"
         android:layout_marginTop="300dp"
         android:layout_marginEnd="148dp"
-        android:text="Plasma Ray: 50c"
+        android:text="Plasma Ray: 500c"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -105,7 +105,7 @@
         android:layout_width="139dp"
         android:layout_height="70dp"
         android:layout_marginTop="300dp"
-        android:text="Meson Phaser: 75c"
+        android:text="Meson Phaser: 750c"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -151,41 +151,21 @@
 
     <Button
         android:id="@+id/silverShield"
-        android:layout_width="109dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="204dp"
-        android:text="Silver Dynasty"
+        android:layout_width="118dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="260dp"
+        android:layout_marginBottom="188dp"
+        android:text="Silver Dynasty: 350c"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/goldShield"
-        android:layout_width="115dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="204dp"
-        android:text="Golden Dynasty"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="57dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginBottom="176dp"
-        android:text="100c"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="48dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="168dp"
-        android:text="200c"
+        android:layout_width="119dp"
+        android:layout_height="73dp"
+        android:layout_marginEnd="228dp"
+        android:layout_marginBottom="180dp"
+        android:text="Golden Dynasty: 750c"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
