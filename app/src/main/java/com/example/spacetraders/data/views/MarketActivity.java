@@ -29,6 +29,7 @@ public class MarketActivity extends AppCompatActivity {
     private Spinner BuySell;
     private Character character;
     private MarketViewModel viewModel;
+    private TextView cargoCap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,11 @@ public class MarketActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
         character = Interactor.getInteractor().getCharacter();
+        cargoCap = findViewById(R.id.label_cargoCap);
+        int resourceSum = Arrays.stream(Interactor.getInteractor().getCharacter().getShip().getCurrentResources()).sum();
+        int cargoMaxSize = Interactor.getInteractor().getCharacter().getShip().getCargoSize();
+        String cargo = "Cargo: " + resourceSum + "/" + cargoMaxSize;
+        cargoCap.setText(cargo);
 
         inputs = new TextInputLayout[Resources.values().length];
 
@@ -150,6 +156,9 @@ public class MarketActivity extends AppCompatActivity {
                         int correctAmount = currentAmount - productQuantities[i];
                         amounts[i].setText(Integer.toString(correctAmount));
                     }
+                    int newSum = Arrays.stream(productQuantities).sum();
+                    String newCargo = "Cargo: " + newSum + "/" + cargoMaxSize;
+                    cargoCap.setText(newCargo);
                     viewModel.setResourceAmounts(newAmounts);
                     //character.getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(newAmounts);
                 } else {
@@ -180,6 +189,9 @@ public class MarketActivity extends AppCompatActivity {
                         int correctAmount = currentAmount - productQuantities[i];
                         amounts[i].setText(Integer.toString(correctAmount));
                     }
+                    int newSum = Arrays.stream(Interactor.getInteractor().getCharacter().getShip().getCurrentResources()).sum();
+                    String newCargo = "Cargo: " + newSum + "/" + cargoMaxSize;
+                    cargoCap.setText(newCargo);
                     viewModel.setResourceAmounts(newAmounts);
                     //character.getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(newAmounts);
                 } else {
