@@ -21,10 +21,6 @@ public class Interactor {
         return interactorInstance;
     }
 
-    public void setSaveDatabase(SaveDatabase saveDatabase) {
-        this.saveDatabase = saveDatabase;
-    }
-
     public void setUniverse(Universe universe) {
         this.universe = universe;
     }
@@ -52,13 +48,13 @@ public class Interactor {
         id = saveDatabase.createNewSave();
         this.character = character;
         this.universe = universe;
-        saveDatabase.saveCharacter(character, id);
-        saveDatabase.saveUniverse(universe, id);
+        saveGame();
         return id;
     }
 
     public void saveGame() {
-
+        saveDatabase.saveCharacter(character, id);
+        saveDatabase.saveUniverse(universe, id);
     }
 
 

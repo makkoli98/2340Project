@@ -71,8 +71,11 @@ public class MainGameActivity extends AppCompatActivity {
             Intent intent = new Intent(MainGameActivity.this, RefuelActivity.class);
             startActivity(intent);
         });
+    }
 
-
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Interactor.getInteractor().saveGame();
     }
 }
