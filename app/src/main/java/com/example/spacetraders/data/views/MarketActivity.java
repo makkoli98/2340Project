@@ -156,9 +156,6 @@ public class MarketActivity extends AppCompatActivity {
                         int correctAmount = currentAmount - productQuantities[i];
                         amounts[i].setText(Integer.toString(correctAmount));
                     }
-                    int newSum = Arrays.stream(productQuantities).sum();
-                    String newCargo = "Cargo: " + newSum + "/" + cargoMaxSize;
-                    cargoCap.setText(newCargo);
                     viewModel.setResourceAmounts(newAmounts);
                     //character.getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(newAmounts);
                 } else {
@@ -189,15 +186,15 @@ public class MarketActivity extends AppCompatActivity {
                         int correctAmount = currentAmount - productQuantities[i];
                         amounts[i].setText(Integer.toString(correctAmount));
                     }
-                    int newSum = Arrays.stream(Interactor.getInteractor().getCharacter().getShip().getCurrentResources()).sum();
-                    String newCargo = "Cargo: " + newSum + "/" + cargoMaxSize;
-                    cargoCap.setText(newCargo);
                     viewModel.setResourceAmounts(newAmounts);
                     //character.getCurrentSolarSystem().getPlanets()[0].getMarket().setResourceAmount(newAmounts);
                 } else {
                     Toast.makeText(getApplicationContext(), "Invalid product amount", Toast.LENGTH_LONG).show();
                 }
             }
+            int newSum = Arrays.stream(Interactor.getInteractor().getCharacter().getShip().getCurrentResources()).sum();
+            String newCargo = "Cargo: " + newSum + "/" + cargoMaxSize;
+            cargoCap.setText(newCargo);
         });
 
         System.out.println("In market: " + character.getName());
