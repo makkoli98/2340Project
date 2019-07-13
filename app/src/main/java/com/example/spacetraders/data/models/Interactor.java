@@ -21,10 +21,6 @@ public class Interactor {
         return interactorInstance;
     }
 
-    public void setSaveDatabase(SaveDatabase saveDatabase) {
-        this.saveDatabase = saveDatabase;
-    }
-
     public void setUniverse(Universe universe) {
         this.universe = universe;
     }
@@ -41,18 +37,24 @@ public class Interactor {
         return character;
     }
 
-    public void setSave(int id) {
+    public void setSave(int id, SaveDatabase saveDatabase) {
         this.id = id;
+        character = saveDatabase.getCharacter(id);
+        universe = saveDatabase.getUniverse(id);
     }
 
-    public int createSave(Context applicationContext) {
+    public int createSave(Context applicationContext, Character character, Universe universe) {
         saveDatabase = new SaveDatabase(applicationContext);
-        id = saveDatabase.getNumSaves() - 1;
+        id = saveDatabase.createNewSave();
+        this.character = character;
+        this.universe = universe;
+        saveGame();
         return id;
     }
 
     public void saveGame() {
-
+        saveDatabase.saveCharacter(character, id);
+        saveDatabase.saveUniverse(universe, id);
     }
 
 

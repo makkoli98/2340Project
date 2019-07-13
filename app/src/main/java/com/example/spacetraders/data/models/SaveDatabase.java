@@ -139,4 +139,25 @@ public class SaveDatabase {
         return numSaves;
     }
 
+    /**
+     * DANGEROUS
+     */
+    public void deleteAllFiles() {
+        try {
+            deleteFile(path);
+        } catch(Exception e) {
+            System.err.println(e);
+            System.err.println("Error deleting file in delete all files");
+        }
+    }
+
+    private void deleteFile(File file) {
+        if(file.isDirectory()) {
+            for(File f : file.listFiles()) {
+                deleteFile(f);
+            }
+        }
+        file.delete();
+    }
+
 }

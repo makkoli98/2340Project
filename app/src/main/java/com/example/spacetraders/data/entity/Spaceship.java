@@ -10,32 +10,20 @@ public class Spaceship {
     private ShipType type;
     private int fuel;
     public static int maxFuel;
+    private int currWeaponsCount;
+    private Weapons list;
 
-    //Will change later:
-    private String name;
-    private int cargoSize;
-    private int maxHealth;
-    private int maxWeapons;
-    private int fuelEfficiency;
-    private int basePrice;
-    private Spaceship currShip;
+
+
 
     public Spaceship(ShipType type) {
         this.type = type;
         currentResources = new int[Resources.values().length];
         currentHealth = type.getMaximumHealth();
         maxFuel = 100;
+        currWeaponsCount = 0;
     }
 
-    public Spaceship(String shipName, int cargoSize, int maxHealth, int maxWeapons, int fuelEfficiency, int basePrice) {
-        name = shipName;
-        this.cargoSize = cargoSize;
-        this.maxHealth = maxHealth;
-        this.maxWeapons = maxWeapons;
-        this.fuelEfficiency = fuelEfficiency;
-        this.basePrice = basePrice;
-
-    }
 
     public int[] getCurrentResources() {
         return currentResources;
@@ -120,10 +108,6 @@ public class Spaceship {
         return type.getName();
     }
 
-    public void setShip (Spaceship ship) {
-        currShip = ship;
-    }
-
     public int getCargoSize() {
         return type.getCargoSize();
     }
@@ -142,5 +126,13 @@ public class Spaceship {
 
     public int getBasePrice() {
         return type.getBasePrice();
+    }
+
+    public int getCurrWeaponsCount() {
+        return currWeaponsCount;
+    }
+
+    public void setCurrWeaponsCount(int count) {
+        currWeaponsCount = 0;
     }
 }

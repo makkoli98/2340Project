@@ -43,6 +43,9 @@ public class NewCharacterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_character);
 
+        //SaveDatabase saveDatabase = new SaveDatabase(getApplicationContext());
+        //saveDatabase.deleteAllFiles();
+
         character = new Character();
 
         characterName = findViewById(R.id.textInputLayout);
@@ -98,6 +101,8 @@ public class NewCharacterActivity extends AppCompatActivity {
                 //Log Character and Universe Information
                 System.out.println(character);
                 System.out.println(universe);
+
+                Interactor.getInteractor().createSave(getApplicationContext(), character, universe);
 
                 startActivity(new Intent(NewCharacterActivity.this, MainGameActivity.class));
         });

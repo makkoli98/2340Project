@@ -15,6 +15,7 @@ import com.example.spacetraders.R;
 import com.example.spacetraders.data.entity.Resources;
 import com.example.spacetraders.data.entity.ShipType;
 import com.example.spacetraders.data.entity.Spaceship;
+import com.example.spacetraders.data.entity.Weapons;
 import com.example.spacetraders.data.models.Interactor;
 import com.example.spacetraders.data.entity.Character;
 
@@ -26,9 +27,9 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
     private Button purchaseButton;
     private Spinner shipSpinner;
     public static String shipType;
-
-
-
+    private Button purchaseSonicLaser;
+    private Button purchasePlasmaLaser;
+    private Button purchaseMesonPhaser;
 
 
     @Override
@@ -37,10 +38,15 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
         setContentView(R.layout.activity_ship_yard);
 
         character1 = Interactor.getInteractor().getCharacter();
-        viewCurrency = findViewById(R.id.playerCurrency);
+        //viewCurrency = findViewById(R.id.playerCurrency);
 
         purchaseButton = findViewById(R.id.purchaseButtn);
         shipSpinner = findViewById(R.id.shipSpinner);
+
+        purchaseSonicLaser = findViewById(R.id.sLaser);
+        purchasePlasmaLaser = findViewById(R.id.pLaser);
+        purchaseMesonPhaser = findViewById(R.id.mLaser);
+
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.ship_names, android.R.layout.simple_spinner_item);
@@ -51,6 +57,45 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
 
 
         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+
+        purchaseSonicLaser.setOnClickListener((View v) -> {
+            if (character1.getShip().getCurrWeaponsCount() >= character1.getShip().getMaxWeaponsAmount()) {
+                Toast.makeText(getApplicationContext(), new String("You have reached the maximum amount of weapons!"), Toast.LENGTH_SHORT).show();
+            } else if (character1.getCurrency() < Weapons.SONICRAY.getWeaponCost()) {
+                Toast.makeText(getApplicationContext(), new String("Insufficient"), Toast.LENGTH_SHORT).show();
+            } else if (character1.getCurrency() >= Weapons.SONICRAY.getWeaponCost()){
+                character1.setCurrency(character1.getCurrency() - Weapons.SONICRAY.getWeaponCost());
+                viewCurrency.setText("" + character1.getCurrency());
+                character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
+            }
+        });
+
+        purchasePlasmaLaser.setOnClickListener((View v) -> {
+            if (character1.getShip().getCurrWeaponsCount() >= character1.getShip().getMaxWeaponsAmount()) {
+                Toast.makeText(getApplicationContext(), new String("You have reached the maximum amount of weapons!"), Toast.LENGTH_SHORT).show();
+            } else if (character1.getCurrency() < Weapons.PLASMARAY.getWeaponCost()) {
+                Toast.makeText(getApplicationContext(), new String("Insufficient"), Toast.LENGTH_SHORT).show();
+            } else if (character1.getCurrency() >= Weapons.PLASMARAY.getWeaponCost()){
+                character1.setCurrency(character1.getCurrency() - Weapons.PLASMARAY.getWeaponCost());
+                viewCurrency.setText("" + character1.getCurrency());
+                character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
+            }
+        });
+
+        purchaseMesonPhaser.setOnClickListener((View v) -> {
+            if (character1.getShip().getCurrWeaponsCount() >= character1.getShip().getMaxWeaponsAmount()) {
+                Toast.makeText(getApplicationContext(), new String("You have reached the maximum amount of weapons!"), Toast.LENGTH_SHORT).show();
+            } else if (character1.getCurrency() < Weapons.MESONPHASER.getWeaponCost()) {
+                Toast.makeText(getApplicationContext(), new String("Insufficient"), Toast.LENGTH_SHORT).show();
+            } else if (character1.getCurrency() >= Weapons.MESONPHASER.getWeaponCost()){
+                character1.setCurrency(character1.getCurrency() - Weapons.MESONPHASER.getWeaponCost());
+                viewCurrency.setText("" + character1.getCurrency());
+                character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
+            }
+        });
+
+
+
 
     }
 
@@ -87,9 +132,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                     if (currentShipWorth - ShipType.FLEA.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.FLEA.getBasePrice());
                         viewCurrency.setText("" + (currentShipWorth - ShipType.FLEA.getBasePrice()));
-                        character1.setShip(new Spaceship(ShipType.FLEA.getName(), ShipType.FLEA.getCargoSize(),
-                                ShipType.FLEA.getMaximumHealth(), ShipType.FLEA.getMaxWeaponsAmount(),
-                                ShipType.FLEA.getFuelEfficiency(), ShipType.FLEA.getBasePrice()));
+                        character1.setShip(new Spaceship(ShipType.FLEA));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -100,9 +143,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                     if (currentShipWorth - ShipType.GNAT.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.GNAT.getBasePrice());
                         viewCurrency.setText("" + (currentShipWorth - ShipType.GNAT.getBasePrice()));
-                        character1.setShip(new Spaceship(ShipType.GNAT.getName(), ShipType.GNAT.getCargoSize(),
-                                ShipType.GNAT.getMaximumHealth(), ShipType.GNAT.getMaxWeaponsAmount(),
-                                ShipType.GNAT.getFuelEfficiency(), ShipType.GNAT.getBasePrice()));
+                        character1.setShip(new Spaceship(ShipType.GNAT));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -113,9 +154,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                     if (currentShipWorth - ShipType.FIREFLY.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.FIREFLY.getBasePrice());
                         viewCurrency.setText("" + (currentShipWorth - ShipType.FIREFLY.getBasePrice()));
-                        character1.setShip(new Spaceship(ShipType.FIREFLY.getName(), ShipType.FIREFLY.getCargoSize(),
-                                ShipType.FIREFLY.getMaximumHealth(), ShipType.FIREFLY.getMaxWeaponsAmount(),
-                                ShipType.FIREFLY.getFuelEfficiency(), ShipType.FIREFLY.getBasePrice()));
+                        character1.setShip(new Spaceship(ShipType.FIREFLY));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -126,9 +165,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                     if (currentShipWorth - ShipType.MOSQUITO.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.MOSQUITO.getBasePrice());
                         viewCurrency.setText("" + (currentShipWorth - ShipType.MOSQUITO.getBasePrice()));
-                        character1.setShip(new Spaceship(ShipType.MOSQUITO.getName(), ShipType.MOSQUITO.getCargoSize(),
-                                ShipType.MOSQUITO.getMaximumHealth(), ShipType.MOSQUITO.getMaxWeaponsAmount(),
-                                ShipType.MOSQUITO.getFuelEfficiency(), ShipType.MOSQUITO.getBasePrice()));
+                        character1.setShip(new Spaceship(ShipType.MOSQUITO));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -139,9 +176,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                     if (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.BUMBLEBEE.getBasePrice());
                         viewCurrency.setText("" + (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice()));
-                        character1.setShip(new Spaceship(ShipType.BUMBLEBEE.getName(), ShipType.BUMBLEBEE.getCargoSize(),
-                                ShipType.BUMBLEBEE.getMaximumHealth(), ShipType.BUMBLEBEE.getMaxWeaponsAmount(),
-                                ShipType.BUMBLEBEE.getFuelEfficiency(), ShipType.BUMBLEBEE.getBasePrice()));
+                        character1.setShip(new Spaceship(ShipType.BUMBLEBEE));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -152,9 +187,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                     if (currentShipWorth - ShipType.BEETLE.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.BEETLE.getBasePrice());
                         viewCurrency.setText("" + (currentShipWorth - ShipType.BEETLE.getBasePrice()));
-                        character1.setShip(new Spaceship(ShipType.BEETLE.getName(), ShipType.BEETLE.getCargoSize(),
-                                ShipType.BEETLE.getMaximumHealth(), ShipType.BEETLE.getMaxWeaponsAmount(),
-                                ShipType.BEETLE.getFuelEfficiency(), ShipType.BEETLE.getBasePrice()));
+                        character1.setShip(new Spaceship(ShipType.BEETLE));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -165,9 +198,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                     if (currentShipWorth - ShipType.HORNET.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.HORNET.getBasePrice());
                         viewCurrency.setText("" + (currentShipWorth - ShipType.HORNET.getBasePrice()));
-                        character1.setShip(new Spaceship(ShipType.HORNET.getName(), ShipType.HORNET.getCargoSize(),
-                                ShipType.HORNET.getMaximumHealth(), ShipType.HORNET.getMaxWeaponsAmount(),
-                                ShipType.HORNET.getFuelEfficiency(), ShipType.HORNET.getBasePrice()));
+                        character1.setShip(new Spaceship(ShipType.HORNET));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -178,9 +209,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                     if (currentShipWorth - ShipType.GRASSHOPPER.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.GRASSHOPPER.getBasePrice());
                         viewCurrency.setText("" + (currentShipWorth - ShipType.HORNET.getBasePrice()));
-                        character1.setShip(new Spaceship(ShipType.GRASSHOPPER.getName(), ShipType.GRASSHOPPER.getCargoSize(),
-                                ShipType.GRASSHOPPER.getMaximumHealth(), ShipType.GRASSHOPPER.getMaxWeaponsAmount(),
-                                ShipType.GRASSHOPPER.getFuelEfficiency(), ShipType.GRASSHOPPER.getBasePrice()));
+                        character1.setShip(new Spaceship(ShipType.GRASSHOPPER));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -191,9 +220,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                     if (currentShipWorth - ShipType.TERMITE.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.TERMITE.getBasePrice());
                         viewCurrency.setText("" + (currentShipWorth - ShipType.TERMITE.getBasePrice()));
-                        character1.setShip(new Spaceship(ShipType.TERMITE.getName(), ShipType.TERMITE.getCargoSize(),
-                                ShipType.TERMITE.getMaximumHealth(), ShipType.TERMITE.getMaxWeaponsAmount(),
-                                ShipType.TERMITE.getFuelEfficiency(), ShipType.TERMITE.getBasePrice()));
+                        character1.setShip(new Spaceship(ShipType.TERMITE));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -204,9 +231,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
                     if (currentShipWorth - ShipType.WASP.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.WASP.getBasePrice());
                         viewCurrency.setText("" + (currentShipWorth - ShipType.WASP.getBasePrice()));
-                        character1.setShip(new Spaceship(ShipType.WASP.getName(), ShipType.WASP.getCargoSize(),
-                                ShipType.WASP.getMaximumHealth(), ShipType.WASP.getMaxWeaponsAmount(),
-                                ShipType.WASP.getFuelEfficiency(), ShipType.WASP.getBasePrice()));
+                        character1.setShip(new Spaceship(ShipType.WASP));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -228,6 +253,7 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
             startActivityForResult(intent, 1);
 
         });
+
 
         //Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
     }
