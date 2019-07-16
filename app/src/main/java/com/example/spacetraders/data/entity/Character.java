@@ -1,4 +1,5 @@
 package com.example.spacetraders.data.entity;
+import java.util.ArrayList;
 
 public class Character {
     private String name;
@@ -7,6 +8,7 @@ public class Character {
     private int currency;
     private Spaceship ship;
     private SolarSystem currentSolarSystem;
+    private ArrayList<Mercenary> mercenaries;
 
     public Character() {
         this("NAME", GameDifficulty.BEGINNER, 1000, ShipType.GNAT);
@@ -27,6 +29,7 @@ public class Character {
         ship = new Spaceship(shipType);
         skills = new int[Skill.values().length];
         skills[Skill.UNALLOCATED.ordinal()] = 16;
+        mercenaries = new ArrayList<>();
     }
 
     public String getName() {
@@ -106,6 +109,26 @@ public class Character {
                 + "Trader level: " + getSkill(Skill.TRADER) + "\n"
                 + "Fighter level: " + getSkill(Skill.FIGHTER) + "\n"
                 + "Engineer level: " + getSkill(Skill.ENGINEER) + "\n";
+    }
+
+    public void addMercenary(Mercenary mercenary) {
+        mercenaries.add(mercenary);
+        int[] mercenarySkills = mercenary.getSkills();
+        for (int i = 0; i < mercenarySkills.length; i++) {
+            if (mercenarySkills[i] > skills[i]) {
+                skills[i] = mercenarySkills[i];
+            }
+        }
+    }
+
+    public ArrayList<Mercenary> getMercenaries() {return mercenaries;}
+
+    public void adjustPoints(int[] newSkillPoints) {
+        for (int i = 0; i < newSkillPoints.length; i++) {
+            if (skills[i] < newSkillPoints[i]) {
+                skills[i] = newSkillPoints[i];
+            }
+        }
     }
 
 }
