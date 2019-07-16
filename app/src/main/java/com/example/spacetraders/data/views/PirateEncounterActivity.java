@@ -31,6 +31,11 @@ public class PirateEncounterActivity extends AppCompatActivity {
         escapeButton.setOnClickListener((view) -> {
             if (escapeChance < 1) {
                 character.getShip().setCurrentResources(new int[Resources.values().length]);
+                try {
+                    character.getShip().setCurrentHealth(character.getShip().getCurrentHealth() - 1);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
             startActivity(new Intent(PirateEncounterActivity.this, MainGameActivity.class));
             finish();
