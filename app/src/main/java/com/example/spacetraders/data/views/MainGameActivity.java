@@ -8,24 +8,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.spacetraders.R;
-import com.example.spacetraders.data.entity.GameDifficulty;
-import com.example.spacetraders.data.entity.Resources;
-import com.example.spacetraders.data.entity.SolarSystem;
-import com.example.spacetraders.data.entity.Universe;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.models.Interactor;
 
 public class MainGameActivity extends AppCompatActivity {
-    private Button solarSystem, mercenary, market, player, travel, cargo, shipyard;
-    TextView systemName;
-    Character character;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_game);
-        systemName = findViewById(R.id.solar_system_name);
-        character = Interactor.getInteractor().getCharacter();
+
+        TextView systemName = findViewById(R.id.solar_system_name);
+        Character character = Interactor.getInteractor().getCharacter();
         systemName.setText(character.getCurrentSolarSystem().getName());
 
         /*
@@ -36,13 +29,12 @@ public class MainGameActivity extends AppCompatActivity {
             getSupportActionBar().setHomeButtonEnabled(false);
         }
 
-        solarSystem = findViewById(R.id.button_solarSystem);
-        mercenary = findViewById(R.id.button_mercenary);
-        market = findViewById(R.id.button_market);
-        player = findViewById(R.id.button_player);
-        travel = findViewById(R.id.button_travel);
-        cargo = findViewById(R.id.button_cargo);
-        shipyard = findViewById(R.id.button_shipyard);
+        Button solarSystem = findViewById(R.id.button_solarSystem);
+        Button mercenary = findViewById(R.id.button_mercenary);
+        Button market = findViewById(R.id.button_market);
+        Button player = findViewById(R.id.button_player);
+        Button travel = findViewById(R.id.button_travel);
+        Button shipyard = findViewById(R.id.button_shipyard);
 
 
         solarSystem.setOnClickListener((View v) -> {

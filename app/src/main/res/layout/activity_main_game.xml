@@ -51,12 +51,6 @@
             android:text="Travel" />
 
         <Button
-            android:id="@+id/button_cargo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cargo" />
-
-        <Button
             android:id="@+id/button_shipyard"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
