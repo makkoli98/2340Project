@@ -28,7 +28,7 @@ public class MercenaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.activity_mercenary);
-        Interactor.getInteractor().getCharacter().setCurrency(10000);
+        Interactor.getInteractor().getCharacter().setCurrency(5000);
 
         playerCurrency = findViewById(R.id.playerCurrency);
         playerCurrency.setText(Integer.toString(Interactor.getInteractor().getCharacter().getCurrency()));
@@ -53,11 +53,13 @@ public class MercenaryActivity extends AppCompatActivity {
                     Interactor.getInteractor().getCharacter().getCurrentSolarSystem().getCurrentPlanet().removeMercenary(mercenary);
                     availableMercenaries.removeView(button);
                     Interactor.getInteractor().getCharacter().addMercenary(mercenary);
-                    TextView textView = new TextView(this);
-                    textView.setText(mercenary.toString());
-                    yourMercenaries.addView(textView);
+                    Button button1 = new Button(this);
+                    button1.setText(mercenary.toString());
+                    yourMercenaries.addView(button1);
                     Interactor.getInteractor().getCharacter().setCurrency(Interactor.getInteractor().getCharacter().getCurrency() - mercenary.getPrice());
                     playerCurrency.setText(Integer.toString(Interactor.getInteractor().getCharacter().getCurrency()));
+                    Interactor.getInteractor().getCharacter().adjustPoints(mercenary.getSkills());
+                    setSkillPoints();
                 } else {
                     Toast.makeText(this, "Insufficient currency for purchase", Toast.LENGTH_LONG).show();
                 }
@@ -67,16 +69,16 @@ public class MercenaryActivity extends AppCompatActivity {
         }
         //Adds the mercenaries in your possession
         for (Mercenary mercenary: characterMercenaries) {
-            TextView textView = new TextView(this);
-            textView.setText(mercenary.toString());
-            yourMercenaries.addView(textView);
+            Button button = new Button(this);
+            button.setText(mercenary.toString());
+            yourMercenaries.addView(button);
         }
     }
 
     private void setSkillPoints() {
         pilotPoints.setText(Integer.toString(Interactor.getInteractor().getCharacter().getSkill(Skill.PILOT)));
         fighterPoints.setText(Integer.toString(Interactor.getInteractor().getCharacter().getSkill(Skill.FIGHTER)));
-        traderPoints.setText(Integer.toString(Interactor.getInteractor().getCharacter().getSkill(Skill.FIGHTER)));
+        traderPoints.setText(Integer.toString(Interactor.getInteractor().getCharacter().getSkill(Skill.TRADER)));
         engineerPoints.setText(Integer.toString(Interactor.getInteractor().getCharacter().getSkill(Skill.ENGINEER)));
     }
 }
