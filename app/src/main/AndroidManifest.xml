@@ -36,9 +36,6 @@
             android:name=".data.views.TravelActivity"
             android:parentActivityName=".data.views.MainGameActivity" />
         <activity
-            android:name=".data.views.TravelDetailActivity"
-            android:parentActivityName=".data.views.TravelActivity" />
-        <activity
             android:name=".data.views.RefuelActivity"
             android:parentActivityName=".data.views.MainGameActivity" />
         <activity
