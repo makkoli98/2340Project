@@ -8,15 +8,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.spacetraders.R;
-import com.example.spacetraders.data.entity.GameDifficulty;
-import com.example.spacetraders.data.entity.Resources;
-import com.example.spacetraders.data.entity.SolarSystem;
-import com.example.spacetraders.data.entity.Universe;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.models.Interactor;
 
 public class MainGameActivity extends AppCompatActivity {
-    private Button solarSystem, planet, market, player, travel, cargo, shipyard;
+    private Button solarSystem, mercenary, market, player, travel, cargo, shipyard;
     TextView systemName;
     Character character;
 
@@ -37,7 +33,7 @@ public class MainGameActivity extends AppCompatActivity {
         }
 
         solarSystem = findViewById(R.id.button_solarSystem);
-        planet = findViewById(R.id.button_planet);
+        mercenary = findViewById(R.id.button_mercenary);
         market = findViewById(R.id.button_market);
         player = findViewById(R.id.button_player);
         travel = findViewById(R.id.button_travel);
@@ -50,6 +46,10 @@ public class MainGameActivity extends AppCompatActivity {
                 startActivity(intent);
         });
 
+        mercenary.setOnClickListener((View v) -> {
+            Intent intent = new Intent(MainGameActivity.this, MercenaryActivity.class);
+            startActivity(intent);
+        });
 
         market.setOnClickListener((View v) -> {
             Intent intent = new Intent(MainGameActivity.this, MarketActivity.class);

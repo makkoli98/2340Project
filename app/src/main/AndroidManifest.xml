@@ -47,6 +47,9 @@
         <activity
             android:name=".data.views.SolarSystemActivity"
             android:parentActivityName=".data.views.MainGameActivity" />
+        <activity
+            android:name=".data.views.MercenaryActivity"
+            android:parentActivityName=".data.views.MainGameActivity" />
     </application>
 
 </manifest>
