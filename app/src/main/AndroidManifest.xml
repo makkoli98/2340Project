@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".data.views.PlayerActivity"></activity>
+        <activity android:name=".data.views.TraderEncounterActivity"></activity>
+        <activity android:name=".data.views.PoliceEncounterActivity" />
+        <activity android:name=".data.views.PIrateEncounterActivity" />
+        <activity android:name=".data.views.PlayerActivity" />
         <activity
             android:name=".data.views.TitleActivity"
             android:label="@string/app_name"
