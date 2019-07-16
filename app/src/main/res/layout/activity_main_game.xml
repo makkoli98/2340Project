@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/background"
         android:layout_width="611dp"
         android:layout_height="731dp"
         android:translationZ="-100.0dp"
@@ -28,7 +28,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/solarSystemImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/solar_system_name"
+        app:srcCompat="@drawable/solarsystem" />
+
+    <ImageView
+        android:id="@+id/bottomtoolbar"
         android:layout_width="1000dp"
         android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,9 +50,9 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@id/imageView4"
-        app:layout_constraintEnd_toEndOf="@id/imageView4"
-        app:layout_constraintStart_toStartOf="@id/imageView4">
+        app:layout_constraintBottom_toBottomOf="@id/bottomtoolbar"
+        app:layout_constraintEnd_toEndOf="@id/bottomtoolbar"
+        app:layout_constraintStart_toStartOf="@id/bottomtoolbar">
 
         <Button
             android:id="@+id/button_market"
