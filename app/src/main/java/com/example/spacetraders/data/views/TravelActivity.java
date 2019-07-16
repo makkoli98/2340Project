@@ -18,6 +18,7 @@ import com.example.spacetraders.data.entity.Universe;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Random;
 
 public class TravelActivity extends AppCompatActivity {
 
@@ -45,6 +46,8 @@ public class TravelActivity extends AppCompatActivity {
 
         travelButtons = new Button[systems.length - 1]; //ignore current System
 
+        Random rand = new Random();
+
         LinearLayout linLayout = (LinearLayout) findViewById(R.id.linLayout);
         for(int i = 0; i < travelButtons.length; i++) {
             try {
@@ -52,6 +55,8 @@ public class TravelActivity extends AppCompatActivity {
                 button.setId(View.generateViewId());
                 button.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
+                //todo: implement random encounter that scales with distance
+                int encounterChance = rand.nextInt(10);
                 //todo: add fuel efficiency formula
                 SolarSystem nextSystem = systems[i+1];
                 int fuelCost = nextSystem.getDistance(currentSystem);
@@ -65,8 +70,20 @@ public class TravelActivity extends AppCompatActivity {
                     character.getShip().setFuel(character.getShip().getFuel() - fuelCost);
                     character.setCurrentSolarSystem(nextSystem);
                     Toast.makeText(getApplicationContext(), "Used " + fuelCost + " fuel", Toast.LENGTH_LONG).show();
-                    startActivity(new Intent(TravelActivity.this, MainGameActivity.class));
-                    finish();
+
+                    if (encounterChance < 2) {
+                        startActivity(new Intent(TravelActivity.this, PirateEncounterActivity.class));
+                        finish();
+                    } else if (encounterChance < 4) {
+                        startActivity(new Intent(TravelActivity.this, PoliceEncounterActivity.class));
+                        finish();
+                    } else if (encounterChance < 6) {
+                        startActivity(new Intent(TravelActivity.this, TraderEncounterActivity.class));
+                        finish();
+                    } else {
+                        startActivity(new Intent(TravelActivity.this, MainGameActivity.class));
+                        finish();
+                    }
                 });
 
                 linLayout.addView(button);
