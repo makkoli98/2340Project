@@ -12,11 +12,6 @@ import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.models.Interactor;
 
 public class MainGameActivity extends AppCompatActivity {
-
-    private Button solarSystem, mercenary, market, player, travel, cargo, shipyard;
-    TextView systemName;
-    Character character;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,14 +35,6 @@ public class MainGameActivity extends AppCompatActivity {
         Button player = findViewById(R.id.button_player);
         Button travel = findViewById(R.id.button_travel);
         Button shipyard = findViewById(R.id.button_shipyard);
-
-        solarSystem = findViewById(R.id.button_solarSystem);
-        mercenary = findViewById(R.id.button_mercenary);
-        market = findViewById(R.id.button_market);
-        player = findViewById(R.id.button_player);
-        travel = findViewById(R.id.button_travel);
-        shipyard = findViewById(R.id.button_shipyard);
-
 
         solarSystem.setOnClickListener((View v) -> {
                 Intent intent = new Intent(MainGameActivity.this, SolarSystemActivity.class);
