@@ -28,7 +28,6 @@ public class MercenaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         setContentView(R.layout.activity_mercenary);
-        Interactor.getInteractor().getCharacter().setCurrency(5000);
 
         playerCurrency = findViewById(R.id.playerCurrency);
         playerCurrency.setText(Integer.toString(Interactor.getInteractor().getCharacter().getCurrency()));
