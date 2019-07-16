@@ -78,6 +78,6 @@ public class MainGameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Interactor.getInteractor().saveGame();
+        Interactor.getInteractor().saveGame(getApplicationContext());
     }
 }

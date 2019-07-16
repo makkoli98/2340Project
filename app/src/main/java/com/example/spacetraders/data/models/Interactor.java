@@ -48,11 +48,12 @@ public class Interactor {
         id = saveDatabase.createNewSave();
         this.character = character;
         this.universe = universe;
-        saveGame();
+        saveGame(applicationContext);
         return id;
     }
 
-    public void saveGame() {
+    public void saveGame(Context applicationContext) {
+        saveDatabase = new SaveDatabase(applicationContext);
         saveDatabase.saveCharacter(character, id);
         saveDatabase.saveUniverse(universe, id);
     }
