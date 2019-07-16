@@ -48,7 +48,7 @@ public class PreviewActivity extends AppCompatActivity {
 
         getWindow().setLayout((int)(width *.8), (int)(height*.6));
 
-        String shipType = getIntent().getStringExtra(ShipYardActivity.shipType);
+        String shipType = getIntent().getStringExtra(UpgradeShipActivity.shipType);
 
         if (shipType.equals("FLEA 500c")) {
             shipName.setText(ShipType.FLEA.getName());

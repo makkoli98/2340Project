@@ -8,10 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.spacetraders.R;
-import com.example.spacetraders.data.entity.GameDifficulty;
-import com.example.spacetraders.data.entity.Resources;
-import com.example.spacetraders.data.entity.SolarSystem;
-import com.example.spacetraders.data.entity.Universe;
 import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.models.Interactor;
 
@@ -24,6 +20,7 @@ public class MainGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_game);
+
         systemName = findViewById(R.id.solar_system_name);
         character = Interactor.getInteractor().getCharacter();
         systemName.setText(character.getCurrentSolarSystem().getName());
@@ -68,7 +65,7 @@ public class MainGameActivity extends AppCompatActivity {
         });
 
         shipyard.setOnClickListener((View v) -> {
-            Intent intent = new Intent(MainGameActivity.this, RefuelActivity.class);
+            Intent intent = new Intent(MainGameActivity.this, ShipYardActivity.class);
             startActivity(intent);
         });
     }
