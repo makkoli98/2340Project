@@ -29,7 +29,8 @@ public class MainGameActivity extends AppCompatActivity {
             getSupportActionBar().setHomeButtonEnabled(false);
         }
 
-        Button solarSystem = findViewById(R.id.button_solarSystem);
+        //Button solarSystem = findViewById(R.id.button_solarSystem);
+        TextView solarSystem = findViewById(R.id.solar_system_name);
         Button mercenary = findViewById(R.id.button_mercenary);
         Button market = findViewById(R.id.button_market);
         Button player = findViewById(R.id.button_player);
