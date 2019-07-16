@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".data.views.TraderEncounterActivity"></activity>
         <activity android:name=".data.views.PoliceEncounterActivity" />
-        <activity android:name=".data.views.PIrateEncounterActivity" />
+        <activity android:name=".data.views.PirateEncounterActivity" />
         <activity android:name=".data.views.PlayerActivity" />
         <activity
             android:name=".data.views.TitleActivity"
