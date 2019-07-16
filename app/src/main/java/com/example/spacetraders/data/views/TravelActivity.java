@@ -71,10 +71,10 @@ public class TravelActivity extends AppCompatActivity {
                     character.setCurrentSolarSystem(nextSystem);
                     Toast.makeText(getApplicationContext(), "Used " + fuelCost + " fuel", Toast.LENGTH_LONG).show();
 
-                    if (encounterChance < 2) {
+                    if (encounterChance < 0) {
                         startActivity(new Intent(TravelActivity.this, PirateEncounterActivity.class));
                         finish();
-                    } else if (encounterChance < 4) {
+                    } else if (encounterChance < 10) {
                         startActivity(new Intent(TravelActivity.this, PoliceEncounterActivity.class));
                         finish();
                     } else if (encounterChance < 6) {

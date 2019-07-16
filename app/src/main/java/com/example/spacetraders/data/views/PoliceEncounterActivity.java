@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.spacetraders.R;
+import com.example.spacetraders.data.entity.Resources;
+import com.example.spacetraders.data.models.Interactor;
+import com.example.spacetraders.data.entity.Character;
 
 public class PoliceEncounterActivity extends AppCompatActivity {
 
@@ -16,8 +19,14 @@ public class PoliceEncounterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_police_encounter);
 
-        escapeButton = findViewById(R.id.escape_police);
+        Character character = Interactor.getInteractor().getCharacter();
+
+        escapeButton = findViewById(R.id.inspection_button);
         escapeButton.setOnClickListener((view) -> {
+            if (character.getShip().getCurrentResources()[Resources.NARCOTICS.ordinal()] > 0
+                || character.getShip().getCurrentResources()[Resources.FIREARMS.ordinal()] > 0) {
+                character.setCurrency((int) (character.getCurrency() * 0.9));
+            }
             startActivity(new Intent(PoliceEncounterActivity.this, MainGameActivity.class));
             finish();
         });
