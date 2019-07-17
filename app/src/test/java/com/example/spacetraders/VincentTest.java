@@ -29,6 +29,30 @@ public class VincentTest {
     }
 
     @Test
+    public void testSetResource2() {
+        int[] resourceAmounts = new int[Resources.values().length];
+        for (int i : resourceAmounts) {
+            i = 10;
+        }
+        ship.setResource(resourceAmounts, true);
+
+        resourceAmounts = new int[Resources.values().length];
+        resourceAmounts[Resources.FOOD] = 5;
+        resourceAmounts[Resources.WATER] = 7;
+        ship.setResource(resourceAmounts, false);
+
+        for (int i = 0; i < resourceAmounts.length; i++) {
+            if (i == Resources.FOOD.ordinal()) {
+                assertEquals(5, ship.getCurrentResources()[i]);
+            } else if (i == Resources.WATER.ordinal()) {
+                assertEquals(7, ship.getCurrentResources()[i]);
+            } else {
+                assertEquals(10, ship.getCurrentResources()[i]);
+            }
+        }
+    }
+
+    @Test
     public void testSetFuel1() {
         assertTrue(ship.setFuel(17));
         assertEquals(17, ship.getFuel());
@@ -37,6 +61,12 @@ public class VincentTest {
     @Test
     public void testSetFuel2() {
         assertFalse(ship.setFuel(-10));
+        assertEquals(0, ship.getFuel());
+    }
+
+    @Test
+    public void testSetFuel3() {
+        assertFalse(ship.setFuel(101));
         assertEquals(0, ship.getFuel());
     }
 }
