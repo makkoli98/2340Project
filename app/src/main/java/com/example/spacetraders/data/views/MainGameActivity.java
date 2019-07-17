@@ -65,7 +65,7 @@ public class MainGameActivity extends AppCompatActivity {
         });
 
         shipyard.setOnClickListener((View v) -> {
-            Intent intent = new Intent(MainGameActivity.this, RefuelActivity.class);
+            Intent intent = new Intent(MainGameActivity.this, ShipYardActivity.class);
             startActivity(intent);
         });
 

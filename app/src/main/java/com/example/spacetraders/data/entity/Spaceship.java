@@ -2,19 +2,28 @@ package com.example.spacetraders.data.entity;
 import java.util.HashMap;
 
 
+
+
 public class Spaceship {
     private int[] currentResources;
     private int currentHealth;
     private ShipType type;
     private int fuel;
     public static int maxFuel;
+    private int currWeaponsCount;
+    private Weapons list;
+
+
+
 
     public Spaceship(ShipType type) {
         this.type = type;
         currentResources = new int[Resources.values().length];
         currentHealth = type.getMaximumHealth();
         maxFuel = 100;
+        currWeaponsCount = 0;
     }
+
 
     public int[] getCurrentResources() {
         return currentResources;
@@ -117,5 +126,13 @@ public class Spaceship {
 
     public int getBasePrice() {
         return type.getBasePrice();
+    }
+
+    public int getCurrWeaponsCount() {
+        return currWeaponsCount;
+    }
+
+    public void setCurrWeaponsCount(int count) {
+        currWeaponsCount = 0;
     }
 }

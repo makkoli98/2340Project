@@ -1,12 +1,10 @@
 package com.example.spacetraders.data.views;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,13 +12,20 @@ import com.example.spacetraders.R;
 import com.example.spacetraders.data.models.Interactor;
 import com.example.spacetraders.data.entity.Character;
 
-public class ShipYardActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private Character character1;
-    private TextView viewCurrency;
-    private Button previewButton;
-    private Button purchaseButton;
-    private Spinner shipSpinner;
+public class ShipYardActivity extends AppCompatActivity {
+
+    private Character character;
+    private TextView shipType;
+    private TextView cargoSize;
+    private TextView health;
+    private TextView weaponsSize;
+    private TextView fuelEfficiency;
+    private TextView basePrice;
+    private TextView fuelLeft;
+    private TextView currency;
+    private Button refuelButton;
+    private Button upgradeButton;
 
 
 
@@ -29,32 +34,94 @@ public class ShipYardActivity extends AppCompatActivity implements AdapterView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ship_yard);
 
-        character1 = Interactor.getInteractor().getCharacter();
-        viewCurrency = findViewById(R.id.playerCurrency);
-        previewButton = findViewById(R.id.previewButton);
-        purchaseButton = findViewById(R.id.purchaseButtn);
-        shipSpinner = findViewById(R.id.shipSpinner);
+        character = Interactor.getInteractor().getCharacter();
+
+        upgradeButton = findViewById(R.id.buttonUpgrade);
+        refuelButton = findViewById(R.id.buttonRefuel);
+
+        shipType = findViewById(R.id.viewShipType);
+        shipType.setText(character.getShip().getName());
+
+        cargoSize = findViewById(R.id.viewCargoSize);
+        cargoSize.setText("" + character.getShip().getCargoSize());
+
+        health = findViewById(R.id.viewHealth);
+        health.setText("" + character.getShip().getCurrentHealth());
+
+        weaponsSize = findViewById(R.id.viewWeaponsCap);
+        weaponsSize.setText("" + character.getShip().getMaxWeaponsAmount());
+
+        fuelEfficiency = findViewById(R.id.viewFuelEfficiency);
+        fuelEfficiency.setText("" + character.getShip().getFuelEfficiency());
+
+        basePrice = findViewById(R.id.viewBasePrice);
+        basePrice.setText("" + character.getShip().getBasePrice());
+
+        fuelLeft = findViewById(R.id.viewCurrFuel);
+        fuelLeft.setText("" + character.getShip().getFuel());
+
+        currency = findViewById(R.id.displayCredits);
+        currency.setText("Credits: " + character.getCurrency());
 
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.ship_names, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        shipSpinner.setAdapter(adapter);
-        shipSpinner.setOnItemSelectedListener(this);
 
+        refuelButton.setText("1 Fuel = 5c");
+        refuelButton.setOnClickListener((View v) -> {
+           if(character.getShip().getFuel() == character.getShip().maxFuel) {
+               Toast.makeText(getApplicationContext(), "Tank Full", Toast.LENGTH_LONG).show();
+               return;
+           } else if (character.getCurrency() < 5) {
+               Toast.makeText(getApplicationContext(), "Insufficient", Toast.LENGTH_LONG).show();
+               return;
+           } else {
+               character.setCurrency(character.getCurrency() - 5);
+               currency.setText("" + character.getCurrency() + "c");
+               character.getShip().setFuel(character.getShip().getFuel() + 1);
+               fuelLeft.setText("" + character.getShip().getFuel());
+           }
+        });
 
-        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+        upgradeButton.setOnClickListener((View v) -> {
+            Intent intent = new Intent(ShipYardActivity.this, UpgradeShipActivity.class);
+            startActivity(intent);
+        });
 
 
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-    }
+    protected void onPause() {
+        super.onPause();
+        //Interactor.getInteractor().setCharacter(character);
+        //update all of the values
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+        character = Interactor.getInteractor().getCharacter();
+
+        upgradeButton = findViewById(R.id.buttonUpgrade);
+
+        shipType = findViewById(R.id.viewShipType);
+        shipType.setText(character.getShip().getName());
+
+        cargoSize = findViewById(R.id.viewCargoSize);
+        cargoSize.setText("" + character.getShip().getCargoSize());
+
+        health = findViewById(R.id.viewHealth);
+        health.setText("" + character.getShip().getCurrentHealth());
+
+        weaponsSize = findViewById(R.id.viewWeaponsCap);
+        weaponsSize.setText("" + character.getShip().getMaxWeaponsAmount());
+
+        fuelEfficiency = findViewById(R.id.viewFuelEfficiency);
+        fuelEfficiency.setText("" + character.getShip().getFuelEfficiency());
+
+        basePrice = findViewById(R.id.viewBasePrice);
+        basePrice.setText("" + character.getShip().getBasePrice());
+
+        fuelLeft = findViewById(R.id.viewCurrFuel);
+        fuelLeft.setText("" + character.getShip().getFuel());
+
+        currency = findViewById(R.id.displayCredits);
+        currency.setText("Credits: " + character.getCurrency());
 
     }
 }

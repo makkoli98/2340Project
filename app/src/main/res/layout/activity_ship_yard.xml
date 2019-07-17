@@ -2,191 +2,203 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/weaponsTitle"
+    android:id="@+id/viewShipPrice"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".data.views.ShipYardActivity">
 
     <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="126dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="67dp"
-        android:text="The Ship Yard"
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="158dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="72dp"
+        android:text="Your Ship"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/shipSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/displayCredits"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/playerCurrency"
-        android:layout_width="87dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="28dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Spinner
-        android:id="@+id/shipSpinner"
-        android:layout_width="269dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="136dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/previewButton"
-        android:layout_width="108dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="220dp"
-        android:text="Preview "
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="93dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="92dp"
-        android:text="Ship Type"
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/purchaseButtn"
-        android:layout_width="106dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginEnd="96dp"
-        android:text="Purchase"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="101dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="168dp"
-        android:layout_marginTop="260dp"
-        android:text="Weapons "
-        android:textSize="17sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/sLaser"
-        android:layout_width="116dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="300dp"
-        android:text="Sonic Ray: 25c"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/pLaser"
-        android:layout_width="128dp"
-        android:layout_height="73dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginEnd="148dp"
-        android:text="Plasma Ray: 50c"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/mLaser"
-        android:layout_width="139dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="300dp"
-        android:text="Meson Phaser: 75c"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/cargoSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="320dp"
-        android:text="5 Health Damage"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="116dp"
+        android:text="Cargo Size: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/currentHealth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Current Health: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cargoSize" />
+
+    <TextView
+        android:id="@+id/weaponsAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="200dp"
+        android:text="Weapons Capacity: "
+        app:layout_constraintEnd_toEndOf="@+id/currentHealth"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/fuelEfficiency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Fuel Efficiency: "
+        app:layout_constraintStart_toStartOf="@+id/weaponsAmount"
+        app:layout_constraintTop_toBottomOf="@+id/weaponsAmount" />
+
+    <TextView
+        android:id="@+id/basePrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Base Price: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fuelEfficiency" />
+
+    <TextView
+        android:id="@+id/fuelLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Fuel Left: "
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/basePrice" />
+
+    <Button
+        android:id="@+id/buttonRefuel"
+        android:layout_width="131dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="408dp"
+        android:text="Refuel for 30c"
+        app:layout_constraintStart_toEndOf="@+id/fuelLeft"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonUpgrade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="132dp"
+        android:text="Upgrade Ship"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonRefuel" />
+
+    <TextView
+        android:id="@+id/shipType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="13dp"
+        android:text="Ship Type: "
+        app:layout_constraintBottom_toTopOf="@+id/cargoSize"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/displayCredits"
+        android:layout_width="53dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/viewShipType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="84dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/viewCargoSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="116dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/viewHealth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="156dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/viewWeaponsCap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="200dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/viewFuelEfficiency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
-        android:layout_marginBottom="320dp"
-        android:text="15 Health Damage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="244dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/viewBasePrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="320dp"
-        android:text="25 Health Damage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="288dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/viewCurrFuel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
-        android:layout_marginBottom="268dp"
-        android:text="Shields "
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginStart="112dp"
+        android:layout_marginTop="328dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/silverShield"
-        android:layout_width="109dp"
-        android:layout_height="54dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="204dp"
-        android:text="Silver Dynasty"
+        android:id="@+id/button"
+        android:layout_width="127dp"
+        android:layout_height="68dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginBottom="32dp"
+        android:text="Restore Health 25c"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/goldShield"
-        android:layout_width="115dp"
-        android:layout_height="54dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="204dp"
-        android:text="Golden Dynasty"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="57dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="108dp"
-        android:layout_marginBottom="176dp"
-        android:text="100c"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="48dp"
-        android:layout_height="32dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="168dp"
-        android:text="200c"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -27,8 +27,14 @@
             android:name=".data.views.NewCharacterActivity"
             android:parentActivityName=".data.views.TitleActivity" />
         <activity
+
+            android:name=".data.views.PreviewActivity"
+            android:parentActivityName=".data.views.UpgradeShipActivity"
+            android:theme="@style/AppTheme.CustomTheme"/>
+        <activity
             android:name=".data.views.OldCharacterActivity"
             android:parentActivityName=".data.views.TitleActivity" />
+
         <activity
             android:name=".data.views.MainGameActivity"
             android:parentActivityName=".data.views.TitleActivity" />
@@ -38,12 +44,13 @@
         <activity
             android:name=".data.views.TravelActivity"
             android:parentActivityName=".data.views.MainGameActivity" />
-        <activity
-            android:name=".data.views.RefuelActivity"
-            android:parentActivityName=".data.views.MainGameActivity" />
+
         <activity
             android:name=".data.views.ShipYardActivity"
-            android:parentActivityName=".data.views.RefuelActivity" />
+            android:parentActivityName=".data.views.MainGameActivity" />
+        <activity
+            android:name=".data.views.UpgradeShipActivity"
+            android:parentActivityName=".data.views.ShipYardActivity" />
         <activity
             android:name=".data.views.SolarSystemActivity"
             android:parentActivityName=".data.views.MainGameActivity" />
