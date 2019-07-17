@@ -1,67 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="611dp"
+        android:layout_height="731dp"
+        android:translationZ="-100.0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background" />
+
+    <TextView
+        android:id="@+id/solar_system_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/nasalization"
+        android:text="System Name"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="50sp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/solarSystemImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/solar_system_name"
+        app:srcCompat="@drawable/solarsystem" />
+
+    <ImageView
+        android:id="@+id/bottomtoolbar"
+        android:layout_width="1000dp"
+        android:layout_height="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/main_game_gradient" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/solar_system_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nasalization"
-            android:text="System Name"
-            android:textAlignment="center"
-            android:textSize="30sp" />
-
-        <Button
-            android:id="@+id/button_solarSystem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Solar System" />
-
-        <Button
-            android:id="@+id/button_planet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Planet" />
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/bottomtoolbar"
+        app:layout_constraintEnd_toEndOf="@id/bottomtoolbar"
+        app:layout_constraintStart_toStartOf="@id/bottomtoolbar">
 
         <Button
             android:id="@+id/button_market"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Market" />
+            android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:drawableTop="@drawable/market_icon"
+            android:gravity="center" />
 
         <Button
             android:id="@+id/button_player"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Player" />
+            android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:drawableTop="@drawable/player_icon"
+            android:gravity="center" />
 
         <Button
             android:id="@+id/button_travel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Travel" />
+            android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:drawableTop="@drawable/travel_icon"
+            android:gravity="center" />
 
         <Button
-            android:id="@+id/button_cargo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cargo" />
+            android:id="@+id/button_mercenary"
+            android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:drawableTop="@drawable/mercenary_icon"
+            android:gravity="center" />
 
         <Button
             android:id="@+id/button_shipyard"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Shipyard" />
-
+            android:layout_width="80dp"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:drawableTop="@drawable/shipyard_icon"
+            android:gravity="center" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

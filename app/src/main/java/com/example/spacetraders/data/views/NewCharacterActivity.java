@@ -92,11 +92,18 @@ public class NewCharacterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_LONG).show();
                     return;
                 }
+
+                String name = characterName.getEditText().getText().toString();
+                if (name.equals("")) {
+                    Toast.makeText(getApplicationContext(), "Name cannot be empty", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
                 Universe universe = new Universe(character.getDifficulty());
                 viewModel.createUniverse(universe);
                 viewModel.createCharacter(character);
                 viewModel.setDifficulty((GameDifficulty) difficulty.getSelectedItem());
-                viewModel.setName(characterName.getEditText().getText().toString());
+                viewModel.setName(name);
 
                 //Log Character and Universe Information
                 System.out.println(character);

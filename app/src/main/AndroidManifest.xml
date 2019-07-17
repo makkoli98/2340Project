@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".data.views.PlayerActivity"></activity>
+        <activity android:name=".data.views.TraderEncounterActivity"></activity>
+        <activity android:name=".data.views.PoliceEncounterActivity" />
+        <activity android:name=".data.views.PirateEncounterActivity" />
+        <activity android:name=".data.views.PlayerActivity" />
         <activity
             android:name=".data.views.TitleActivity"
             android:label="@string/app_name"
@@ -41,9 +44,7 @@
         <activity
             android:name=".data.views.TravelActivity"
             android:parentActivityName=".data.views.MainGameActivity" />
-        <activity
-            android:name=".data.views.TravelDetailActivity"
-            android:parentActivityName=".data.views.TravelActivity" />
+
         <activity
             android:name=".data.views.ShipYardActivity"
             android:parentActivityName=".data.views.MainGameActivity" />
@@ -52,6 +53,9 @@
             android:parentActivityName=".data.views.ShipYardActivity" />
         <activity
             android:name=".data.views.SolarSystemActivity"
+            android:parentActivityName=".data.views.MainGameActivity" />
+        <activity
+            android:name=".data.views.MercenaryActivity"
             android:parentActivityName=".data.views.MainGameActivity" />
     </application>
 

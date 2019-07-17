@@ -12,17 +12,13 @@ import com.example.spacetraders.data.entity.Character;
 import com.example.spacetraders.data.models.Interactor;
 
 public class MainGameActivity extends AppCompatActivity {
-    private Button solarSystem, planet, market, player, travel, cargo, shipyard;
-    TextView systemName;
-    Character character;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_game);
 
-        systemName = findViewById(R.id.solar_system_name);
-        character = Interactor.getInteractor().getCharacter();
+        TextView systemName = findViewById(R.id.solar_system_name);
+        Character character = Interactor.getInteractor().getCharacter();
         systemName.setText(character.getCurrentSolarSystem().getName());
 
         /*
@@ -33,18 +29,22 @@ public class MainGameActivity extends AppCompatActivity {
             getSupportActionBar().setHomeButtonEnabled(false);
         }
 
-        solarSystem = findViewById(R.id.button_solarSystem);
-        planet = findViewById(R.id.button_planet);
-        market = findViewById(R.id.button_market);
-        player = findViewById(R.id.button_player);
-        travel = findViewById(R.id.button_travel);
-        cargo = findViewById(R.id.button_cargo);
-        shipyard = findViewById(R.id.button_shipyard);
-
+        //Button solarSystem = findViewById(R.id.button_solarSystem);
+        TextView solarSystem = findViewById(R.id.solar_system_name);
+        Button mercenary = findViewById(R.id.button_mercenary);
+        Button market = findViewById(R.id.button_market);
+        Button player = findViewById(R.id.button_player);
+        Button travel = findViewById(R.id.button_travel);
+        Button shipyard = findViewById(R.id.button_shipyard);
 
         solarSystem.setOnClickListener((View v) -> {
                 Intent intent = new Intent(MainGameActivity.this, SolarSystemActivity.class);
                 startActivity(intent);
+        });
+
+        mercenary.setOnClickListener((View v) -> {
+            Intent intent = new Intent(MainGameActivity.this, MercenaryActivity.class);
+            startActivity(intent);
         });
 
 
@@ -68,11 +68,16 @@ public class MainGameActivity extends AppCompatActivity {
             Intent intent = new Intent(MainGameActivity.this, ShipYardActivity.class);
             startActivity(intent);
         });
+
+        mercenary.setOnClickListener((View v) -> {
+            Intent intent = new Intent(MainGameActivity.this, MercenaryActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Interactor.getInteractor().saveGame();
+        Interactor.getInteractor().saveGame(getApplicationContext());
     }
 }

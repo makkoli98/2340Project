@@ -1,5 +1,10 @@
 package com.example.spacetraders.data.entity;
 
+import java.util.ArrayList;
+import java.util.Random;
+
+import com.example.spacetraders.data.entity.Mercenary;
+
 /**
  * Planet class to hold all of the info pertaining to each individual planets
  */
@@ -8,6 +13,7 @@ public class Planet {
     private String name;
     private boolean isHome;
     private Market market;
+    private ArrayList<Mercenary> availableMercenaries = new ArrayList<>();
 
     public String getName() { return name; }
 
@@ -35,5 +41,19 @@ public class Planet {
     public Planet(String name) {
         this.name = name;
         isHome = false;
+        generateMercenaries();
+    }
+
+    private void generateMercenaries() {
+        Random rand = new Random();
+        for (int i = 0; i < rand.nextInt(5) + 1; i++) {
+            availableMercenaries.add(new Mercenary());
+        }
+    }
+
+    public ArrayList<Mercenary> getAvailableMercenaries() {return availableMercenaries;}
+
+    public void removeMercenary(Mercenary mercenary) {
+        availableMercenaries.remove(mercenary);
     }
 }
