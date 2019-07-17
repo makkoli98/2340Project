@@ -38,7 +38,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
         setContentView(R.layout.activity_upgrade_ship);
 
         character1 = Interactor.getInteractor().getCharacter();
-        viewCurrency = findViewById(R.id.playerCurrency);
+        viewCurrency = findViewById(R.id.viewPlayerCurrency);
 
         purchaseButton = findViewById(R.id.purchaseButtn);
         shipSpinner = findViewById(R.id.shipSpinner);
@@ -46,6 +46,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
         purchaseSonicLaser = findViewById(R.id.sLaser);
         purchasePlasmaLaser = findViewById(R.id.pLaser);
         purchaseMesonPhaser = findViewById(R.id.mLaser);
+        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
 
 
 
@@ -65,7 +66,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 Toast.makeText(getApplicationContext(), new String("Insufficient"), Toast.LENGTH_SHORT).show();
             } else if (character1.getCurrency() >= Weapons.SONICRAY.getWeaponCost()){
                 character1.setCurrency(character1.getCurrency() - Weapons.SONICRAY.getWeaponCost());
-                viewCurrency.setText("" + character1.getCurrency());
+                viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                 character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
             }
         });
@@ -77,7 +78,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 Toast.makeText(getApplicationContext(), new String("Insufficient"), Toast.LENGTH_SHORT).show();
             } else if (character1.getCurrency() >= Weapons.PLASMARAY.getWeaponCost()){
                 character1.setCurrency(character1.getCurrency() - Weapons.PLASMARAY.getWeaponCost());
-                viewCurrency.setText("" + character1.getCurrency());
+                viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                 character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
             }
         });
@@ -89,7 +90,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 Toast.makeText(getApplicationContext(), new String("Insufficient"), Toast.LENGTH_SHORT).show();
             } else if (character1.getCurrency() >= Weapons.MESONPHASER.getWeaponCost()){
                 character1.setCurrency(character1.getCurrency() - Weapons.MESONPHASER.getWeaponCost());
-                viewCurrency.setText("" + character1.getCurrency());
+                viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                 character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
             }
         });
@@ -104,9 +105,9 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
         shipType = parent.getItemAtPosition(position).toString();
         previewButton = findViewById(R.id.previewButton);
 
-        viewCurrency = findViewById(R.id.playerCurrency);
+        viewCurrency = findViewById(R.id.viewPlayerCurrency);
 
-        viewCurrency.setText("" );
+//        viewCurrency.setText("" );
 
         purchaseButton.setOnClickListener((View v) -> {
 
@@ -131,7 +132,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.FLEA.getBasePrice()) {
                     if (currentShipWorth - ShipType.FLEA.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.FLEA.getBasePrice());
-                        viewCurrency.setText("" + (currentShipWorth - ShipType.FLEA.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.FLEA));
                     }
                 }else {
@@ -142,7 +143,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.GNAT.getBasePrice()) {
                     if (currentShipWorth - ShipType.GNAT.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.GNAT.getBasePrice());
-                        viewCurrency.setText("" + (currentShipWorth - ShipType.GNAT.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.GNAT));
                     }
                 }else {
@@ -153,7 +154,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.FIREFLY.getBasePrice()) {
                     if (currentShipWorth - ShipType.FIREFLY.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.FIREFLY.getBasePrice());
-                        viewCurrency.setText("" + (currentShipWorth - ShipType.FIREFLY.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.FIREFLY));
                     }
                 }else {
@@ -164,7 +165,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.MOSQUITO.getBasePrice()) {
                     if (currentShipWorth - ShipType.MOSQUITO.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.MOSQUITO.getBasePrice());
-                        viewCurrency.setText("" + (currentShipWorth - ShipType.MOSQUITO.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.MOSQUITO));
                     }
                 }else {
@@ -175,7 +176,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.BUMBLEBEE.getBasePrice()) {
                     if (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.BUMBLEBEE.getBasePrice());
-                        viewCurrency.setText("" + (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.BUMBLEBEE));
                     }
                 }else {
@@ -186,7 +187,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.BEETLE.getBasePrice()) {
                     if (currentShipWorth - ShipType.BEETLE.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.BEETLE.getBasePrice());
-                        viewCurrency.setText("" + (currentShipWorth - ShipType.BEETLE.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.BEETLE));
                     }
                 }else {
@@ -197,7 +198,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.HORNET.getBasePrice()) {
                     if (currentShipWorth - ShipType.HORNET.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.HORNET.getBasePrice());
-                        viewCurrency.setText("" + (currentShipWorth - ShipType.HORNET.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.HORNET));
                     }
                 }else {
@@ -208,7 +209,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.GRASSHOPPER.getBasePrice()) {
                     if (currentShipWorth - ShipType.GRASSHOPPER.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.GRASSHOPPER.getBasePrice());
-                        viewCurrency.setText("" + (currentShipWorth - ShipType.HORNET.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.GRASSHOPPER));
                     }
                 }else {
@@ -219,7 +220,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.TERMITE.getBasePrice()) {
                     if (currentShipWorth - ShipType.TERMITE.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.TERMITE.getBasePrice());
-                        viewCurrency.setText("" + (currentShipWorth - ShipType.TERMITE.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.TERMITE));
                     }
                 }else {
@@ -230,7 +231,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.WASP.getBasePrice()) {
                     if (currentShipWorth - ShipType.WASP.getBasePrice() > 0) {
                         character1.setCurrency(currentShipWorth - ShipType.WASP.getBasePrice());
-                        viewCurrency.setText("" + (currentShipWorth - ShipType.WASP.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.WASP));
                     }
                 }else {

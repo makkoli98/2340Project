@@ -37,40 +37,91 @@ public class ShipYardActivity extends AppCompatActivity {
         character = Interactor.getInteractor().getCharacter();
 
         upgradeButton = findViewById(R.id.buttonUpgrade);
+        refuelButton = findViewById(R.id.buttonRefuel);
+
+        shipType = findViewById(R.id.viewShipType);
+        shipType.setText(character.getShip().getName());
+
+        cargoSize = findViewById(R.id.viewCargoSize);
+        cargoSize.setText("" + character.getShip().getCargoSize());
+
+        health = findViewById(R.id.viewHealth);
+        health.setText("" + character.getShip().getCurrentHealth());
+
+        weaponsSize = findViewById(R.id.viewWeaponsCap);
+        weaponsSize.setText("" + character.getShip().getMaxWeaponsAmount());
+
+        fuelEfficiency = findViewById(R.id.viewFuelEfficiency);
+        fuelEfficiency.setText("" + character.getShip().getFuelEfficiency());
+
+        basePrice = findViewById(R.id.viewBasePrice);
+        basePrice.setText("" + character.getShip().getBasePrice());
+
+        fuelLeft = findViewById(R.id.viewCurrFuel);
+        fuelLeft.setText("" + character.getShip().getFuel());
+
+        currency = findViewById(R.id.displayCredits);
+        currency.setText("Credits: " + character.getCurrency());
 
 
-//        shipType.setText(character.getShip().getName());
-//        cargoSize.setText(""+ character.getShip().getCargoSize());
-//        health.setText("" + character.getShip().getCurrentHealth());
-//        weaponsSize.setText("" + character.getShip().getMaxWeaponsAmount());
-//        fuelEfficiency.setText(""+ character.getShip().getFuelEfficiency());
-//        basePrice.setText(""+ character.getShip().getBasePrice());
-//        fuelLeft.setText(""+ character.getShip().getFuel());
-//        currency.setText("" + character.getCurrency() + "c");
-//
-//        //int amountForRefuel = character.getShip().getFuelEfficiency() - character.getShip().getFuel();
-//        //1 fuel =  1 credit
-//        refuelButton.setText("1 Fuel = 5c");
-//        refuelButton.setOnClickListener((View v) -> {
-//           if(character.getShip().getFuel() == character.getShip().maxFuel) {
-//               Toast.makeText(getApplicationContext(), "Tank Full", Toast.LENGTH_LONG).show();
-//               return;
-//           } else if (character.getCurrency() < 5) {
-//               Toast.makeText(getApplicationContext(), "Insufficient", Toast.LENGTH_LONG).show();
-//               return;
-//           } else {
-//               character.setCurrency(character.getCurrency() - 5);
-//               currency.setText("" + character.getCurrency() + "c");
-//               character.getShip().setFuel(character.getShip().getFuel() + 1);
-//               fuelLeft.setText("" + character.getShip().getFuel());
-//           }
-//        });
-//
+
+        refuelButton.setText("1 Fuel = 5c");
+        refuelButton.setOnClickListener((View v) -> {
+           if(character.getShip().getFuel() == character.getShip().maxFuel) {
+               Toast.makeText(getApplicationContext(), "Tank Full", Toast.LENGTH_LONG).show();
+               return;
+           } else if (character.getCurrency() < 5) {
+               Toast.makeText(getApplicationContext(), "Insufficient", Toast.LENGTH_LONG).show();
+               return;
+           } else {
+               character.setCurrency(character.getCurrency() - 5);
+               currency.setText("" + character.getCurrency() + "c");
+               character.getShip().setFuel(character.getShip().getFuel() + 1);
+               fuelLeft.setText("" + character.getShip().getFuel());
+           }
+        });
+
         upgradeButton.setOnClickListener((View v) -> {
             Intent intent = new Intent(ShipYardActivity.this, UpgradeShipActivity.class);
             startActivity(intent);
         });
 
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //Interactor.getInteractor().setCharacter(character);
+        //update all of the values
+
+        character = Interactor.getInteractor().getCharacter();
+
+        upgradeButton = findViewById(R.id.buttonUpgrade);
+
+        shipType = findViewById(R.id.viewShipType);
+        shipType.setText(character.getShip().getName());
+
+        cargoSize = findViewById(R.id.viewCargoSize);
+        cargoSize.setText("" + character.getShip().getCargoSize());
+
+        health = findViewById(R.id.viewHealth);
+        health.setText("" + character.getShip().getCurrentHealth());
+
+        weaponsSize = findViewById(R.id.viewWeaponsCap);
+        weaponsSize.setText("" + character.getShip().getMaxWeaponsAmount());
+
+        fuelEfficiency = findViewById(R.id.viewFuelEfficiency);
+        fuelEfficiency.setText("" + character.getShip().getFuelEfficiency());
+
+        basePrice = findViewById(R.id.viewBasePrice);
+        basePrice.setText("" + character.getShip().getBasePrice());
+
+        fuelLeft = findViewById(R.id.viewCurrFuel);
+        fuelLeft.setText("" + character.getShip().getFuel());
+
+        currency = findViewById(R.id.displayCredits);
+        currency.setText("Credits: " + character.getCurrency());
 
     }
 }
