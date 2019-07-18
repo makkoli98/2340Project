@@ -31,8 +31,8 @@ public class VincentTest {
     @Test
     public void testSetResource2() {
         int[] resourceAmounts = new int[Resources.values().length];
-        for (int i : resourceAmounts) {
-            i = 10;
+        for (int i = 0; i < resourceAmounts.length; i++) {
+            resourceAmounts[i] = 10;
         }
         ship.setResource(resourceAmounts, true);
 
@@ -45,7 +45,7 @@ public class VincentTest {
             if (i == Resources.FOOD.ordinal()) {
                 assertEquals(5, ship.getCurrentResources()[i]);
             } else if (i == Resources.WATER.ordinal()) {
-                assertEquals(7, ship.getCurrentResources()[i]);
+                assertEquals(3, ship.getCurrentResources()[i]);
             } else {
                 assertEquals(10, ship.getCurrentResources()[i]);
             }
