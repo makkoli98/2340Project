@@ -5,7 +5,10 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.example.spacetraders.data.entity.GameDifficulty;
+import com.example.spacetraders.data.entity.PoliticalSystem;
+import com.example.spacetraders.data.entity.ResourceLevel;
 import com.example.spacetraders.data.entity.SolarSystem;
+import com.example.spacetraders.data.entity.TechLevel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,16 +31,50 @@ public class SandeepTest {
             }
             assertEquals(solarSystemNames.size(), 10);
         } catch (Exception e) {
+            assertTrue(false);
+        }
+    }
+
+    @Test
+    public void testPoliticalSystem() {
+        try {
+            SolarSystem solarSystem = new SolarSystem(GameDifficulty.BEGINNER);
+            solarSystem.setPoliticalSystem(PoliticalSystem.CAPITALIST_STATE);
+            assertEquals(PoliticalSystem.CAPITALIST_STATE, solarSystem.getPoliticalSystem());
+        } catch (Exception e){
 
         }
     }
 
     @Test
-    public void testNumberSystems() {
+    public void testResourceLevel() {
+        try {
+            SolarSystem solarSystem = new SolarSystem(GameDifficulty.BEGINNER);
+            solarSystem.setResources(ResourceLevel.DESERT);
+            assertEquals(ResourceLevel.DESERT, solarSystem.getResources());
+        } catch (Exception e) {
+
+        }
+    }
+
+    @Test
+    public void testLevelTech() {
+        try {
+            SolarSystem solarSystem = new SolarSystem(GameDifficulty.BEGINNER);
+            solarSystem.setTechLevel(TechLevel.HI_TECH);
+            assertEquals(TechLevel.HI_TECH, solarSystem.getTechLevel());
+        } catch (Exception e) {
+
+        }
+    }
+
+    @Test
+    public void testSystemQuantity() {
         try {
             for (int i = 0; i < 200; i++) {
                 SolarSystem solarSystem = new SolarSystem(GameDifficulty.BEGINNER);
             }
+            assertTrue(false);
         } catch (Exception e) {
             //System.out.println(e.getMessage());
             assertEquals(e.getMessage(), "Max Solar System Limit Reached");
@@ -51,10 +88,8 @@ public class SandeepTest {
             int index = SolarSystem.getRandom(weights);
             indices[index]++;
         }
-        for (int j = 0; j < 15; j++) {
-            for (int i = 0; i < indices.length; i++) {
-                assertTrue(indices[i]/1000 <= weights[i]* 1.2 || indices[i]/1000 >= weights[i] * .8);
-            }
+        for (int i = 0; i < indices.length; i++) {
+            assertTrue(indices[i]/1000 <= weights[i]* 1.2 || indices[i]/1000 >= weights[i] * .8);
         }
     }
 }
