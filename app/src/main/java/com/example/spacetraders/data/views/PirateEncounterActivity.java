@@ -38,6 +38,8 @@ public class PirateEncounterActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
+            } else {
+                Toast.makeText(getApplicationContext(), "You escaped successfully!", Toast.LENGTH_SHORT).show();
             }
             startActivity(new Intent(PirateEncounterActivity.this, MainGameActivity.class));
             finish();
