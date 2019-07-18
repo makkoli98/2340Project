@@ -133,6 +133,6 @@ public class Spaceship {
     }
 
     public void setCurrWeaponsCount(int count) {
-        currWeaponsCount = 0;
+        currWeaponsCount += count;
     }
 }
