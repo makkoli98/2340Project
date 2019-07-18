@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.spacetraders.R;
 import com.example.spacetraders.data.entity.Resources;
@@ -33,6 +34,7 @@ public class PirateEncounterActivity extends AppCompatActivity {
                 character.getShip().setCurrentResources(new int[Resources.values().length]);
                 try {
                     character.getShip().setCurrentHealth(character.getShip().getCurrentHealth() - 1);
+                    Toast.makeText(getApplicationContext(), "You took damage!", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
