@@ -90,13 +90,14 @@ public class ShipYardActivity extends AppCompatActivity {
 
         restoreHealth.setOnClickListener((View v) -> {
             if(character.getShip().getCurrentHealth() >= character.getShip().getMaximumHealth()) {
-                Toast.makeText(getApplicationContext(), "Fuel Tank is Full", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Max Health", Toast.LENGTH_LONG).show();
             } else if (character.getCurrency() < 35) {
                 Toast.makeText(getApplicationContext(), "Insufficient Funds", Toast.LENGTH_LONG).show();
             } else {
                 character.setCurrency(character.getCurrency() - 35);
                 character.getShip().setCurrentHealth(character.getShip().getMaximumHealth());
                 currency.setText("" + character.getCurrency() + "c");
+                health.setText("" + character.getShip().getMaximumHealth());
             }
         });
 
@@ -105,8 +106,8 @@ public class ShipYardActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onResume() {
+        super.onResume();
         //Interactor.getInteractor().setCharacter(character);
         //update all of the values
 

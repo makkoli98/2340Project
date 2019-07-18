@@ -135,11 +135,18 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
             currentShipWorth += currShipResources[8] * Resources.NARCOTICS.getBasePrice();
             currentShipWorth += currShipResources[9] * Resources.ROBOTS.getBasePrice();
 
+            int newAdjustedPrice = 0;
+
 
             if (shipType.equals("FLEA 500c")) {
                 if (character1.getCurrency() >= ShipType.FLEA.getBasePrice()) {
                     if (currentShipWorth - ShipType.FLEA.getBasePrice() > 0) {
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.FLEA.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+                        character1.setShip(new Spaceship(ShipType.FLEA));
+                    } else if (currentShipWorth < ShipType.FLEA.getBasePrice()) {
+                        newAdjustedPrice = ShipType.FLEA.getBasePrice() - currentShipWorth;
+                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.FLEA));
                     }
@@ -153,6 +160,11 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.GNAT.getBasePrice()));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.GNAT));
+                    }else if (currentShipWorth < ShipType.GNAT.getBasePrice()) {
+                        newAdjustedPrice = ShipType.GNAT.getBasePrice() - currentShipWorth;
+                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+                        character1.setShip(new Spaceship(ShipType.GNAT));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -162,6 +174,11 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.FIREFLY.getBasePrice()) {
                     if (currentShipWorth - ShipType.FIREFLY.getBasePrice() > 0) {
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.FIREFLY.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+                        character1.setShip(new Spaceship(ShipType.FIREFLY));
+                    } else if (currentShipWorth < ShipType.FIREFLY.getBasePrice()) {
+                        newAdjustedPrice = ShipType.FIREFLY.getBasePrice() - currentShipWorth;
+                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.FIREFLY));
                     }
@@ -175,6 +192,11 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.MOSQUITO.getBasePrice()));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.MOSQUITO));
+                    } else if (currentShipWorth < ShipType.MOSQUITO.getBasePrice()) {
+                        newAdjustedPrice = ShipType.MOSQUITO.getBasePrice() - currentShipWorth;
+                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+                        character1.setShip(new Spaceship(ShipType.MOSQUITO));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -184,6 +206,11 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.BUMBLEBEE.getBasePrice()) {
                     if (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice() > 0) {
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+                        character1.setShip(new Spaceship(ShipType.BUMBLEBEE));
+                    } else if (currentShipWorth < ShipType.BUMBLEBEE.getBasePrice()) {
+                        newAdjustedPrice = ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth;
+                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.BUMBLEBEE));
                     }
@@ -197,6 +224,11 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.BEETLE.getBasePrice()));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.BEETLE));
+                    }  else if (currentShipWorth < ShipType.BEETLE.getBasePrice()) {
+                        newAdjustedPrice = ShipType.BEETLE.getBasePrice() - currentShipWorth;
+                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+                        character1.setShip(new Spaceship(ShipType.BEETLE));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -206,6 +238,11 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.HORNET.getBasePrice()) {
                     if (currentShipWorth - ShipType.HORNET.getBasePrice() > 0) {
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.HORNET.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+                        character1.setShip(new Spaceship(ShipType.HORNET));
+                    }  else if (currentShipWorth < ShipType.HORNET.getBasePrice()) {
+                        newAdjustedPrice = ShipType.HORNET.getBasePrice() - currentShipWorth;
+                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.HORNET));
                     }
@@ -219,6 +256,11 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.GRASSHOPPER.getBasePrice()));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.GRASSHOPPER));
+                    }  else if (currentShipWorth < ShipType.GRASSHOPPER.getBasePrice()) {
+                        newAdjustedPrice = ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth;
+                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+                        character1.setShip(new Spaceship(ShipType.GRASSHOPPER));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -230,6 +272,11 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.TERMITE.getBasePrice()));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.TERMITE));
+                    }  else if (currentShipWorth < ShipType.TERMITE.getBasePrice()) {
+                        newAdjustedPrice = ShipType.TERMITE.getBasePrice() - currentShipWorth;
+                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+                        character1.setShip(new Spaceship(ShipType.TERMITE));
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -239,6 +286,11 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 if (character1.getCurrency() >= ShipType.WASP.getBasePrice()) {
                     if (currentShipWorth - ShipType.WASP.getBasePrice() > 0) {
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.WASP.getBasePrice()));
+                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
+                        character1.setShip(new Spaceship(ShipType.WASP));
+                    } else if (currentShipWorth < ShipType.WASP.getBasePrice()) {
+                        newAdjustedPrice = ShipType.WASP.getBasePrice() - currentShipWorth;
+                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.WASP));
                     }
