@@ -34,7 +34,7 @@ public class PirateEncounterActivity extends AppCompatActivity {
                 character.getShip().setCurrentResources(new int[Resources.values().length]);
                 try {
                     character.getShip().setCurrentHealth(character.getShip().getCurrentHealth() - 1);
-                    Toast.makeText(getApplicationContext(), "You took damage!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "You took 1 damage!", Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
