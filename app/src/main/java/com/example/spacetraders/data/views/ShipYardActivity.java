@@ -26,6 +26,7 @@ public class ShipYardActivity extends AppCompatActivity {
     private TextView currency;
     private Button refuelButton;
     private Button upgradeButton;
+    private Button restoreHealth;
 
 
 
@@ -38,6 +39,7 @@ public class ShipYardActivity extends AppCompatActivity {
 
         upgradeButton = findViewById(R.id.buttonUpgrade);
         refuelButton = findViewById(R.id.buttonRefuel);
+        restoreHealth = findViewById(R.id.restoreHealthButton);
 
         shipType = findViewById(R.id.viewShipType);
         shipType.setText(character.getShip().getName());
@@ -71,7 +73,7 @@ public class ShipYardActivity extends AppCompatActivity {
                Toast.makeText(getApplicationContext(), "Tank Full", Toast.LENGTH_LONG).show();
                return;
            } else if (character.getCurrency() < 5) {
-               Toast.makeText(getApplicationContext(), "Insufficient", Toast.LENGTH_LONG).show();
+               Toast.makeText(getApplicationContext(), "Insufficient Funds", Toast.LENGTH_LONG).show();
                return;
            } else {
                character.setCurrency(character.getCurrency() - 5);
@@ -85,6 +87,19 @@ public class ShipYardActivity extends AppCompatActivity {
             Intent intent = new Intent(ShipYardActivity.this, UpgradeShipActivity.class);
             startActivity(intent);
         });
+
+        restoreHealth.setOnClickListener((View v) -> {
+            if(character.getShip().getCurrentHealth() >= character.getShip().getMaximumHealth()) {
+                Toast.makeText(getApplicationContext(), "Fuel Tank is Full", Toast.LENGTH_LONG).show();
+            } else if (character.getCurrency() < 35) {
+                Toast.makeText(getApplicationContext(), "Insufficient Funds", Toast.LENGTH_LONG).show();
+            } else {
+                character.setCurrency(character.getCurrency() - 35);
+                character.getShip().setCurrentHealth(character.getShip().getMaximumHealth());
+                currency.setText("" + character.getCurrency() + "c");
+            }
+        });
+
 
 
     }
