@@ -192,12 +192,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/restoreHealthButton"
         android:layout_width="127dp"
         android:layout_height="68dp"
         android:layout_marginStart="144dp"
         android:layout_marginBottom="32dp"
-        android:text="Restore Health 25c"
+        android:text="Restore Health 35c"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
