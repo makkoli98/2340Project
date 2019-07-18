@@ -40,7 +40,11 @@ public class Universe {
         systems = new SolarSystem[numSystems];
 
         for (int i = 0; i < numSystems; i++) {
-            systems[i] = new SolarSystem(gameDifficulty);
+            try {
+                systems[i] = new SolarSystem(gameDifficulty);
+            } catch (Exception e) {
+                System.out.println("Solar System cap reached");
+            }
         }
 
         ArrayList<Integer> xCoords = new ArrayList<>();

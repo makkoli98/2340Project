@@ -73,7 +73,10 @@ public class SolarSystem {
     @Override
     public String toString() { return name; }
 
-    public SolarSystem(GameDifficulty gameDifficulty) {
+    public SolarSystem(GameDifficulty gameDifficulty) throws Exception{
+        if (SolarSystemNames.size() == possibleNames.length) {
+            throw new Exception("Max Solar System Limit Reached");
+        }
         Random rand = new Random();
         String possibleName = possibleNames[rand.nextInt(possibleNames.length)];
         while (true) {
