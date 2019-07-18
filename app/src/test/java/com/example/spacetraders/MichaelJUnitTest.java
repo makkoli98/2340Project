@@ -1,5 +1,11 @@
 package com.example.spacetraders;
 
+import com.example.spacetraders.data.entity.Market;
+import com.example.spacetraders.data.entity.ResourceLevel;
+import com.example.spacetraders.data.entity.Resources;
+import com.example.spacetraders.data.entity.TechLevel;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,8 +16,18 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class MichaelJUnitTest {
+    Market market;
+
+    @Before
+    public void setup() {
+        market = new Market(TechLevel.HI_TECH);
+    }
+
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void changeResourceLevelTest1() {
+        int[] baseResources = market.getResourcePrices();
+        baseResources[Resources.WATER.ordinal()] *= 4;
+        market.changeResourceLevel(ResourceLevel.LOTSOFWATER);
+        assertArrayEquals(baseResources, market.getResourcePrices());
     }
 }

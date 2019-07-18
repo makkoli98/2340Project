@@ -37,8 +37,8 @@ public class VincentTest {
         ship.setResource(resourceAmounts, true);
 
         resourceAmounts = new int[Resources.values().length];
-        resourceAmounts[Resources.FOOD] = 5;
-        resourceAmounts[Resources.WATER] = 7;
+        resourceAmounts[Resources.FOOD.ordinal()] = 5;
+        resourceAmounts[Resources.WATER.ordinal()] = 7;
         ship.setResource(resourceAmounts, false);
 
         for (int i = 0; i < resourceAmounts.length; i++) {
