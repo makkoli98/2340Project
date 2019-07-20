@@ -129,37 +129,6 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="188dp"
-        android:layout_marginBottom="268dp"
-        android:text="Shields "
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/silverShield"
-        android:layout_width="118dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="260dp"
-        android:layout_marginBottom="188dp"
-        android:text="Silver Dynasty: 350c"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/goldShield"
-        android:layout_width="119dp"
-        android:layout_height="73dp"
-        android:layout_marginEnd="228dp"
-        android:layout_marginBottom="180dp"
-        android:text="Golden Dynasty: 750c"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <TextView
         android:id="@+id/viewPlayerCurrency"
         android:layout_width="63dp"
         android:layout_height="51dp"

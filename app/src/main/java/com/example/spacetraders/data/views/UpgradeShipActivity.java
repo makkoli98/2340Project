@@ -30,8 +30,6 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
     private Button purchaseSonicLaser;
     private Button purchasePlasmaLaser;
     private Button purchaseMesonPhaser;
-    private Button purchaseGoldShield;
-    private Button purchaseSilverShield;
 
 
     @Override
@@ -44,9 +42,6 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
 
         purchaseButton = findViewById(R.id.purchaseButtn);
         shipSpinner = findViewById(R.id.shipSpinner);
-
-        purchaseGoldShield = findViewById(R.id.goldShield);
-        purchaseSilverShield = findViewById(R.id.silverShield);
 
         purchaseSonicLaser = findViewById(R.id.sLaser);
         purchasePlasmaLaser = findViewById(R.id.pLaser);
@@ -99,13 +94,6 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
             }
         });
-
-        purchaseSilverShield.setOnClickListener((View v) -> {
-
-        });
-
-
-
 
 
     }
