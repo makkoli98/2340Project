@@ -1,5 +1,4 @@
 package com.example.spacetraders.data.entity;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -12,7 +11,7 @@ public class Spaceship {
     private int fuel;
     public static int maxFuel;
     private int currWeaponsCount;
-    private ArrayList<Weapons> listOfWeapons;
+    private Weapons list;
 
 
 
@@ -23,7 +22,6 @@ public class Spaceship {
         currentHealth = type.getMaximumHealth();
         maxFuel = 100;
         currWeaponsCount = 0;
-        listOfWeapons = new ArrayList<Weapons>(type.getMaxWeaponsAmount());
     }
 
 
@@ -134,12 +132,7 @@ public class Spaceship {
         return currWeaponsCount;
     }
 
-    public void addWeapon(Weapons laser) {
-        listOfWeapons.add(laser);
-    }
-
     public void setCurrWeaponsCount(int count) {
-        currWeaponsCount +=count;
+        currWeaponsCount += count;
     }
-
 }

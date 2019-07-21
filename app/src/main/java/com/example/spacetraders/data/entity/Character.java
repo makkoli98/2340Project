@@ -11,7 +11,7 @@ public class Character {
     private ArrayList<Mercenary> mercenaries;
 
     public Character() {
-        this("NAME", GameDifficulty.BEGINNER, 1000, ShipType.GNAT);
+        this("NAME", GameDifficulty.BEGINNER, 10000, ShipType.GNAT);
     }
 
     /**

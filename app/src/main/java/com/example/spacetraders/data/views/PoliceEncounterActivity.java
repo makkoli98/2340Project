@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.spacetraders.R;
 import com.example.spacetraders.data.entity.Resources;
@@ -26,6 +27,10 @@ public class PoliceEncounterActivity extends AppCompatActivity {
             if (character.getShip().getCurrentResources()[Resources.NARCOTICS.ordinal()] > 0
                 || character.getShip().getCurrentResources()[Resources.FIREARMS.ordinal()] > 0) {
                 character.setCurrency((int) (character.getCurrency() * 0.9));
+                int[] playerResources = character.getShip().getCurrentResources();
+                playerResources[Resources.NARCOTICS.ordinal()] = 0;
+                playerResources[Resources.FIREARMS.ordinal()] = 0;
+                Toast.makeText(getApplicationContext(), "Don't do drugs, kids", Toast.LENGTH_SHORT).show();
             }
             startActivity(new Intent(PoliceEncounterActivity.this, MainGameActivity.class));
             finish();

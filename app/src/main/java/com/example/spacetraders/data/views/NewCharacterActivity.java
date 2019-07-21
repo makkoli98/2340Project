@@ -89,13 +89,13 @@ public class NewCharacterActivity extends AppCompatActivity {
                 }
 
                 if (totalSkills != 16) {
-                    Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 String name = characterName.getEditText().getText().toString();
                 if (name.equals("")) {
-                    Toast.makeText(getApplicationContext(), "Name cannot be empty", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Name cannot be empty", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -117,7 +117,7 @@ public class NewCharacterActivity extends AppCompatActivity {
 
     private void setPoints(TextView pointCounter, Skill skill, boolean adding) {
         if(!character.addSkill(skill, adding ? 1 : -1)) {
-            Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Points Distribution is not valid", Toast.LENGTH_SHORT).show();
             return;
         }
         pointCounter.setText(Integer.toString(character.getSkill(skill)));

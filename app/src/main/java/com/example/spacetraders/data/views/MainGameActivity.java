@@ -76,8 +76,8 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onResume() {
+        super.onResume();
         Interactor.getInteractor().saveGame(getApplicationContext());
     }
 }

@@ -31,21 +31,21 @@ public class VincentTest {
     @Test
     public void testSetResource2() {
         int[] resourceAmounts = new int[Resources.values().length];
-        for (int i : resourceAmounts) {
-            i = 10;
+        for (int i = 0; i < resourceAmounts.length; i++) {
+            resourceAmounts[i] = 10;
         }
         ship.setResource(resourceAmounts, true);
 
         resourceAmounts = new int[Resources.values().length];
-        resourceAmounts[Resources.FOOD] = 5;
-        resourceAmounts[Resources.WATER] = 7;
+        resourceAmounts[Resources.FOOD.ordinal()] = 5;
+        resourceAmounts[Resources.WATER.ordinal()] = 7;
         ship.setResource(resourceAmounts, false);
 
         for (int i = 0; i < resourceAmounts.length; i++) {
             if (i == Resources.FOOD.ordinal()) {
                 assertEquals(5, ship.getCurrentResources()[i]);
             } else if (i == Resources.WATER.ordinal()) {
-                assertEquals(7, ship.getCurrentResources()[i]);
+                assertEquals(3, ship.getCurrentResources()[i]);
             } else {
                 assertEquals(10, ship.getCurrentResources()[i]);
             }
