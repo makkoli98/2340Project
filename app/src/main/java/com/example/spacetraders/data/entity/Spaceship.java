@@ -23,6 +23,7 @@ public class Spaceship {
         currentHealth = type.getMaximumHealth();
         maxFuel = 100;
         currWeaponsCount = 0;
+        listOfWeapons = new ArrayList<Weapons>(type.getMaxWeaponsAmount());
     }
 
 
@@ -133,7 +134,12 @@ public class Spaceship {
         return currWeaponsCount;
     }
 
+    public void addWeapon(Weapons laser) {
+        listOfWeapons.add(laser);
+    }
+
     public void setCurrWeaponsCount(int count) {
         currWeaponsCount +=count;
     }
+
 }

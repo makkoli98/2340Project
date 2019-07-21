@@ -131,4 +131,23 @@ public class Character {
         }
     }
 
+    public int currShipWorth() {
+        int currentShipWorth = 0;
+        currentShipWorth += ship.getBasePrice();
+        int[] currShipResources = ship.getCurrentResources();
+
+        currentShipWorth += currShipResources[0] * Resources.WATER.getBasePrice();
+        currentShipWorth += currShipResources[1] * Resources.FURS.getBasePrice();
+        currentShipWorth += currShipResources[2] * Resources.FOOD.getBasePrice();
+        currentShipWorth += currShipResources[3] * Resources.ORE.getBasePrice();
+        currentShipWorth += currShipResources[4] * Resources.GAMES.getBasePrice();
+        currentShipWorth += currShipResources[5] * Resources.FIREARMS.getBasePrice();
+        currentShipWorth += currShipResources[6] * Resources.MEDICINE.getBasePrice();
+        currentShipWorth += currShipResources[7] * Resources.MACHINES.getBasePrice();
+        currentShipWorth += currShipResources[8] * Resources.NARCOTICS.getBasePrice();
+        currentShipWorth += currShipResources[9] * Resources.ROBOTS.getBasePrice();
+
+        return currentShipWorth;
+    }
+
 }

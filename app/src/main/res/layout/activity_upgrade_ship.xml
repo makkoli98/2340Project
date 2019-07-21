@@ -22,9 +22,9 @@
 
     <Spinner
         android:id="@+id/shipSpinner"
-        android:layout_width="269dp"
+        android:layout_width="237dp"
         android:layout_height="53dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="136dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -134,6 +134,16 @@
         android:layout_height="51dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="48dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/displayPurchasePrice"
+        android:layout_width="89dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="32dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -63,22 +63,22 @@ public class ShipYardActivity extends AppCompatActivity {
         fuelLeft.setText("" + character.getShip().getFuel());
 
         currency = findViewById(R.id.displayCredits);
-        currency.setText("Credits: " + character.getCurrency());
+        currency.setText("Credits: " + character.getCurrency() + "c");
 
 
 
-        refuelButton.setText("1 Fuel = 5c");
+        refuelButton.setText("Refuel = 75c");
         refuelButton.setOnClickListener((View v) -> {
            if(character.getShip().getFuel() == character.getShip().maxFuel) {
                Toast.makeText(getApplicationContext(), "Tank Full", Toast.LENGTH_LONG).show();
                return;
-           } else if (character.getCurrency() < 5) {
+           } else if (character.getCurrency() < 75) {
                Toast.makeText(getApplicationContext(), "Insufficient Funds", Toast.LENGTH_LONG).show();
                return;
            } else {
-               character.setCurrency(character.getCurrency() - 5);
-               currency.setText("" + character.getCurrency() + "c");
-               character.getShip().setFuel(character.getShip().getFuel() + 1);
+               character.setCurrency(character.getCurrency() - 75);
+               currency.setText("Credits: " + character.getCurrency() + "c");
+               character.getShip().setFuel(100);
                fuelLeft.setText("" + character.getShip().getFuel());
            }
         });
@@ -96,7 +96,7 @@ public class ShipYardActivity extends AppCompatActivity {
             } else {
                 character.setCurrency(character.getCurrency() - 35);
                 character.getShip().setCurrentHealth(character.getShip().getMaximumHealth());
-                currency.setText("" + character.getCurrency() + "c");
+                currency.setText("Credits: " + character.getCurrency() + "c");
                 health.setText("" + character.getShip().getMaximumHealth());
             }
         });
@@ -137,7 +137,7 @@ public class ShipYardActivity extends AppCompatActivity {
         fuelLeft.setText("" + character.getShip().getFuel());
 
         currency = findViewById(R.id.displayCredits);
-        currency.setText("Credits: " + character.getCurrency());
+        currency.setText("Credits: " + character.getCurrency() + "c");
 
     }
 }

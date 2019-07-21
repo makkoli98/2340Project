@@ -3,13 +3,13 @@
     <string name="title_activity_view_player_info">ViewPlayerInfo</string>
     <string-array name="ship_names">
         <item>FLEA 500c</item>
-        <item>GNAT 1000c</item>
         <item>FIREFLY 750c</item>
+        <item>GNAT 1000c</item>
         <item>MOSQUITO 1500c</item>
         <item>BUMBLEBEE 2000c</item>
-        <item>BEETLE 3500c</item>
-        <item>HORNET 3000c</item>
         <item>GRASSHOPPER 2500c</item>
+        <item>HORNET 3000c</item>
+        <item>BEETLE 3500c</item>
         <item>TERMITE 4500c</item>
         <item>WASP 6000c</item>
     </string-array>
