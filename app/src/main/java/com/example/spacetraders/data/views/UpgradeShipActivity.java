@@ -32,6 +32,10 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
     private Button purchaseMesonPhaser;
     private TextView shipPrice;
 
+    private TextView sonicLaser_num;
+    private TextView plasmaLaser_num;
+    private TextView mesonPhaser_num;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,13 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
         character1 = Interactor.getInteractor().getCharacter();
         viewCurrency = findViewById(R.id.viewPlayerCurrency);
         shipPrice = findViewById(R.id.displayPurchasePrice);
+
+        sonicLaser_num = findViewById(R.id.displaySonicNum);
+        plasmaLaser_num = findViewById(R.id.displayPlasmaNum);
+        mesonPhaser_num = findViewById(R.id.displayMesonNum);
+        sonicLaser_num.setText("Sonic Ray: " + 0);
+        plasmaLaser_num.setText("Plasma Ray: " + 0);
+        mesonPhaser_num.setText("Meson Phaser: " + 0);
         
 
         purchaseButton = findViewById(R.id.purchaseButtn);
@@ -69,9 +80,13 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
             } else if (character1.getCurrency() < Weapons.SONICRAY.getWeaponCost()) {
                 Toast.makeText(getApplicationContext(), new String("Insufficient"), Toast.LENGTH_SHORT).show();
             } else if (character1.getCurrency() >= Weapons.SONICRAY.getWeaponCost()){
+
                 character1.setCurrency(character1.getCurrency() - Weapons.SONICRAY.getWeaponCost());
                 viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
+                //character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
+
+                character1.getShip().addWeapon(Weapons.SONICRAY);
+                sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
             }
         });
 
@@ -83,7 +98,10 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
             } else if (character1.getCurrency() >= Weapons.PLASMARAY.getWeaponCost()){
                 character1.setCurrency(character1.getCurrency() - Weapons.PLASMARAY.getWeaponCost());
                 viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
+                //character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
+
+                character1.getShip().addWeapon(Weapons.PLASMARAY);
+                plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
             }
         });
 
@@ -95,7 +113,10 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
             } else if (character1.getCurrency() >= Weapons.MESONPHASER.getWeaponCost()){
                 character1.setCurrency(character1.getCurrency() - Weapons.MESONPHASER.getWeaponCost());
                 viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
+                //character1.getShip().setCurrWeaponsCount(character1.getShip().getCurrWeaponsCount() + 1);
+
+                character1.getShip().addWeapon(Weapons.MESONPHASER);
+                mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
             }
         });
 
@@ -114,7 +135,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
 
         int newPrice = 0;
 
-        if (shipType.equals("FLEA ")) {
+        if (shipType.equals("FLEA")) {
 
                 if (character1.currShipWorth() - ShipType.FLEA.getBasePrice() > 0) {
                     shipPrice.setText("Price: " + (shipWorth - ShipType.FLEA.getBasePrice()) +"c");
@@ -124,7 +145,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     shipPrice.setText("Price: " + newPrice +"c");
                 }
 
-        } else if (shipType.equals("GNAT ")){
+        } else if (shipType.equals("GNAT")){
 
                 if (shipWorth - ShipType.GNAT.getBasePrice() > 0) {
                     shipPrice.setText("Price: " + (shipWorth - ShipType.GNAT.getBasePrice()) +"c");
@@ -134,7 +155,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 }
 
 
-        } else if (shipType.equals("FIREFLY ")) {
+        } else if (shipType.equals("FIREFLY")) {
 
                 if (shipWorth - ShipType.FIREFLY.getBasePrice() > 0) {
                     shipPrice.setText("Price: " + (shipWorth - ShipType.FIREFLY.getBasePrice()) +"c");
@@ -144,7 +165,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 }
 
 
-        } else if(shipType.equals("MOSQUITO ")) {
+        } else if(shipType.equals("MOSQUITO")) {
 
                 if (shipWorth - ShipType.MOSQUITO.getBasePrice() > 0) {
                     shipPrice.setText("Price: " + (shipWorth - ShipType.MOSQUITO.getBasePrice()) +"c");
@@ -154,7 +175,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
 
             }
 
-        } else if(shipType.equals("BUMBLEBEE ")) {
+        } else if(shipType.equals("BUMBLEBEE")) {
 
                 if (shipWorth - ShipType.BUMBLEBEE.getBasePrice() > 0) {
                     shipPrice.setText("Price: " + (shipWorth - ShipType.BUMBLEBEE.getBasePrice()) +"c");
@@ -164,7 +185,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                 }
 
 
-        } else if(shipType.equals("BEETLE ")) {
+        } else if(shipType.equals("BEETLE")) {
 
                 if (shipWorth - ShipType.BEETLE.getBasePrice() > 0) {
                     shipPrice.setText("Price: " + (shipWorth - ShipType.BEETLE.getBasePrice()) +"c");
@@ -173,7 +194,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     shipPrice.setText("Price: " + newPrice +"c");
                 }
 
-        } else if(shipType.equals("HORNET ")) {
+        } else if(shipType.equals("HORNET")) {
 
                 if (shipWorth - ShipType.HORNET.getBasePrice() > 0) {
                     shipPrice.setText("Price: " + (shipWorth - ShipType.HORNET.getBasePrice()) +"c");
@@ -182,7 +203,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     shipPrice.setText("Price: " + newPrice +"c");
                 }
 
-        } else if(shipType.equals("GRASSHOPPER ")) {
+        } else if(shipType.equals("GRASSHOPPER")) {
 
                 if (shipWorth - ShipType.GRASSHOPPER.getBasePrice() > 0) {
                     shipPrice.setText("Price: " + (shipWorth - ShipType.GRASSHOPPER.getBasePrice()) +"c");
@@ -191,7 +212,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     shipPrice.setText("Price: " + newPrice +"c");
                 }
 
-        } else if(shipType.equals("TERMITE ")) {
+        } else if(shipType.equals("TERMITE")) {
 
                 if (shipWorth - ShipType.TERMITE.getBasePrice() > 0) {
                     shipPrice.setText("Price: " + (shipWorth - ShipType.TERMITE.getBasePrice()) +"c");
@@ -200,7 +221,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     shipPrice.setText("Price: " + newPrice +"c");
                 }
 
-        } else if(shipType.equals("WASP ")) {
+        } else if(shipType.equals("WASP")) {
                 if (shipWorth - ShipType.WASP.getBasePrice() > 0) {
                     shipPrice.setText("Price: " + (shipWorth - ShipType.WASP.getBasePrice()) +"c");
                 } else if (shipWorth < ShipType.WASP.getBasePrice()) {
@@ -218,7 +239,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
 
             int newAdjustedPrice = 0;
 
-            if (shipType.equals("FLEA ")) {
+            if (shipType.equals("FLEA")) {
                 if (character1.getCurrency() >= ShipType.FLEA.getBasePrice()) {
                     if (character1.currShipWorth() - ShipType.FLEA.getBasePrice() > 0) {
                         character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.FLEA.getBasePrice()));
@@ -234,7 +255,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
-            } else if (shipType.equals("GNAT ")){
+            } else if (shipType.equals("GNAT")){
                 if (character1.getCurrency() >= ShipType.GNAT.getBasePrice()) {
                     if (currentShipWorth - ShipType.GNAT.getBasePrice() > 0) {
 
@@ -252,7 +273,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
-            } else if (shipType.equals("FIREFLY ")) {
+            } else if (shipType.equals("FIREFLY")) {
                 if (character1.getCurrency() >= ShipType.FIREFLY.getBasePrice()) {
                     if (currentShipWorth - ShipType.FIREFLY.getBasePrice() > 0) {
 
@@ -270,7 +291,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
-            } else if(shipType.equals("MOSQUITO ")) {
+            } else if(shipType.equals("MOSQUITO")) {
                 if (character1.getCurrency() >= ShipType.MOSQUITO.getBasePrice()) {
                     if (currentShipWorth - ShipType.MOSQUITO.getBasePrice() > 0) {
 
@@ -288,7 +309,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
-            } else if(shipType.equals("BUMBLEBEE ")) {
+            } else if(shipType.equals("BUMBLEBEE")) {
                 if (character1.getCurrency() >= ShipType.BUMBLEBEE.getBasePrice()) {
                     if (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice() > 0) {
 
@@ -306,7 +327,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
-            } else if(shipType.equals("BEETLE ")) {
+            } else if(shipType.equals("BEETLE")) {
                 if (character1.getCurrency() >= ShipType.BEETLE.getBasePrice()) {
                     if (currentShipWorth - ShipType.BEETLE.getBasePrice() > 0) {
 
@@ -324,7 +345,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
-            } else if(shipType.equals("HORNET ")) {
+            } else if(shipType.equals("HORNET")) {
                 if (character1.getCurrency() >= ShipType.HORNET.getBasePrice()) {
                     if (currentShipWorth - ShipType.HORNET.getBasePrice() > 0) {
 
@@ -342,7 +363,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
-            } else if(shipType.equals("GRASSHOPPER ")) {
+            } else if(shipType.equals("GRASSHOPPER")) {
                 if (character1.getCurrency() >= ShipType.GRASSHOPPER.getBasePrice()) {
                     if (currentShipWorth - ShipType.GRASSHOPPER.getBasePrice() > 0) {
 
@@ -360,7 +381,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
-            } else if(shipType.equals("TERMITE ")) {
+            } else if(shipType.equals("TERMITE")) {
                 if (character1.getCurrency() >= ShipType.TERMITE.getBasePrice()) {
                     if (currentShipWorth - ShipType.TERMITE.getBasePrice() > 0) {
 
@@ -378,7 +399,7 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
-            } else if(shipType.equals("WASP ")) {
+            } else if(shipType.equals("WASP")) {
                 if (character1.getCurrency() >= ShipType.WASP.getBasePrice()) {
                     if (currentShipWorth - ShipType.WASP.getBasePrice() > 0) {
 
