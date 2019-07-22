@@ -1,4 +1,5 @@
 package com.example.spacetraders.data.entity;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -11,7 +12,7 @@ public class Spaceship {
     private int fuel;
     public static int maxFuel;
     private int currWeaponsCount;
-    private Weapons list;
+    private ArrayList<Weapons> list;
 
 
 
@@ -22,6 +23,7 @@ public class Spaceship {
         currentHealth = type.getMaximumHealth();
         maxFuel = 100;
         currWeaponsCount = 0;
+        list = new ArrayList<Weapons>(0);
     }
 
 
@@ -134,5 +136,40 @@ public class Spaceship {
 
     public void setCurrWeaponsCount(int count) {
         currWeaponsCount += count;
+    }
+    public void addWeapon(Weapons laser) {
+        if (list.size() >= type.getMaxWeaponsAmount()) {
+            return;
+        } else {
+            list.add(laser);
+            currWeaponsCount++;
+        }
+    }
+    public int getSonicRayAmount() {
+        int count = 0;
+        for (Weapons w: list) {
+            if (w.getWeaponName().equals("Sonic Ray")) {
+                count++;
+            }
+        }
+        return count;
+    }
+    public int getPlasmaRayAmount() {
+        int count = 0;
+        for (Weapons w: list) {
+            if (w.getWeaponName().equals("Plasma Ray")) {
+                count++;
+            }
+        }
+        return count;
+    }
+    public int getMesonPhaserAmount() {
+        int count = 0;
+        for (Weapons w: list) {
+            if (w.getWeaponName().equals("Meson Phaser")) {
+                count++;
+            }
+        }
+        return count;
     }
 }
