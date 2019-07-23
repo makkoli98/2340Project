@@ -172,11 +172,17 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     character1.setCurrency(character1.getCurrency() - (ShipType.FLEA.getBasePrice() - currentShipWorth));
                     viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                     character1.setShip(new Spaceship(ShipType.FLEA));
+                    sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                    plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                    mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
                 } else if (ShipType.FLEA.getBasePrice() - currentShipWorth > 0) {
                     if (character1.getCurrency() > (ShipType.FLEA.getBasePrice() - currentShipWorth)) {
                         character1.setCurrency(character1.getCurrency() - (ShipType.FLEA.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.FLEA));
+                        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
 
                     } else {
                         Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -188,11 +194,17 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     character1.setCurrency(character1.getCurrency() - (ShipType.GNAT.getBasePrice() - currentShipWorth));
                     viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                     character1.setShip(new Spaceship(ShipType.GNAT));
+                    sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                    plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                    mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
                 } else if (ShipType.GNAT.getBasePrice() - currentShipWorth > 0) {
                     if (character1.getCurrency() > (ShipType.GNAT.getBasePrice() - currentShipWorth)) {
                         character1.setCurrency(character1.getCurrency() - (ShipType.GNAT.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.GNAT));
+                        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
 
                     } else {
                         Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -204,11 +216,17 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     character1.setCurrency(character1.getCurrency() - (ShipType.FIREFLY.getBasePrice() - currentShipWorth));
                     viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                     character1.setShip(new Spaceship(ShipType.FIREFLY));
+                    sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                    plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                    mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
                 } else if (ShipType.FIREFLY.getBasePrice() - currentShipWorth > 0) {
                     if (character1.getCurrency() > (ShipType.FIREFLY.getBasePrice() - currentShipWorth)) {
                         character1.setCurrency(character1.getCurrency() - (ShipType.FIREFLY.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.FIREFLY));
+                        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
 
                     } else {
                         Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -220,11 +238,17 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     character1.setCurrency(character1.getCurrency() - (ShipType.MOSQUITO.getBasePrice() - currentShipWorth));
                     viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                     character1.setShip(new Spaceship(ShipType.MOSQUITO));
+                    sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                    plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                    mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
                 } else if (ShipType.MOSQUITO.getBasePrice() - currentShipWorth > 0) {
                     if (character1.getCurrency() > (ShipType.MOSQUITO.getBasePrice() - currentShipWorth)) {
                         character1.setCurrency(character1.getCurrency() - (ShipType.MOSQUITO.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.MOSQUITO));
+                        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
 
                     } else {
                         Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -236,11 +260,17 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     character1.setCurrency(character1.getCurrency() - (ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth));
                     viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                     character1.setShip(new Spaceship(ShipType.BUMBLEBEE));
+                    sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                    plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                    mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
                 } else if (ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth > 0) {
                     if (character1.getCurrency() > (ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth)) {
                         character1.setCurrency(character1.getCurrency() - (ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.BUMBLEBEE));
+                        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
 
                     } else {
                         Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -252,11 +282,17 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     character1.setCurrency(character1.getCurrency() - (ShipType.BEETLE.getBasePrice() - currentShipWorth));
                     viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                     character1.setShip(new Spaceship(ShipType.BEETLE));
+                    sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                    plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                    mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
                 } else if (ShipType.BEETLE.getBasePrice() - currentShipWorth > 0) {
                     if (character1.getCurrency() > (ShipType.BEETLE.getBasePrice() - currentShipWorth)) {
                         character1.setCurrency(character1.getCurrency() - (ShipType.BEETLE.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.BEETLE));
+                        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
 
                     } else {
                         Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -268,11 +304,17 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     character1.setCurrency(character1.getCurrency() - (ShipType.HORNET.getBasePrice() - currentShipWorth));
                     viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                     character1.setShip(new Spaceship(ShipType.HORNET));
+                    sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                    plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                    mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
                 } else if (ShipType.HORNET.getBasePrice() - currentShipWorth > 0) {
                     if (character1.getCurrency() > (ShipType.HORNET.getBasePrice() - currentShipWorth)) {
                         character1.setCurrency(character1.getCurrency() - (ShipType.HORNET.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.HORNET));
+                        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
 
                     } else {
                         Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -284,11 +326,17 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     character1.setCurrency(character1.getCurrency() - (ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth));
                     viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                     character1.setShip(new Spaceship(ShipType.GRASSHOPPER));
+                    sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                    plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                    mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
                 } else if (ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth > 0) {
                     if (character1.getCurrency() > (ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth)) {
                         character1.setCurrency(character1.getCurrency() - (ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.GRASSHOPPER));
+                        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
 
                     } else {
                         Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -300,11 +348,17 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     character1.setCurrency(character1.getCurrency() - (ShipType.TERMITE.getBasePrice() - currentShipWorth));
                     viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                     character1.setShip(new Spaceship(ShipType.TERMITE));
+                    sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                    plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                    mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
                 } else if (ShipType.TERMITE.getBasePrice() - currentShipWorth > 0) {
                     if (character1.getCurrency() > (ShipType.TERMITE.getBasePrice() - currentShipWorth)) {
                         character1.setCurrency(character1.getCurrency() - (ShipType.TERMITE.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.TERMITE));
+                        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
 
                     } else {
                         Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
@@ -316,11 +370,17 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
                     character1.setCurrency(character1.getCurrency() - (ShipType.WASP.getBasePrice() - currentShipWorth));
                     viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                     character1.setShip(new Spaceship(ShipType.WASP));
+                    sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                    plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                    mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
                 } else if (ShipType.WASP.getBasePrice() - currentShipWorth > 0) {
                     if (character1.getCurrency() > (ShipType.WASP.getBasePrice() - currentShipWorth)) {
                         character1.setCurrency(character1.getCurrency() - (ShipType.WASP.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.WASP));
+                        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+                        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+                        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
 
                     } else {
                         Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
