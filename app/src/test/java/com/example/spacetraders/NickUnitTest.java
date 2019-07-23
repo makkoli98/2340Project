@@ -55,20 +55,22 @@ public class NickUnitTest {
 
         int[] failedUpdate= {4, 3,1, 2, 0};//this shouldn't work bc it only updates if the values are greater than the previous
 
+        int[] success_test = {4, 3, 1, 2, 16};
+
         System.out.println("BEFORE:");
         for (int i = 0; i < skillPoints.length; i++) {
             System.out.println(skillPoints[i]);
         }
 
         boi.adjustPoints(failedUpdate);
-        assertArrayEquals(skillPoints, failedUpdate);
 
         System.out.println("AFTER:");
-
         for (int i = 0; i < skillPoints.length; i++) {
             System.out.println(skillPoints[i]);
         }
 
+
+        assertArrayEquals(success_test, boi.getSkills());
 
     }
 
@@ -78,13 +80,37 @@ public class NickUnitTest {
         //PILOT, TRADER, FIGHTER, ENGINEER, UNALLOCATED;
         int[] skillPoints = boi.getSkills();
 
-        int[] successfulUpdate = {6, 5, 4, 2, 17};
+        int[] successfulUpdate = {6, 5, 0, 2, 17};
+
+        System.out.println("BEFORE:");
+        for (int i = 0; i < skillPoints.length; i++) {
+            System.out.println(skillPoints[i]);
+        }
 
         boi.adjustPoints(successfulUpdate);
+        System.out.println("AFTER:");
         for (int i = 0; i < skillPoints.length; i++) {
             System.out.println(skillPoints[i]);
         }
         assertArrayEquals(successfulUpdate, skillPoints);
 
+    }
+
+    @Test
+    public void setCurrency() {
+        Character boi = new Character("NICK", GameDifficulty.BEGINNER, 10000, ShipType.FLEA);
+
+        int newCredits = 5000;
+        boi.setCurrency(5000);
+        assertEquals(5000, boi.getCurrency());
+
+    }
+
+    @Test
+    public void setCurrency2() {
+        Character ye = new Character("YE", GameDifficulty.BEGINNER, 10000, ShipType.FLEA);
+        int new_credits = -5000;
+        ye.setCurrency(-5500);
+        assertEquals(0, ye.getCurrency());
     }
 }

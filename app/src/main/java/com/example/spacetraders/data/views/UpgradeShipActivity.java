@@ -135,291 +135,180 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
 
         int newPrice = 0;
 
+        System.out.println("Your ship worth" + shipWorth);
+
         if (shipType.equals("FLEA")) {
-
-                if (character1.currShipWorth() - ShipType.FLEA.getBasePrice() > 0) {
-                    shipPrice.setText("Price: " + (shipWorth - ShipType.FLEA.getBasePrice()) +"c");
-
-                } else if (shipWorth < ShipType.FLEA.getBasePrice()) {
-                    newPrice = ShipType.FLEA.getBasePrice() - shipWorth;
-                    shipPrice.setText("Price: " + newPrice +"c");
-                }
-
+            shipPrice.setText("Price: " + (ShipType.FLEA.getBasePrice() - shipWorth ) +"c");
         } else if (shipType.equals("GNAT")){
-
-                if (shipWorth - ShipType.GNAT.getBasePrice() > 0) {
-                    shipPrice.setText("Price: " + (shipWorth - ShipType.GNAT.getBasePrice()) +"c");
-                }else if (shipWorth < ShipType.GNAT.getBasePrice()) {
-                    newPrice = ShipType.GNAT.getBasePrice() - shipWorth;
-                    shipPrice.setText("Price: " + newPrice +"c");
-                }
-
-
+            shipPrice.setText("Price: " + (ShipType.GNAT.getBasePrice()- shipWorth) +"c");
         } else if (shipType.equals("FIREFLY")) {
-
-                if (shipWorth - ShipType.FIREFLY.getBasePrice() > 0) {
-                    shipPrice.setText("Price: " + (shipWorth - ShipType.FIREFLY.getBasePrice()) +"c");
-                } else if (shipWorth < ShipType.FIREFLY.getBasePrice()) {
-                    newPrice = ShipType.FIREFLY.getBasePrice() - shipWorth;
-                    shipPrice.setText("Price: " + newPrice +"c");
-                }
-
-
+            shipPrice.setText("Price: " + (ShipType.FIREFLY.getBasePrice() - shipWorth) +"c");
         } else if(shipType.equals("MOSQUITO")) {
-
-                if (shipWorth - ShipType.MOSQUITO.getBasePrice() > 0) {
-                    shipPrice.setText("Price: " + (shipWorth - ShipType.MOSQUITO.getBasePrice()) +"c");
-                } else if (shipWorth < ShipType.MOSQUITO.getBasePrice()) {
-                    newPrice = ShipType.MOSQUITO.getBasePrice() - shipWorth;
-                    shipPrice.setText("Price: " + newPrice +"c");
-
-            }
-
+            shipPrice.setText("Price: " + (ShipType.MOSQUITO.getBasePrice() - shipWorth) +"c");
         } else if(shipType.equals("BUMBLEBEE")) {
-
-                if (shipWorth - ShipType.BUMBLEBEE.getBasePrice() > 0) {
-                    shipPrice.setText("Price: " + (shipWorth - ShipType.BUMBLEBEE.getBasePrice()) +"c");
-                } else if (shipWorth < ShipType.BUMBLEBEE.getBasePrice()) {
-                    newPrice = ShipType.BUMBLEBEE.getBasePrice() - shipWorth;
-                    shipPrice.setText("Price: " + newPrice +"c");
-                }
-
-
+            shipPrice.setText("Price: " + (ShipType.BUMBLEBEE.getBasePrice() - shipWorth) +"c");
         } else if(shipType.equals("BEETLE")) {
-
-                if (shipWorth - ShipType.BEETLE.getBasePrice() > 0) {
-                    shipPrice.setText("Price: " + (shipWorth - ShipType.BEETLE.getBasePrice()) +"c");
-                }  else if (shipWorth < ShipType.BEETLE.getBasePrice()) {
-                    newPrice = ShipType.BEETLE.getBasePrice() - shipWorth;
-                    shipPrice.setText("Price: " + newPrice +"c");
-                }
-
+            shipPrice.setText("Price: " + (ShipType.BEETLE.getBasePrice() - shipWorth) +"c");
         } else if(shipType.equals("HORNET")) {
-
-                if (shipWorth - ShipType.HORNET.getBasePrice() > 0) {
-                    shipPrice.setText("Price: " + (shipWorth - ShipType.HORNET.getBasePrice()) +"c");
-                }  else if (shipWorth < ShipType.HORNET.getBasePrice()) {
-                    newPrice = ShipType.HORNET.getBasePrice() - shipWorth;
-                    shipPrice.setText("Price: " + newPrice +"c");
-                }
-
+            shipPrice.setText("Price: " + (ShipType.HORNET.getBasePrice() - shipWorth) +"c");
         } else if(shipType.equals("GRASSHOPPER")) {
-
-                if (shipWorth - ShipType.GRASSHOPPER.getBasePrice() > 0) {
-                    shipPrice.setText("Price: " + (shipWorth - ShipType.GRASSHOPPER.getBasePrice()) +"c");
-                }  else if (shipWorth < ShipType.GRASSHOPPER.getBasePrice()) {
-                    newPrice = ShipType.GRASSHOPPER.getBasePrice() - shipWorth;
-                    shipPrice.setText("Price: " + newPrice +"c");
-                }
-
+            shipPrice.setText("Price: " + (ShipType.GRASSHOPPER.getBasePrice() - shipWorth) +"c");
         } else if(shipType.equals("TERMITE")) {
-
-                if (shipWorth - ShipType.TERMITE.getBasePrice() > 0) {
-                    shipPrice.setText("Price: " + (shipWorth - ShipType.TERMITE.getBasePrice()) +"c");
-                }  else if (shipWorth < ShipType.TERMITE.getBasePrice()) {
-                    newPrice = ShipType.TERMITE.getBasePrice() - shipWorth;
-                    shipPrice.setText("Price: " + newPrice +"c");
-                }
-
+            shipPrice.setText("Price: " + (ShipType.TERMITE.getBasePrice() - shipWorth) +"c");
         } else if(shipType.equals("WASP")) {
-                if (shipWorth - ShipType.WASP.getBasePrice() > 0) {
-                    shipPrice.setText("Price: " + (shipWorth - ShipType.WASP.getBasePrice()) +"c");
-                } else if (shipWorth < ShipType.WASP.getBasePrice()) {
-                    newPrice = ShipType.WASP.getBasePrice() - shipWorth;
-                    shipPrice.setText("Price: " + newPrice +"c");
-                }
+            shipPrice.setText("Price: " + (ShipType.WASP.getBasePrice() - shipWorth) +"c");
         }
-
-
 
 
 
         purchaseButton.setOnClickListener((View v) -> {
             int currentShipWorth = character1.currShipWorth();
 
+
             int newAdjustedPrice = 0;
 
             if (shipType.equals("FLEA")) {
-                if (character1.getCurrency() >= ShipType.FLEA.getBasePrice()) {
-                    if (character1.currShipWorth() - ShipType.FLEA.getBasePrice() > 0) {
-                        character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.FLEA.getBasePrice()));
+                if (ShipType.FLEA.getBasePrice() - currentShipWorth <= 0) {
+                    character1.setCurrency(character1.getCurrency() - (ShipType.FLEA.getBasePrice() - currentShipWorth));
+                } else if (ShipType.FLEA.getBasePrice() - currentShipWorth > 0) {
+                    if (character1.getCurrency() > (ShipType.FLEA.getBasePrice() - currentShipWorth)) {
+                        character1.setCurrency(character1.getCurrency() - (ShipType.FLEA.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.FLEA));
-                    } else if (currentShipWorth < ShipType.FLEA.getBasePrice()) {
-                        newAdjustedPrice = ShipType.FLEA.getBasePrice() - currentShipWorth;
-                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
-                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                        character1.setShip(new Spaceship(ShipType.FLEA));
+
+                    } else {
+                        Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
             } else if (shipType.equals("GNAT")){
-                if (character1.getCurrency() >= ShipType.GNAT.getBasePrice()) {
-                    if (currentShipWorth - ShipType.GNAT.getBasePrice() > 0) {
-
-                        character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.GNAT.getBasePrice()));
+                if (ShipType.GNAT.getBasePrice() - currentShipWorth <= 0) {
+                    character1.setCurrency(character1.getCurrency() - (ShipType.GNAT.getBasePrice() - currentShipWorth));
+                } else if (ShipType.GNAT.getBasePrice() - currentShipWorth > 0) {
+                    if (character1.getCurrency() > (ShipType.GNAT.getBasePrice() - currentShipWorth)) {
+                        character1.setCurrency(character1.getCurrency() - (ShipType.GNAT.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.GNAT));
-                    }else if (currentShipWorth < ShipType.GNAT.getBasePrice()) {
-                        newAdjustedPrice = ShipType.GNAT.getBasePrice() - currentShipWorth;
 
-                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
-                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                        character1.setShip(new Spaceship(ShipType.GNAT));
+                    } else {
+                        Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
             } else if (shipType.equals("FIREFLY")) {
-                if (character1.getCurrency() >= ShipType.FIREFLY.getBasePrice()) {
-                    if (currentShipWorth - ShipType.FIREFLY.getBasePrice() > 0) {
-
-                        character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.FIREFLY.getBasePrice()));
+                if (ShipType.FIREFLY.getBasePrice() - currentShipWorth <= 0) {
+                    character1.setCurrency(character1.getCurrency() - (ShipType.FIREFLY.getBasePrice() - currentShipWorth));
+                } else if (ShipType.FIREFLY.getBasePrice() - currentShipWorth > 0) {
+                    if (character1.getCurrency() > (ShipType.FIREFLY.getBasePrice() - currentShipWorth)) {
+                        character1.setCurrency(character1.getCurrency() - (ShipType.FIREFLY.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.FIREFLY));
-                    } else if (currentShipWorth < ShipType.FIREFLY.getBasePrice()) {
-                        newAdjustedPrice = ShipType.FIREFLY.getBasePrice() - currentShipWorth;
 
-                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
-                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                        character1.setShip(new Spaceship(ShipType.FIREFLY));
+                    } else {
+                        Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
             } else if(shipType.equals("MOSQUITO")) {
-                if (character1.getCurrency() >= ShipType.MOSQUITO.getBasePrice()) {
-                    if (currentShipWorth - ShipType.MOSQUITO.getBasePrice() > 0) {
-
-                        character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.MOSQUITO.getBasePrice()));
+                if (ShipType.MOSQUITO.getBasePrice() - currentShipWorth <= 0) {
+                    character1.setCurrency(character1.getCurrency() - (ShipType.MOSQUITO.getBasePrice() - currentShipWorth));
+                } else if (ShipType.MOSQUITO.getBasePrice() - currentShipWorth > 0) {
+                    if (character1.getCurrency() > (ShipType.MOSQUITO.getBasePrice() - currentShipWorth)) {
+                        character1.setCurrency(character1.getCurrency() - (ShipType.MOSQUITO.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.MOSQUITO));
-                    } else if (currentShipWorth < ShipType.MOSQUITO.getBasePrice()) {
-                        newAdjustedPrice = ShipType.MOSQUITO.getBasePrice() - currentShipWorth;
 
-                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
-                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                        character1.setShip(new Spaceship(ShipType.MOSQUITO));
+                    } else {
+                        Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
             } else if(shipType.equals("BUMBLEBEE")) {
-                if (character1.getCurrency() >= ShipType.BUMBLEBEE.getBasePrice()) {
-                    if (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice() > 0) {
-
-                        character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.BUMBLEBEE.getBasePrice()));
+                if (ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth <= 0) {
+                    character1.setCurrency(character1.getCurrency() - (ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth));
+                } else if (ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth > 0) {
+                    if (character1.getCurrency() > (ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth)) {
+                        character1.setCurrency(character1.getCurrency() - (ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.BUMBLEBEE));
-                    } else if (currentShipWorth < ShipType.BUMBLEBEE.getBasePrice()) {
-                        newAdjustedPrice = ShipType.BUMBLEBEE.getBasePrice() - currentShipWorth;
 
-                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
-                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                        character1.setShip(new Spaceship(ShipType.BUMBLEBEE));
+                    } else {
+                        Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
             } else if(shipType.equals("BEETLE")) {
-                if (character1.getCurrency() >= ShipType.BEETLE.getBasePrice()) {
-                    if (currentShipWorth - ShipType.BEETLE.getBasePrice() > 0) {
-
-                        character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.BEETLE.getBasePrice()));
+                if (ShipType.BEETLE.getBasePrice() - currentShipWorth <= 0) {
+                    character1.setCurrency(character1.getCurrency() - (ShipType.BEETLE.getBasePrice() - currentShipWorth));
+                } else if (ShipType.BEETLE.getBasePrice() - currentShipWorth > 0) {
+                    if (character1.getCurrency() > (ShipType.BEETLE.getBasePrice() - currentShipWorth)) {
+                        character1.setCurrency(character1.getCurrency() - (ShipType.BEETLE.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.BEETLE));
-                    }  else if (currentShipWorth < ShipType.BEETLE.getBasePrice()) {
-                        newAdjustedPrice = ShipType.BEETLE.getBasePrice() - currentShipWorth;
 
-                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
-                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                        character1.setShip(new Spaceship(ShipType.BEETLE));
+                    } else {
+                        Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
             } else if(shipType.equals("HORNET")) {
-                if (character1.getCurrency() >= ShipType.HORNET.getBasePrice()) {
-                    if (currentShipWorth - ShipType.HORNET.getBasePrice() > 0) {
-
-                        character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.HORNET.getBasePrice()));
+                if (ShipType.HORNET.getBasePrice() - currentShipWorth <= 0) {
+                    character1.setCurrency(character1.getCurrency() - (ShipType.HORNET.getBasePrice() - currentShipWorth));
+                } else if (ShipType.HORNET.getBasePrice() - currentShipWorth > 0) {
+                    if (character1.getCurrency() > (ShipType.HORNET.getBasePrice() - currentShipWorth)) {
+                        character1.setCurrency(character1.getCurrency() - (ShipType.HORNET.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.HORNET));
-                    }  else if (currentShipWorth < ShipType.HORNET.getBasePrice()) {
-                        newAdjustedPrice = ShipType.HORNET.getBasePrice() - currentShipWorth;
 
-                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
-                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                        character1.setShip(new Spaceship(ShipType.HORNET));
+                    } else {
+                        Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
             } else if(shipType.equals("GRASSHOPPER")) {
-                if (character1.getCurrency() >= ShipType.GRASSHOPPER.getBasePrice()) {
-                    if (currentShipWorth - ShipType.GRASSHOPPER.getBasePrice() > 0) {
-
-                        character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.GRASSHOPPER.getBasePrice()));
+                if (ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth <= 0) {
+                    character1.setCurrency(character1.getCurrency() - (ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth));
+                } else if (ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth > 0) {
+                    if (character1.getCurrency() > (ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth)) {
+                        character1.setCurrency(character1.getCurrency() - (ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.GRASSHOPPER));
-                    }  else if (currentShipWorth < ShipType.GRASSHOPPER.getBasePrice()) {
-                        newAdjustedPrice = ShipType.GRASSHOPPER.getBasePrice() - currentShipWorth;
 
-                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
-                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                        character1.setShip(new Spaceship(ShipType.GRASSHOPPER));
+                    } else {
+                        Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
             } else if(shipType.equals("TERMITE")) {
-                if (character1.getCurrency() >= ShipType.TERMITE.getBasePrice()) {
-                    if (currentShipWorth - ShipType.TERMITE.getBasePrice() > 0) {
-
-                        character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.TERMITE.getBasePrice()));
+                if (ShipType.TERMITE.getBasePrice() - currentShipWorth <= 0) {
+                    character1.setCurrency(character1.getCurrency() - (ShipType.TERMITE.getBasePrice() - currentShipWorth));
+                } else if (ShipType.TERMITE.getBasePrice() - currentShipWorth > 0) {
+                    if (character1.getCurrency() > (ShipType.TERMITE.getBasePrice() - currentShipWorth)) {
+                        character1.setCurrency(character1.getCurrency() - (ShipType.TERMITE.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.TERMITE));
-                    }  else if (currentShipWorth < ShipType.TERMITE.getBasePrice()) {
-                        newAdjustedPrice = ShipType.TERMITE.getBasePrice() - currentShipWorth;
 
-                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
-                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                        character1.setShip(new Spaceship(ShipType.TERMITE));
+                    } else {
+                        Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
 
             } else if(shipType.equals("WASP")) {
-                if (character1.getCurrency() >= ShipType.WASP.getBasePrice()) {
-                    if (currentShipWorth - ShipType.WASP.getBasePrice() > 0) {
-
-                        character1.setCurrency(character1.getCurrency() - (currentShipWorth - ShipType.WASP.getBasePrice()));
+                if (ShipType.WASP.getBasePrice() - currentShipWorth <= 0) {
+                    character1.setCurrency(character1.getCurrency() - (ShipType.WASP.getBasePrice() - currentShipWorth));
+                } else if (ShipType.WASP.getBasePrice() - currentShipWorth > 0) {
+                    if (character1.getCurrency() > (ShipType.WASP.getBasePrice() - currentShipWorth)) {
+                        character1.setCurrency(character1.getCurrency() - (ShipType.WASP.getBasePrice() - currentShipWorth));
                         viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
                         character1.setShip(new Spaceship(ShipType.WASP));
-                    } else if (currentShipWorth < ShipType.WASP.getBasePrice()) {
-                        newAdjustedPrice = ShipType.WASP.getBasePrice() - currentShipWorth;
 
-                        character1.setCurrency(character1.getCurrency() - newAdjustedPrice);
-                        viewCurrency.setText("Credits: " + character1.getCurrency() + "c");
-                        character1.setShip(new Spaceship(ShipType.WASP));
+                    } else {
+                        Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                     }
-                }else {
-                    Toast.makeText(getApplicationContext(), new String("Insufficient funds"), Toast.LENGTH_SHORT).show();
                 }
             } else {
 
             }
-
 
         });
 
@@ -438,6 +327,20 @@ public class UpgradeShipActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        character1 = Interactor.getInteractor().getCharacter();
+        sonicLaser_num = findViewById(R.id.displaySonicNum);
+        plasmaLaser_num = findViewById(R.id.displayPlasmaNum);
+        mesonPhaser_num = findViewById(R.id.displayMesonNum);
+        sonicLaser_num.setText("Sonic Ray: " + character1.getShip().getSonicRayAmount());
+        plasmaLaser_num.setText("Plasma Ray: " + character1.getShip().getPlasmaRayAmount());
+        mesonPhaser_num.setText("Meson Phaser: " + character1.getShip().getMesonPhaserAmount());
+
 
     }
 

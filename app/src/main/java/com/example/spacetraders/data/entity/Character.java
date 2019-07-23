@@ -76,7 +76,12 @@ public class Character {
     }
 
     public void setCurrency(int amount) {
-        currency = amount;
+        if (amount < 0) {
+            currency = 0;
+        } else {
+            currency = amount;
+        }
+
     }
 
     public Spaceship getShip() {
@@ -136,16 +141,20 @@ public class Character {
         currentShipWorth += ship.getBasePrice();
         int[] currShipResources = ship.getCurrentResources();
 
-        currentShipWorth += currShipResources[0] * Resources.WATER.getBasePrice();
-        currentShipWorth += currShipResources[1] * Resources.FURS.getBasePrice();
-        currentShipWorth += currShipResources[2] * Resources.FOOD.getBasePrice();
-        currentShipWorth += currShipResources[3] * Resources.ORE.getBasePrice();
-        currentShipWorth += currShipResources[4] * Resources.GAMES.getBasePrice();
-        currentShipWorth += currShipResources[5] * Resources.FIREARMS.getBasePrice();
-        currentShipWorth += currShipResources[6] * Resources.MEDICINE.getBasePrice();
-        currentShipWorth += currShipResources[7] * Resources.MACHINES.getBasePrice();
-        currentShipWorth += currShipResources[8] * Resources.NARCOTICS.getBasePrice();
-        currentShipWorth += currShipResources[9] * Resources.ROBOTS.getBasePrice();
+        currentShipWorth += (currShipResources[0] * Resources.WATER.getBasePrice());
+        currentShipWorth += (currShipResources[1] * Resources.FURS.getBasePrice());
+        currentShipWorth += (currShipResources[2] * Resources.FOOD.getBasePrice());
+        currentShipWorth += (currShipResources[3] * Resources.ORE.getBasePrice());
+        currentShipWorth += (currShipResources[4] * Resources.GAMES.getBasePrice());
+        currentShipWorth += (currShipResources[5] * Resources.FIREARMS.getBasePrice());
+        currentShipWorth += (currShipResources[6] * Resources.MEDICINE.getBasePrice());
+        currentShipWorth += (currShipResources[7] * Resources.MACHINES.getBasePrice());
+        currentShipWorth += (currShipResources[8] * Resources.NARCOTICS.getBasePrice());
+        currentShipWorth += (currShipResources[9] * Resources.ROBOTS.getBasePrice());
+
+        currentShipWorth += (ship.getSonicRayAmount() *250);
+        currentShipWorth += (ship.getPlasmaRayAmount()* 500);
+        currentShipWorth += (ship.getMesonPhaserAmount()*750);
 
         return currentShipWorth;
     }
